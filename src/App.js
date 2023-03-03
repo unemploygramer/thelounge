@@ -26,19 +26,53 @@ import {
   useScroll,
   PerspectiveCamera,
 } from "@react-three/drei";
+import Rimlight from "./components/Lighting/Rimlight"
+import KeyLight from "./components/Lighting/KeyLight"
+import FillLight from "./components/Lighting/FillLight";
+import Back from "./components/Walls/Back"
+import Right from "./components/Walls/Right"
 
-const Controls = () => {
-  useThree(({ camera }) => {
-    camera.position.y = 1.5;
-    camera.position.x = 0;
-    camera.position.z = 1;
-    camera.lookAt(0, 1, -15);
-    console.log(camera, "the camera");
-  });
-  return null;
-};
+
+
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
+ function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
 
 function App() {
+  const { height, width } = useWindowDimensions();
+  let heightMultiple = width *.001
+  console.log(heightMultiple,"height multiple")
+  const Controls = ({dynamic}) => {
+    
+    useThree(({ camera }) => {
+      camera.position.y = 1.5 ;
+      camera.position.x = 0  ;
+      camera.position.z = 1 +dynamic ;
+      camera.lookAt(0, 1, -15);
+      console.log(camera, "the camera");
+    });
+    return null;
+  };
+  console.log(width,"the width")
   // function TheCam() {
   //   const { camera } = useThree();
   //   console.log(camera.rotateX, "camera");
@@ -60,9 +94,16 @@ function App() {
 
   return (
     <div className="App">
+      
       <VRButton />
+    
       <Canvas>
-        <Controls />
+        <Back/>
+        <Right/>
+    <Rimlight/> 
+    <KeyLight/>
+    <FillLight/>
+        <Controls dynamic={heightMultiple} />
         {/* <TheCam /> */}
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         <Grid size={10} />
@@ -77,29 +118,7 @@ function App() {
             </Scroll>
           </ScrollControls>
 
-          <spotLight
-            color="#ffffff"
-            position-y={2}
-            position-x={0}
-            position-z={-5}
-            intensity={1}
-            castShadow
-            distance={6}
-            // shadow-mapSize-width={256}
-            // shadow-mapSize-height={256}
-            shadow-mapSize={[1024, 1024]}
-          />
-          <spotLight
-            position-y={3}
-            position-z={11}
-            intensity={1}
-            castShadow
-            distance={6}
-            angle={Math.PI * 1.4}
-            // shadow-mapSize-width={256}
-            // shadow-mapSize-height={256}
-            shadow-mapSize={[1024, 1024]}
-          />
+    
           <GroundPlane />
         </XR>
       </Canvas>
