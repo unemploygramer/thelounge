@@ -31,6 +31,11 @@ import KeyLight from "./components/Lighting/KeyLight"
 import FillLight from "./components/Lighting/FillLight";
 import Back from "./components/Walls/Back"
 import Right from "./components/Walls/Right"
+import Left from "./components/Walls/Left"
+import TV from "./components/TV"
+import NarrowLight from "./components/Lighting/NarrowLight";
+import RightButton from "./components/RightButton";
+
 
 
 
@@ -58,21 +63,39 @@ function getWindowDimensions() {
 }
 
 function App() {
+
+  const [tvAnimation,setTvAnimation]= useState(1)
   const { height, width } = useWindowDimensions();
+let CameraZ;
+
+  if( width <= 600) {
+    CameraZ = 5.5
+  } else if ((width >600) && (width <=900)) {
+    CameraZ =1.5
+  } else if ((width > 900)&& (width < 1200)) {
+    CameraZ = 1
+  }
+  
+  else {
+    CameraZ =0
+  }
+
+
+
   let heightMultiple = width *.001
-  console.log(heightMultiple,"height multiple")
+
   const Controls = ({dynamic}) => {
     
     useThree(({ camera }) => {
       camera.position.y = 1.5 ;
       camera.position.x = 0  ;
-      camera.position.z = 1 +dynamic ;
-      camera.lookAt(0, 1, -15);
-      console.log(camera, "the camera");
+      camera.position.z = CameraZ ;
+      camera.lookAt(0, 3, -15);
+      // console.log(camera, "the camera");
     });
     return null;
   };
-  console.log(width,"the width")
+  // console.log(width,"the width")
   // function TheCam() {
   //   const { camera } = useThree();
   //   console.log(camera.rotateX, "camera");
@@ -80,12 +103,15 @@ function App() {
   //   camera.rotateX = 20;
   // }
 
- 
+ const MoveTvForward = ()=> {
+  console.log("move tv forward")
+setTvAnimation(tvAnimation +1)
+}
   function GroundPlane() {
     return (
-      <mesh receiveShadow rotation-x={Math.PI * 1.5} position={[0, 0, 0]}>
-        <planeBufferGeometry attach="geometry" args={[10, 10]} />
-        <meshStandardMaterial attach="material" color="white" />
+      <mesh receiveShadow rotation-x={Math.PI * 1.5} position={[0, 0, -4]}>
+        <planeBufferGeometry attach="geometry" args={[10, 20]} />
+        <meshStandardMaterial attach="material" color="pink" />
       </mesh>
     );
   }
@@ -93,36 +119,42 @@ function App() {
 
 
   return (
+  
     <div className="App">
-      
       <VRButton />
     
-      <Canvas>
+      <Canvas  colorManagement shadowMap>
+        {/* <ambientLight/> */}
         <Back/>
         <Right/>
+        <Left/>
+        <TV MoveTvForward={MoveTvForward} tvAnimation={tvAnimation}/>
     <Rimlight/> 
     <KeyLight/>
-    <FillLight/>
+    <FillLight/> 
+     <NarrowLight/>
         <Controls dynamic={heightMultiple} />
         {/* <TheCam /> */}
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
-        <Grid size={10} />
+        {/* <Grid size={10} /> */}
         {/* <OrbitControls /> */}
         <XR>
-          <Button position={[3, 1, -3]} />
+        <RightButton MoveTvForward={MoveTvForward}  clicker={MoveTvForward}
+        />
           <Controllers />
-
+          {/* <Button position={[3, 1, -3]} />
           <ScrollControls horizontal={true} pages={3} damping={0.1}>
             <Scroll>
               <Boxer position={[0, 1, -3]} />
             </Scroll>
-          </ScrollControls>
+          </ScrollControls> */}
 
     
           <GroundPlane />
         </XR>
       </Canvas>
     </div>
+
   );
 }
 

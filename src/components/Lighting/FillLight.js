@@ -10,10 +10,11 @@ function FillLight(){
           height={3}
           intensity={1}
           color="white"
-          position={[0,3,0]}
+          position={[0,3,2]}
           lookAt={[0, 1, -3]}
           penumbra={2}
           castShadow
+  
         />
       );
 }
