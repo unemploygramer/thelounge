@@ -26,7 +26,7 @@ function RightButton({ MoveTvForward }) {
       ref={ref}
       position={[2.9, 2, -2.5]}
     >
-      <boxGeometry args={[0.6, 3, 0.6]} />
+      <boxGeometry args={[0.5, 2.5, 0.5]} />
       <meshStandardMaterial color="hotpink" />
     </mesh>
   );

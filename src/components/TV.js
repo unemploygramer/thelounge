@@ -1,23 +1,91 @@
-import { Center, Html, Text, Text3D } from "@react-three/drei";
+import { Center, Html, Text, Text3D, useTexture} from "@react-three/drei";
 import { motion } from "framer-motion-3d";
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 
 function TV({ tvAnimation, MoveTvForward }) {
   const [clicked, click] = useState(false);
+  const [imageProportion, setImageProportion]= useState(null)
   // const [tvAnimation,setTvAnimation]= useState(1)
 
   const TvAnimation = () => {
-    let value = { x: 20 };
+    let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
     if (tvAnimation === 1) {
       value = { x: 0 };
     } else if (tvAnimation === 2) {
       // value = { z: 0, y: 0, x: -5, opacity: 0 };
-      value = { x: 6.9, rotateY: 4 };
+      value = { x: 6.9, rotateY: 4, z:-1.5 };
     } else if (tvAnimation === 3) {
-      value = { x: 3 };
+      value = { rotateX: -1,z:-1.5 ,x: 6.9 };
     }
     return value;
   };
+
+  // function Image() {
+
+
+  const loadImage = path => {
+    return new Promise((resolve, reject) => {
+      const img = new Image()
+      img.crossOrigin = 'Anonymous' // to avoid CORS if used with Canvas
+      img.src = path
+      img.onload = () => {
+        resolve(img)
+      }
+      img.onerror = e => {
+        reject(e)
+      }
+    })
+  }
+ 
+  async function checker(){
+
+    const img = await loadImage("https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg")
+    let height = img.naturalHeight;
+    let width = img.naturalWidth;
+    console.log(height, width)
+    let proportions = width/height;
+
+    setImageProportion(proportions)
+  }
+  useEffect(()=> {
+    checker();
+    // async function checker (){
+
+    //   image = new Image;
+    //   image.src="https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg"
+    //   await console.log(image.naturalHeight, "the image")
+    // }
+  },[])
+
+  console.log(imageProportion,"image propoto")
+  //  function getHiWi() {
+  //  useEffect(()=> {
+  //     let image = new Image();
+  //     console.log(image)
+  //     image.src = "https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg"
+  //     const imageWidth = image.naturalWidth;
+  //     console.log(imageWidth)
+  //     const imageHeight = image.naturalHeight;
+  //     let proportion = imageWidth/imageHeight
+  //     setImageProportion(proportion)
+      
+  //   },[])
+  // }
+  
+  
+  
+    const texture = useTexture(
+      "https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg"
+    );
+
+   
+  //   return (
+  //     <mesh position={[0, 2, -3.5]}>
+  //       <planeBufferGeometry attach="geometry" args={[3, 3]} />
+  //       <meshBasicMaterial attach="material" map={texture} />
+  //     </mesh>
+  //   );
+  // }
 
   // html inside
   //   <Html style={{ backgroundColor: "pink" }} distanceFactor={10} center>
@@ -48,18 +116,19 @@ function TV({ tvAnimation, MoveTvForward }) {
       rotation-x={Math.PI * 1}
       rotation-y={Math.PI * 1}
       rotation-z={Math.PI * 1}
-      position={[0, 2, -3.5]}
+      position={[-3, 2, -3.5]}
     >
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
 
-      <planeBufferGeometry attach="geometry" args={[6, 3]} />
+      <planeBufferGeometry attach="geometry" args={[4, 4]} />
       <meshStandardMaterial
-        opacity={0.8}
+       
         transparent
-        color="hotpink"
+     
         attach="material"
+        map={texture}
       />
     </motion.mesh>
   );

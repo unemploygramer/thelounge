@@ -7,13 +7,13 @@ function TV1({ tvAnimation, MoveTvForward }) {
   // const [tvAnimation,setTvAnimation]= useState(1)
 
   const TvAnimation = () => {
-    let value = { x: 20 };
+    let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
     if (tvAnimation === 1) {
-      value = { z: -2, x: -6.5, rotateY: 2.2 };
+      value = { z: -1.5, x: -6.5, rotateY: 2.2 };
     } else if (tvAnimation === 2) {
-      value = { z: -3, y: 2, x: 0 };
+      value = { z: -3.5, y: 2, x: 0 };
     } else if (tvAnimation === 3) {
-      value = { x: 3 };
+value = { x: 6.9, rotateY: 4, z:-1.5 };
     }
     return value;
   };
@@ -40,7 +40,7 @@ function TV1({ tvAnimation, MoveTvForward }) {
     <motion.mesh
       onClick={(event) => MoveTvForward()}
       animate={() => TvAnimation()}
-      transition={{ type: "spring", stiffness: 40, duration: 0.7 }}
+      transition={{ type: "spring", stiffness: 40, duration: 0.6 }}
       receiveShadow
       rotation-x={Math.PI * 1}
       rotation-y={Math.PI * 1}
