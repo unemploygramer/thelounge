@@ -2,7 +2,7 @@ import { Center, Html, Text, Text3D, useTexture} from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import React, { useRef, useState, useContext, useEffect } from "react";
 
-function TV({ tvAnimation, MoveTvForward }) {
+function TV({ tvAnimation, MoveTvForward, imgLink }) {
   const [clicked, click] = useState(false);
   const [imageProportion, setImageProportion]= useState(null)
   // const [tvAnimation,setTvAnimation]= useState(1)
@@ -39,10 +39,10 @@ function TV({ tvAnimation, MoveTvForward }) {
  
   async function checker(){
 
-    const img = await loadImage("https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg")
+    const img = await loadImage(imgLink)
     let height = img.naturalHeight;
     let width = img.naturalWidth;
-    console.log(height, width)
+    console.log(width,height)
     let proportions = width/height;
 
     setImageProportion(proportions)
@@ -57,6 +57,8 @@ function TV({ tvAnimation, MoveTvForward }) {
     // }
   },[])
 
+ 
+console.log(900 *.6666666666)
   console.log(imageProportion,"image propoto")
   //  function getHiWi() {
   //  useEffect(()=> {
@@ -75,7 +77,7 @@ function TV({ tvAnimation, MoveTvForward }) {
   
   
     const texture = useTexture(
-      "https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg"
+     imgLink
     );
 
    
@@ -122,11 +124,11 @@ function TV({ tvAnimation, MoveTvForward }) {
         Hello
       </Text> */}
 
-      <planeBufferGeometry attach="geometry" args={[4, 4]} />
+      <planeBufferGeometry attach="geometry" args={[5 * imageProportion, 5]} />
       <meshStandardMaterial
        
         transparent
-     
+
         attach="material"
         map={texture}
       />

@@ -51,6 +51,13 @@ function getWindowDimensions() {
   };
 }
 
+const data = [
+  { id: 1, name: "Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" },
+  // { id: 2, name: "big Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_016_b0a9.jpg" },
+  // { id: 3, name: "Nice ass", link: "https://cdni.pornpics.com/1280/7/106/11549282/11549282_030_f8e8.jpg" },
+  // { id: 3, name: "sexy", link: "https://cdni.pornpics.com/1280/1/363/31660579/31660579_003_a3e1.jpg" },
+];
+
 function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
@@ -138,13 +145,19 @@ function App() {
         <Back />
         {/* <Right />
         <Left /> */}
-
-        <TV1 MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />
-        <TV MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />
+//working tv sliders
+        {/* <TV1 MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />
+        <TV imgLink="https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> */}
         <Rimlight />
         <KeyLight />
         <FillLight />
+
+       {data.map((e, key)=> {
+
+return <TV imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
+       })}
         {/* <Image /> */}
+        {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
         <NarrowLight />
         <Controls dynamic={heightMultiple} />
         {/* <TheCam /> */}
