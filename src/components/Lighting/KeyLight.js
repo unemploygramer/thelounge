@@ -9,7 +9,7 @@ function KeyLight(){
           width={3}
           height={3}
           color='white'
-          intensity={1}
+          intensity={1.3}
           position={[0, 4, 0]}
           lookAt={[0, 1, -3]}
           penumbra={1}

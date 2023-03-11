@@ -8,7 +8,7 @@ function FillLight(){
         <rectAreaLight
           width={3}
           height={3}
-          intensity={1}
+          intensity={4}
           color="white"
           position={[0,3,2]}
           lookAt={[0, 1, -3]}

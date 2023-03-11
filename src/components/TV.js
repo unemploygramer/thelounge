@@ -1,20 +1,26 @@
 import { Center, Html, Text, Text3D, useTexture} from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import React, { useRef, useState, useContext, useEffect } from "react";
+import TvLabel from "./TvLabel";
 
-function TV({ tvAnimation, MoveTvForward, imgLink }) {
+function TV({ tvAnimation, MoveTvForward, imgLink, startNumber }) {
   const [clicked, click] = useState(false);
   const [imageProportion, setImageProportion]= useState(null)
   // const [tvAnimation,setTvAnimation]= useState(1)
 
   const TvAnimation = () => {
+    // let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
     let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
-    if (tvAnimation === 1) {
+if(tvAnimation <=startNumber) {
+  value = { z: -1.5, x: -6.5,  rotateX: -1 };
+} else if(tvAnimation ===startNumber +1) {
+      value = { z: -1.5, x: -6.5, rotateY: 2.2 };
+    } else if (tvAnimation === startNumber + 2) {
       value = { x: 0 };
-    } else if (tvAnimation === 2) {
+    } else if (tvAnimation === startNumber +3) {
       // value = { z: 0, y: 0, x: -5, opacity: 0 };
       value = { x: 6.9, rotateY: 4, z:-1.5 };
-    } else if (tvAnimation === 3) {
+    } else if (tvAnimation >= startNumber +4) {
       value = { rotateX: -1,z:-1.5 ,x: 6.9 };
     }
     return value;
@@ -123,10 +129,10 @@ console.log(900 *.6666666666)
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
-
+<TvLabel/>
       <planeBufferGeometry attach="geometry" args={[5 * imageProportion, 5]} />
       <meshStandardMaterial
-       
+
         transparent
 
         attach="material"

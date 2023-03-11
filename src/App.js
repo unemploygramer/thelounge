@@ -5,6 +5,7 @@ import Boxer from "./components/Boxer";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import Grid from "./components/Grid";
 import Button from "./components/Button";
+import {Room} from "./components/Room"
 import {
   VRButton,
   ARButton,
@@ -38,8 +39,15 @@ import TV from "./components/TV";
 import TV1 from "./components/TV1";
 import NarrowLight from "./components/Lighting/NarrowLight";
 import RightButton from "./components/RightButton";
+import BackLight from "./components/Lighting/BackLight";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import tits from "./tits.jpg";
+import LeftButton from "./components/LeftButton";
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
+import { extend } from '@react-three/fiber'
+import myFont from "./fonts/optimer_bold.typeface.json"
+import TvLabel from "./components/TvLabel";
 
 // import myFont from '../relative_path'
 
@@ -53,9 +61,9 @@ function getWindowDimensions() {
 
 const data = [
   { id: 1, name: "Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" },
-  // { id: 2, name: "big Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_016_b0a9.jpg" },
-  // { id: 3, name: "Nice ass", link: "https://cdni.pornpics.com/1280/7/106/11549282/11549282_030_f8e8.jpg" },
-  // { id: 3, name: "sexy", link: "https://cdni.pornpics.com/1280/1/363/31660579/31660579_003_a3e1.jpg" },
+  { id: 2, name: "big Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_016_b0a9.jpg" },
+  { id: 3, name: "Nice ass", link: "https://cdni.pornpics.com/1280/7/106/11549282/11549282_030_f8e8.jpg" },
+  { id: 3, name: "sexy", link: "https://cdni.pornpics.com/1280/1/363/31660579/31660579_003_a3e1.jpg" },
 ];
 
 function useWindowDimensions() {
@@ -76,8 +84,10 @@ function useWindowDimensions() {
 }
 
 function App() {
-  const [tvAnimation, setTvAnimation] = useState(1);
+  const [tvAnimation, setTvAnimation] = useState(-1);
   const { height, width } = useWindowDimensions();
+
+  console.log(tvAnimation,"tvAnimation")
   let CameraZ;
 
   if (width <= 600) {
@@ -110,9 +120,27 @@ function App() {
   //   camera.rotateX = 20;
   // }
 
+  extend({ TextGeometry })
+
+//  function Text() {
+// const font = new FontLoader().parse(myFont);
+
+// return(
+// <mesh rotation-x={Math.PI * -.1}position={[-1,-.7,-3.4]}>
+//     <textGeometry args={['ass', {font, size:.8, height: 1}]}/>
+//     <meshLambertMaterial attach='material' color={'gold'}/>
+// </mesh>
+// )
+//  }
+
+
   const MoveTvForward = () => {
-    console.log("move tv forward");
+    console.log(tvAnimation,"move tv forward");
     setTvAnimation(tvAnimation + 1);
+  };
+  const MoveTvBackward = () => {
+    console.log(tvAnimation,"move tv forward");
+    setTvAnimation(tvAnimation - 1);
   };
   function GroundPlane() {
     return (
@@ -140,9 +168,9 @@ function App() {
       <VRButton />
       <Canvas colorManagement shadowMap>
         <Stars />
-        {/* <ambientLight/> */}
 
-        <Back />
+        {/* <ambientLight/> */}
+        {/* <Back /> */}
         {/* <Right />
         <Left /> */}
 //working tv sliders
@@ -151,10 +179,13 @@ function App() {
         <Rimlight />
         <KeyLight />
         <FillLight />
-
+        <BackLight/>
+<Room/>
        {data.map((e, key)=> {
 
-return <TV imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
+        let startLocation = key-3 
+console.log(key)
+return <TV startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
        })}
         {/* <Image /> */}
         {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
@@ -164,7 +195,9 @@ return <TV imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimati
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         {/* <Grid size={10} /> */}
         {/* <OrbitControls /> */}
+     
         <XR>
+          <LeftButton MoveTvBackward={MoveTvBackward}/>
           <RightButton MoveTvForward={MoveTvForward} clicker={MoveTvForward} />
           <Controllers />
           {/* <Button position={[3, 1, -3]} />
@@ -174,7 +207,7 @@ return <TV imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimati
             </Scroll>
           </ScrollControls> */}
 
-          <GroundPlane />
+          {/* <GroundPlane /> */}
         </XR>
       </Canvas>
     </div>

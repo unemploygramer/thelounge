@@ -10,7 +10,7 @@ function Rimlight(props) {
     position-y={2}
     position-x={0}
     position-z={-5}
-    intensity={1}
+    intensity={2}
     castShadow
     distance={6}
     // shadow-mapSize-width={256}
