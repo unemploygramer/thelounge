@@ -12,7 +12,7 @@ import {
   VRCanvas,
   Interactive,
 } from "@react-three/xr";
-function TvLabel({ MoveTvBackward }) {
+function TvLabel({ MoveTvBackward ,words}) {
   const ref = useRef();
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
@@ -26,14 +26,15 @@ function TvLabel({ MoveTvBackward }) {
       ref={ref}
    
     >
+    
            <Text
-    position={[0,-2,0.2]}
-        scale={[1, 1, 1]}
+    position={[0,-2.2,0.2]}
+        scale={[.5, .5, .5]}
         color="Hotpink" // default
         anchorX="center" // default
         anchorY="middle" // default
       >
-        Phat Ass
+       {words}
       </Text>
       {/* <boxGeometry args={[0.5, 2.5, 0.5]} />
       <meshStandardMaterial color="hotpink" /> */}

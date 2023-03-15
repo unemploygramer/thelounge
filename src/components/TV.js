@@ -3,7 +3,7 @@ import { motion } from "framer-motion-3d";
 import React, { useRef, useState, useContext, useEffect } from "react";
 import TvLabel from "./TvLabel";
 
-function TV({ tvAnimation, MoveTvForward, imgLink, startNumber }) {
+function TV({ tvAnimation, MoveTvForward, imgLink, startNumber,words }) {
   const [clicked, click] = useState(false);
   const [imageProportion, setImageProportion]= useState(null)
   // const [tvAnimation,setTvAnimation]= useState(1)
@@ -64,7 +64,7 @@ if(tvAnimation <=startNumber) {
   },[])
 
  
-console.log(900 *.6666666666)
+
   console.log(imageProportion,"image propoto")
   //  function getHiWi() {
   //  useEffect(()=> {
@@ -117,7 +117,7 @@ console.log(900 *.6666666666)
   // }
   return (
     <motion.mesh
-      onClick={(event) => MoveTvForward()}
+     
       animate={() => TvAnimation()}
       transition={{ duration: 0.6 }}
       receiveShadow
@@ -129,7 +129,7 @@ console.log(900 *.6666666666)
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
-<TvLabel/>
+<TvLabel words={words}/>
       <planeBufferGeometry attach="geometry" args={[5 * imageProportion, 5]} />
       <meshStandardMaterial
 

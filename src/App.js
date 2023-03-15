@@ -6,6 +6,7 @@ import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import Grid from "./components/Grid";
 import Button from "./components/Button";
 import {Room} from "./components/Room"
+import Title from "./components/Title"
 import {
   VRButton,
   ARButton,
@@ -47,7 +48,9 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
 import { extend } from '@react-three/fiber'
 import myFont from "./fonts/optimer_bold.typeface.json"
+import urFont from "./fonts/Box.otf"
 import TvLabel from "./components/TvLabel";
+import TvSpring from "./components/TvSpring";
 
 // import myFont from '../relative_path'
 
@@ -64,6 +67,7 @@ const data = [
   { id: 2, name: "big Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_016_b0a9.jpg" },
   { id: 3, name: "Nice ass", link: "https://cdni.pornpics.com/1280/7/106/11549282/11549282_030_f8e8.jpg" },
   { id: 3, name: "sexy", link: "https://cdni.pornpics.com/1280/1/363/31660579/31660579_003_a3e1.jpg" },
+  { id: 4, name: "Pool", link: "https://cdni.pornpics.com/1280/5/67/17839901/17839901_010_5af1.jpg" },
 ];
 
 function useWindowDimensions() {
@@ -97,7 +101,7 @@ function App() {
   } else if (width > 900 && width < 1200) {
     CameraZ = 1;
   } else {
-    CameraZ = 0;
+    CameraZ = 0.8;
   }
 
   let heightMultiple = width * 0.001;
@@ -153,7 +157,7 @@ function App() {
   function Image() {
     // const texture = useLoader(THREE.TextureLoader, tits);
     const texture = useTexture(
-      "https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg"
+      "https://cdni.pornpics.com/1280/5/67/17839901/17839901_010_5af1.jpg"
     );
     return (
       <mesh position={[0, 2, -3.5]}>
@@ -181,12 +185,13 @@ function App() {
         <FillLight />
         <BackLight/>
 <Room/>
-       {data.map((e, key)=> {
+
+       {/* {data.map((e, key)=> {
 
         let startLocation = key-3 
 console.log(key)
-return <TV startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
-       })}
+return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
+       })} */}
         {/* <Image /> */}
         {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
         <NarrowLight />
@@ -196,9 +201,11 @@ return <TV startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvFor
         {/* <Grid size={10} /> */}
         {/* <OrbitControls /> */}
      
+          <TvSpring words="fjdskfj" startNumber={1} imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation}/>
         <XR>
           <LeftButton MoveTvBackward={MoveTvBackward}/>
           <RightButton MoveTvForward={MoveTvForward} clicker={MoveTvForward} />
+          <Title font={urFont} words="The Title"/>
           <Controllers />
           {/* <Button position={[3, 1, -3]} />
           <ScrollControls horizontal={true} pages={3} damping={0.1}>

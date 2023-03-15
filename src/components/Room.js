@@ -14,7 +14,7 @@ export function Room(props) {
   const { nodes, materials } = useGLTF('/room.gltf')
   return (
     <group  {...props} dispose={null}>
-      <group  rotation={[-Math.PI / 2, 0, -Math.PI / 2]} scale={0.79}>
+      <group  rotation={[-Math.PI / 2.1, 0, -Math.PI / 2]} scale={0.79}>
         <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
           <group position={[-242.44, -435.93, 0]} rotation={[-Math.PI / 2, 0, Math.PI]} scale={[29.56, 1864, 88]}>
             <mesh geometry={nodes.Modern_Bedroom_WindowFrame_0.geometry} material={materials.WindowFrame} />
