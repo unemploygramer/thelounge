@@ -63,12 +63,19 @@ function getWindowDimensions() {
 }
 
 const data = [
-  { id: 1, name: "Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" },
-  { id: 2, name: "big Tits", link: "https://cdni.pornpics.com/1280/1/74/27338545/27338545_016_b0a9.jpg" },
-  { id: 3, name: "Nice ass", link: "https://cdni.pornpics.com/1280/7/106/11549282/11549282_030_f8e8.jpg" },
-  { id: 3, name: "sexy", link: "https://cdni.pornpics.com/1280/1/363/31660579/31660579_003_a3e1.jpg" },
-  { id: 4, name: "Pool", link: "https://cdni.pornpics.com/1280/5/67/17839901/17839901_010_5af1.jpg" },
+  { id: 1, name: "ffff", link: "https://cdni.pornpics.com/1280/1/356/81420904/81420904_014_ed62.jpg" },
+  { id: 2, name: "aaaa", link: "https://cdni.pornpics.com/1280/1/91/94355083/94355083_009_5529.jpg" },
+  { id: 3, name: "zzzz", link: "https://cdni.pornpics.com/1280/7/44/87193693/87193693_162_22bb.jpg" },
+  { id: 3, name: "gggg", link: "https://cdni.pornpics.com/1280/7/600/15980271/15980271_057_205a.jpg" },
+  { id: 4, name: "llll", link: "https://cdni.pornpics.com/1280/7/107/79912458/79912458_018_5b3e.jpg" },
 ];
+// const data = [
+//   { id: 1, name: "ffff", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+//   { id: 2, name: "aaaa", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+//   { id: 3, name: "zzzz", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+//   { id: 3, name: "gggg", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+//   { id: 4, name: "llll", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+// ];
 
 function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
@@ -90,6 +97,7 @@ function useWindowDimensions() {
 function App() {
   const [tvAnimation, setTvAnimation] = useState(-1);
   const { height, width } = useWindowDimensions();
+  const [movement, setMovement] = useState(0)
 
   console.log(tvAnimation,"tvAnimation")
   let CameraZ;
@@ -157,7 +165,7 @@ function App() {
   function Image() {
     // const texture = useLoader(THREE.TextureLoader, tits);
     const texture = useTexture(
-      "https://cdni.pornpics.com/1280/5/67/17839901/17839901_010_5af1.jpg"
+      "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg"
     );
     return (
       <mesh position={[0, 2, -3.5]}>
@@ -192,6 +200,12 @@ function App() {
 console.log(key)
 return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
        })} */}
+       {/* {data.map((e, key)=> {
+
+        let startLocation = key-3 
+console.log(key)
+return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
+       })} */}
         {/* <Image /> */}
         {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
         <NarrowLight />
@@ -200,11 +214,14 @@ return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvFor
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         {/* <Grid size={10} /> */}
         {/* <OrbitControls /> */}
-     
-          <TvSpring words="fjdskfj" startNumber={1} imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation}/>
+       {data.map((e, key)=> {
+
+        let startLocation = key-1
+return <TvSpring  movement={movement} setMovement={setMovement} words={e.name} startNumber={startLocation} imgLink={e.link}  /> 
+       })} 
         <XR>
-          <LeftButton MoveTvBackward={MoveTvBackward}/>
-          <RightButton MoveTvForward={MoveTvForward} clicker={MoveTvForward} />
+          <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/>
+          <RightButton movement={movement} setMovement={setMovement} MoveTvForward={MoveTvForward} clicker={MoveTvForward} />
           <Title font={urFont} words="The Title"/>
           <Controllers />
           {/* <Button position={[3, 1, -3]} />

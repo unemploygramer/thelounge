@@ -4,9 +4,9 @@ import React, { useRef, useState, useContext, useEffect } from "react";
 import TvLabel from "./TvLabel";
 import { useSpring, animated } from '@react-spring/three'
 
-function TvSpring({ tvAnimation, MoveTvForward, imgLink, startNumber,words }) {
+function TvSpring({ tvAnimation, MoveTvForward, imgLink, startNumber,words, movement, setMovement }) {
  
-  const [movement, setMovement] = useState(0)
+
   const [imageProportion, setImageProportion]= useState(null)
   const STEP_DURATION = 500;
   const { carouselRotation } = useSpring({
@@ -40,61 +40,76 @@ function TvSpring({ tvAnimation, MoveTvForward, imgLink, startNumber,words }) {
     immediate: true,
   });
   const xMovement = ()=> {
-    if(movement===0) {
+    if(movement<startNumber) {
+      return -15
+    }
+   else if(movement===startNumber) {
       return -8
     }
-    else if(movement ==1) {
+    else if(movement ==startNumber +1) {
       return 0
-    } else if( movement==2) {
+    } else if( movement==startNumber+2) {
       return 7.2
     } else {
       return 9
     }
   }
   const zMovement = ()=> {
-    if(movement===0) {
+    if(movement<startNumber) {
       return -3.5
     }
-   else if(movement ==1) {
+   else if(movement===startNumber) {
       return -3.5
-    } else if( movement==2) {
+    }
+   else if(movement ==startNumber+1) {
+      return -3.5
+    } else if( movement==startNumber+2) {
       return -2.5
-    } else {
+    } else  {
       return -2
     }
   }
   
   const yRot = ()=> {
-    if(movement===0) {
+    if(movement<startNumber) {
       return Math.PI *.3
     }
-  else  if(movement ==1) {
+   else if(movement===startNumber) {
+      return Math.PI *.3
+    }
+  else  if(movement ==startNumber+1) {
       return Math.PI *0
-    } else if( movement==2) {
+    } else if( movement==startNumber+2) {
       return Math.PI *-.3
     } else {
       return Math.PI *0
     }
   }
   const zRot = ()=> {
-    if(movement===0) {
+    if(movement<startNumber) {
       return Math.PI *0
     }
-  else if(movement ==1) {
+   else if(movement===startNumber) {
       return Math.PI *0
-    } else if( movement==2) {
+    }
+  else if(movement ==startNumber+1) {
+      return Math.PI *0
+    } else if( movement==startNumber+2) {
       return Math.PI *-0
     } else {
       return Math.PI * .5
     }
   }
   const yMovement = ()=> {
-    if(movement===0) {
+    if(movement<startNumber) {
+      return -2
+    }
+   else if(movement===startNumber) {
       return 1.5
     }
-  else if(movement ==1) {
+  else if(movement ===startNumber+1) {
       return 1.2
-    } else if( movement==2) {
+    } else if( movement==startNumber+2) {
       return 1.2
     } else {
       return -2
@@ -201,11 +216,7 @@ function TvSpring({ tvAnimation, MoveTvForward, imgLink, startNumber,words }) {
      imgLink
     );
 const handleClick = ()=> {
-  if (movement< 5) {
-    setMovement(movement+1)
-  } else {
-setMovement(movement-1)
-  }
+
 }
 
 

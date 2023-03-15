@@ -13,7 +13,7 @@ import {
 import { Sky, Text } from "@react-three/drei";
 import { useSpring, animated } from '@react-spring/three'
 
-function RightButton({ MoveTvForward }) {
+function RightButton({ MoveTvForward, movement, setMovement }) {
   const ref = useRef();
   const [active, setActive] = useState(false)
   const { scale } = useSpring({ scale: active ? 1.5 : 1 })
@@ -22,11 +22,15 @@ function RightButton({ MoveTvForward }) {
   const [clicked, click] = useState(false);
 
   useFrame((state, delta) => (ref.current.rotation.y += delta * 0.5));
+  const handleClick = ()=> {
 
+      setMovement(movement+1)
+ 
+  }
   return (
     <Interactive onHover={() => setActive(true)}>
 
-    <animated.mesh scale={scale} onClick={() => setActive(!active)}
+    <animated.mesh onHover={()=>setActive(!active)} scale={scale} onClick={() => handleClick()}
       // onClick={(event) => MoveTvForward()}
       ref={ref}
       position={[2.9, 2, -2.5]}

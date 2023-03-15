@@ -12,17 +12,21 @@ import {
 } from "@react-three/xr";
 import { Sky, Text } from "@react-three/drei";
 
-function LeftButton({ MoveTvBackward }) {
+function LeftButton({ MoveTvBackward, movement, setMovement }) {
   const ref = useRef();
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
   const [clicked, click] = useState(false);
 
   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
+  const handleClick = ()=> {
 
+      setMovement(movement-1)
+   
+  }
   return (
     <mesh
-      onClick={(event) => MoveTvBackward()}
+      onClick={(event) => handleClick()}
       ref={ref}
       position={[-2.9, 2, -2.5]}
     >
