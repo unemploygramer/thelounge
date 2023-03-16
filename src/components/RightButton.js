@@ -27,10 +27,18 @@ function RightButton({ MoveTvForward, movement, setMovement }) {
       setMovement(movement+1)
  
   }
+  const triggerIn = ()=> {
+    setActive(true)
+    console.log('trigger ran')
+  }
+  const triggerOut = ()=> {
+    setActive(false)
+    console.log('trigger ran')
+  }
   return (
-    <Interactive onHover={() => setActive(true)}>
+    <Interactive onSelect={handleClick} onHover={triggerIn}  >
 
-    <animated.mesh onHover={()=>setActive(!active)} scale={scale} onClick={() => handleClick()}
+    <animated.mesh onPointerOver={()=> triggerIn()} onPointerOut={()=> triggerOut()} scale={scale} onClick={() => handleClick()}
       // onClick={(event) => MoveTvForward()}
       ref={ref}
       position={[2.9, 2, -2.5]}
