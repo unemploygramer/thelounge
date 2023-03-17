@@ -34,7 +34,7 @@ function TvLabel({ MoveTvBackward ,words, font}) {
         
         >
               <planeBufferGeometry onHover={() => setIsHovered(true)}    attach="geometry" args={[5.3, 1.2]} />
-        <meshBasicMaterial  color="purple"   attach="material" />
+        <meshBasicMaterial transparent opacity={.9}  color="purple"   attach="material" />
         </mesh>
         <mesh>
 
