@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { motion } from "framer-motion-3d";
 import {
   VRButton,
@@ -12,7 +12,9 @@ import {
 } from "@react-three/xr";
 import { Sky, Text } from "@react-three/drei";
 import { useSpring, animated } from '@react-spring/three'
-
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import Arrow from "../assets/arrow.png"
+import Zebru from "../assets/zebru.jpg"
 function RightButton({ MoveTvForward, movement, setMovement }) {
   const ref = useRef();
   const [active, setActive] = useState(false)
@@ -20,7 +22,7 @@ function RightButton({ MoveTvForward, movement, setMovement }) {
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
   const [clicked, click] = useState(false);
-
+  const texture = useLoader(TextureLoader, Arrow)
   useFrame((state, delta) => (ref.current.rotation.y += delta * 0.5));
   const handleClick = ()=> {
 
@@ -43,7 +45,7 @@ function RightButton({ MoveTvForward, movement, setMovement }) {
       ref={ref}
       position={[2.9, 2, -2.5]}
       >
-      <boxGeometry args={[0.5, 2.5, 0.5]} />
+      <boxGeometry  args={[0.5, 2.5, 0.5]} />
       <meshStandardMaterial color="hotpink" />
     </animated.mesh>
       </Interactive>

@@ -52,6 +52,7 @@ import urFont from "./fonts/Box.otf"
 import TvLabel from "./components/TvLabel";
 import TvSpring from "./components/TvSpring";
 import { TvVideo } from "./components/TvVideo";
+import MainMenu from "./components/MainMenu"
 
 // import myFont from '../relative_path'
 
@@ -216,15 +217,15 @@ return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvFor
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         {/* <Grid size={10} /> */}
         {/* <OrbitControls /> */}
-       {data.map((e, key)=> {
+       {/* {data.map((e, key)=> {
 
         let startLocation = key-1
 return <TvSpring  movement={movement} setMovement={setMovement} words={e.name} startNumber={startLocation} imgLink={e.link}  /> 
-       })} 
+       })}  */}
         <XR>
-          <TvVideo/>
-          <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/>
-          <RightButton movement={movement} setMovement={setMovement} MoveTvForward={MoveTvForward} clicker={MoveTvForward} />
+          {/* <TvVideo/> */}
+          {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/>
+          <RightButton movement={movement} setMovement={setMovement} MoveTvForward={MoveTvForward} clicker={MoveTvForward} /> */}
           <Title font={urFont} words="The Title"/>
           <Controllers />
           {/* <Button position={[3, 1, -3]} />
@@ -233,6 +234,7 @@ return <TvSpring  movement={movement} setMovement={setMovement} words={e.name} s
               <Boxer position={[0, 1, -3]} />
             </Scroll>
           </ScrollControls> */}
+<MainMenu font={urFont}/>
 
           {/* <GroundPlane /> */}
         </XR>

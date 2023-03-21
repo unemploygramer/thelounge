@@ -18,7 +18,7 @@ function TvLabel({ MoveTvBackward ,words, font}) {
     return (
         
         <Interactive onHover={() => setIsHovered(true)}>
-        <motion.group scale={isHovered ? [1.5, 1.5, 1.5] : [1, 1, 1]} 
+        <motion.group 
            whileHover={{ scale: 1.2 }}
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(true)}     initial="hidden"
