@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { Text } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { Interactive, XR, Controllers, VRButton } from '@react-three/xr'
-
+import { useSpring, animated } from '@react-spring/three'
 function TvLabel({ MoveTvBackward ,words, font}) {
 
     const ref = useRef();
@@ -13,17 +13,29 @@ function TvLabel({ MoveTvBackward ,words, font}) {
     console.log(isHovered,"is hovered")
   
   //   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
+  const [active, setActive] = useState(false)
+  const { scale } = useSpring({ scale: active ? 1.2 : 1 })
+  const {position}= useSpring({position:active ? [0,2.7,-1.5]:[0, 3.7,-2.5] })
   
+  const triggerIn = ()=> {
+    setActive(true)
+    console.log('trigger ran')
+  }
+  const triggerOut = ()=> {
+    setActive(false)
+    console.log('trigger ran')
+  }
+
   
     return (
         
         <Interactive onHover={() => setIsHovered(true)}>
-        <motion.group 
-           whileHover={{ scale: 1.2 }}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(true)}     initial="hidden"
-       
-      rotation-y={Math.PI * .004} rotation-x={Math.PI * .06}  position={[0, 3.7,-2.5]}>
+        <animated.group 
+        scale={scale}
+        onPointerOver={()=> triggerIn()} onPointerOut={()=> triggerOut()}
+      // rotation-y={Math.PI * .000} rotation-x={Math.PI * .06}  position={[0, 3.7,-2.5]}
+      position={position}
+      >
 
 
       <mesh
@@ -34,7 +46,7 @@ function TvLabel({ MoveTvBackward ,words, font}) {
         
         >
               <planeBufferGeometry onHover={() => setIsHovered(true)}    attach="geometry" args={[5.3, 1.2]} />
-        <meshBasicMaterial transparent opacity={.9}  color="purple"   attach="material" />
+        <meshBasicMaterial transparent opacity={1}  color="purple"   attach="material" />
         </mesh>
         <mesh>
 
@@ -53,7 +65,7 @@ function TvLabel({ MoveTvBackward ,words, font}) {
         {/* <boxGeometry args={[0.5, 2.5, 0.5]} />
         <meshStandardMaterial color="hotpink" /> */}
     
-      </motion.group>
+      </animated.group>
         </Interactive>
 
     );

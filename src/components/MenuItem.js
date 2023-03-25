@@ -5,8 +5,18 @@ import TvLabel from "./TvLabel";
 import { useSpring, animated } from '@react-spring/three'
 
 
-function MenuItem({ tvAnimation, MoveTvForward, imgLink, startNumber,words, movement, setMovement, font, position, scale }) {
- 
+function MenuItem({ tvAnimation, MoveTvForward, imgLink, startNumber,words, movement, setMovement, font, position, textscale }) {
+  const [active, setActive] = useState(false)
+  const { scale } = useSpring({ scale: active ? 1.2 : 1 })
+  const {positionZ} = useSpring({positionZ: active ? 2: .1})
+  const triggerIn = ()=> {
+    setActive(true)
+    console.log('trigger ran')
+  }
+  const triggerOut = ()=> {
+    setActive(false)
+    console.log('trigger ran')
+  }
 
 //   const [imageProportion, setImageProportion]= useState(null)
 //   const STEP_DURATION = 500;
@@ -225,27 +235,19 @@ function MenuItem({ tvAnimation, MoveTvForward, imgLink, startNumber,words, move
   return (
     
     <animated.mesh 
-    whileHover={{ scale: 1.2 }}
-    // rotation-z={carouselRotation}
-    //   animate={() => TvAnimation()}
-    //   transition={{ duration: 0.6 }}
+    scale={scale}
+    onPointerOver={()=> triggerIn()} onPointerOut={()=> triggerOut()}
       receiveShadow
-//    position-x={x}
-//    position-z={z}
-//  rotation-y={yRotate}
-//  rotation-x={zRotate}
-//  position-y={y}
+//  
+position-z={.1}
       position={position}
-    //   onClick={()=>handleClick() }
     >
-      {/* <Text color="black" anchorX="center" anchorY="middle">
-        Hello
-      </Text> */}
+   
     <Text
              font={font}
              position-z={.1}
              position-y={-.1}
-             scale={scale}
+             scale={textscale}
              color="purple" // default
              anchorX="center" // default
              anchorY="middle" // default
@@ -254,7 +256,7 @@ function MenuItem({ tvAnimation, MoveTvForward, imgLink, startNumber,words, move
         </Text>
       <planeBufferGeometry attach="geometry" args={[5.9, 1.5]} />
       <meshStandardMaterial
-opacity={.8}
+opacity={1}
         transparent
 color="hotpink"
         attach="material"

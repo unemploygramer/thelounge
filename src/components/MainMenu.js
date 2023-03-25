@@ -235,6 +235,7 @@ function MainMenu({ tvAnimation, MoveTvForward, imgLink, startNumber,words, move
 //  rotation-x={zRotate}
 //  position-y={y}
       position={[0, 1, -3.5]}
+    
     //   onClick={()=>handleClick() }
     >
       {/* <Text color="black" anchorX="center" anchorY="middle">
@@ -243,14 +244,14 @@ function MainMenu({ tvAnimation, MoveTvForward, imgLink, startNumber,words, move
 <TvLabel words={words}/>
       <planeBufferGeometry attach="geometry" args={[6, 8]} />
       <meshStandardMaterial
-opacity={.7}
+opacity={1}
         transparent
 color="purple"
         attach="material"
         // map={texture}
       />
-    <MenuItem words="socials" position={[0, 1.83, .1]} scale={[1,1,1]} font={font}/>
-    <MenuItem words="more words" position={[0,.33,.1]} scale={[.8,.8,.8]} font={font}/>
+    <MenuItem words="socials" position={[0, 1.83, .1]} textscale={[1,1,1]} font={font}/>
+    <MenuItem words="more words" position={[0,.33,.1]} textscale={[.8,.8,.8]} font={font}/>
     </animated.mesh>
   );
 }

@@ -64,21 +64,21 @@ function getWindowDimensions() {
   };
 }
 
-const data = [
-  { id: 1, name: "ffff", link: "https://cdni.pornpics.com/1280/1/356/81420904/81420904_014_ed62.jpg" },
-  { id: 2, name: "aaaa", link: "https://cdni.pornpics.com/1280/1/91/94355083/94355083_009_5529.jpg" },
-  { id: 3, name: "zzzz", link: "https://cdni.pornpics.com/1280/7/44/87193693/87193693_162_22bb.jpg" },
-  { id: 3, name: "gggg", link: "https://cdni.pornpics.com/1280/7/600/15980271/15980271_057_205a.jpg" },
-  { id: 4, name: "llll", link: "https://cdni.pornpics.com/1280/7/107/79912458/79912458_018_5b3e.jpg" },
-  // { id: 4, name: "gif", link: "https://cdn.sex.com/images/pinporn/2023/02/17/28909840.gif?width=620" },
-];
 // const data = [
-//   { id: 1, name: "ffff", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
-//   { id: 2, name: "aaaa", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
-//   { id: 3, name: "zzzz", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
-//   { id: 3, name: "gggg", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
-//   { id: 4, name: "llll", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+//   { id: 1, name: "ffff", link: "https://cdni.pornpics.com/1280/1/356/81420904/81420904_014_ed62.jpg" },
+//   { id: 2, name: "aaaa", link: "https://cdni.pornpics.com/1280/1/91/94355083/94355083_009_5529.jpg" },
+//   { id: 3, name: "zzzz", link: "https://cdni.pornpics.com/1280/7/44/87193693/87193693_162_22bb.jpg" },
+//   { id: 3, name: "gggg", link: "https://cdni.pornpics.com/1280/7/600/15980271/15980271_057_205a.jpg" },
+//   { id: 4, name: "llll", link: "https://cdni.pornpics.com/1280/7/107/79912458/79912458_018_5b3e.jpg" },
+//   // { id: 4, name: "gif", link: "https://cdn.sex.com/images/pinporn/2023/02/17/28909840.gif?width=620" },
 // ];
+const data = [
+  { id: 1, name: "ffff", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+  { id: 2, name: "aaaa", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+  { id: 3, name: "zzzz", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+  { id: 3, name: "gggg", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+  { id: 4, name: "llll", link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg" },
+];
 
 function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
@@ -224,7 +224,7 @@ return <TvSpring  movement={movement} setMovement={setMovement} words={e.name} s
        })}  */}
         <XR>
           {/* <TvVideo/> */}
-          {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/>
+          {/* {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/> */}
           <RightButton movement={movement} setMovement={setMovement} MoveTvForward={MoveTvForward} clicker={MoveTvForward} /> */}
           <Title font={urFont} words="The Title"/>
           <Controllers />
