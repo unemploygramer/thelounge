@@ -104,22 +104,28 @@ function App() {
 
   console.log(tvAnimation,"tvAnimation")
   let CameraZ;
+  let cameraY;
+  
 
   if (width <= 600) {
     CameraZ = 5.5;
+    cameraY= 1.5
   } else if (width > 600 && width <= 900) {
     CameraZ = 1.5;
+    cameraY = 1.5
   } else if (width > 900 && width < 1200) {
     CameraZ = 1;
+    cameraY = 1.5
   } else {
     CameraZ = 0.8;
+    cameraY = 2
   }
 
   let heightMultiple = width * 0.001;
 
   const Controls = ({ dynamic }) => {
     useThree(({ camera }) => {
-      camera.position.y = 1.5;
+      camera.position.y = cameraY;
       camera.position.x = 0;
       camera.position.z = CameraZ;
       camera.lookAt(-0.2, 3, -15);
