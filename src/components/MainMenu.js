@@ -250,8 +250,8 @@ color="purple"
         attach="material"
         // map={texture}
       />
-    <MenuItem words="socials" position={[0, 1.83, .1]} textscale={[1,1,1]} font={font}/>
-    <MenuItem words="more words" position={[0,.33,.1]} textscale={[.8,.8,.8]} font={font}/>
+    <MenuItem words="socials" positions={[0, 1.83, .1]} textscale={[1,1,1]} font={font}/>
+    <MenuItem words="more words" positions={[0,.33,.1]} textscale={[.8,.8,.8]} font={font}/>
     </animated.mesh>
   );
 }

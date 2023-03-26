@@ -1,264 +1,269 @@
-import { Center, Html, Text, Text3D, useTexture} from "@react-three/drei";
+import { Center, Html, Text, Text3D, useTexture } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import React, { useRef, useState, useContext, useEffect } from "react";
 import TvLabel from "./TvLabel";
-import { useSpring, animated } from '@react-spring/three'
+import { useSpring, animated } from "@react-spring/three";
 
+function MenuItem({
+  tvAnimation,
+  MoveTvForward,
+  imgLink,
+  startNumber,
+  words,
+  movement,
+  setMovement,
+  font,
+  positions,
+  textscale,
+}) {
+  const [active, setActive] = useState(false);
+  const { scale } = useSpring({ scale: active ? 1.2 : 1 });
+  const { positionZ } = useSpring({ positionZ: active ? 2 : 0.1 });
+  let closerMovement = positions[2] + 0.3;
+  const { position } = useSpring({
+    position: active
+      ? [positions[0], positions[1], closerMovement]
+      : [positions[0], positions[1], positions[2]],
+  });
+  const triggerIn = () => {
+    setActive(true);
+    console.log("trigger ran");
+  };
+  const triggerOut = () => {
+    setActive(false);
+    console.log("trigger ran");
+  };
 
-function MenuItem({ tvAnimation, MoveTvForward, imgLink, startNumber,words, movement, setMovement, font, position, textscale }) {
-  const [active, setActive] = useState(false)
-  const { scale } = useSpring({ scale: active ? 1.2 : 1 })
-  const {positionZ} = useSpring({positionZ: active ? 2: .1})
-  const triggerIn = ()=> {
-    setActive(true)
-    console.log('trigger ran')
-  }
-  const triggerOut = ()=> {
-    setActive(false)
-    console.log('trigger ran')
-  }
+  //   const [imageProportion, setImageProportion]= useState(null)
+  //   const STEP_DURATION = 500;
+  //   const { carouselRotation } = useSpring({
+  //     from: {
+  //       carouselRotation: 0,
+  //     },
+  //     to: [
+  //       {
+  //         carouselRotation: -Math.PI / 2,
+  //         delay: STEP_DURATION,
+  //       },
+  //       {
+  //         carouselRotation: -Math.PI,
+  //         delay: STEP_DURATION,
+  //       },
+  //       {
+  //         carouselRotation: -1.5 * Math.PI,
+  //         delay: STEP_DURATION,
+  //       },
+  //       {
+  //         carouselRotation: -2 * Math.PI,
+  //         delay: STEP_DURATION,
+  //       },
+  //     ],
+  //     config: {
+  //       mass: 5,
+  //       tension: 400,
+  //       friction: 50,
+  //     },
 
-//   const [imageProportion, setImageProportion]= useState(null)
-//   const STEP_DURATION = 500;
-//   const { carouselRotation } = useSpring({
-//     from: {
-//       carouselRotation: 0,
-//     },
-//     to: [
-//       {
-//         carouselRotation: -Math.PI / 2,
-//         delay: STEP_DURATION,
-//       },
-//       {
-//         carouselRotation: -Math.PI,
-//         delay: STEP_DURATION,
-//       },
-//       {
-//         carouselRotation: -1.5 * Math.PI,
-//         delay: STEP_DURATION,
-//       },
-//       {
-//         carouselRotation: -2 * Math.PI,
-//         delay: STEP_DURATION,
-//       },
-//     ],
-//     config: {
-//       mass: 5,
-//       tension: 400,
-//       friction: 50,
-//     },
+  //     immediate: true,
+  //   });
+  //   const xMovement = ()=> {
+  //     if(movement<startNumber) {
+  //       return -15
+  //     }
+  //    else if(movement===startNumber) {
+  //       return -8
+  //     }
+  //     else if(movement ==startNumber +1) {
+  //       return 0
+  //     } else if( movement==startNumber+2) {
+  //       return 7.2
+  //     } else {
+  //       return 9
+  //     }
+  //   }
+  //   const zMovement = ()=> {
+  //     if(movement<startNumber) {
+  //       return -3.5
+  //     }
+  //    else if(movement===startNumber) {
+  //       return -3.5
+  //     }
+  //    else if(movement ==startNumber+1) {
+  //       return -3.5
+  //     } else if( movement==startNumber+2) {
+  //       return -2.5
+  //     } else  {
+  //       return -2
+  //     }
+  //   }
 
-//     immediate: true,
-//   });
-//   const xMovement = ()=> {
-//     if(movement<startNumber) {
-//       return -15
-//     }
-//    else if(movement===startNumber) {
-//       return -8
-//     }
-//     else if(movement ==startNumber +1) {
-//       return 0
-//     } else if( movement==startNumber+2) {
-//       return 7.2
-//     } else {
-//       return 9
-//     }
-//   }
-//   const zMovement = ()=> {
-//     if(movement<startNumber) {
-//       return -3.5
-//     }
-//    else if(movement===startNumber) {
-//       return -3.5
-//     }
-//    else if(movement ==startNumber+1) {
-//       return -3.5
-//     } else if( movement==startNumber+2) {
-//       return -2.5
-//     } else  {
-//       return -2
-//     }
-//   }
-  
-//   const yRot = ()=> {
-//     if(movement<startNumber) {
-//       return Math.PI *.3
-//     }
-//    else if(movement===startNumber) {
-//       return Math.PI *.3
-//     }
-//   else  if(movement ==startNumber+1) {
-//       return Math.PI *0
-//     } else if( movement==startNumber+2) {
-//       return Math.PI *-.3
-//     } else {
-//       return Math.PI *0
-//     }
-//   }
-//   const zRot = ()=> {
-//     if(movement<startNumber) {
-//       return Math.PI *0
-//     }
-//    else if(movement===startNumber) {
-//       return Math.PI *0
-//     }
-//   else if(movement ==startNumber+1) {
-//       return Math.PI *0
-//     } else if( movement==startNumber+2) {
-//       return Math.PI *-0
-//     } else {
-//       return Math.PI * .5
-//     }
-//   }
-//   const yMovement = ()=> {
-//     if(movement<startNumber) {
-//       return -2
-//     }
-//    else if(movement===startNumber) {
-//       return 1.5
-//     }
-//   else if(movement ===startNumber+1) {
-//       return 1.2
-//     } else if( movement==startNumber+2) {
-//       return 1.2
-//     } else {
-//       return -2
-//     }
-//   }
-//   const {y} = useSpring({y: yMovement()})
-//   const { x } = useSpring({ x:xMovement() })
-//   const {z} = useSpring({z: zMovement()})
-//   const {yRotate} = useSpring({yRotate: yRot()})
-//   const {zRotate} = useSpring({zRotate: zRot()})
+  //   const yRot = ()=> {
+  //     if(movement<startNumber) {
+  //       return Math.PI *.3
+  //     }
+  //    else if(movement===startNumber) {
+  //       return Math.PI *.3
+  //     }
+  //   else  if(movement ==startNumber+1) {
+  //       return Math.PI *0
+  //     } else if( movement==startNumber+2) {
+  //       return Math.PI *-.3
+  //     } else {
+  //       return Math.PI *0
+  //     }
+  //   }
+  //   const zRot = ()=> {
+  //     if(movement<startNumber) {
+  //       return Math.PI *0
+  //     }
+  //    else if(movement===startNumber) {
+  //       return Math.PI *0
+  //     }
+  //   else if(movement ==startNumber+1) {
+  //       return Math.PI *0
+  //     } else if( movement==startNumber+2) {
+  //       return Math.PI *-0
+  //     } else {
+  //       return Math.PI * .5
+  //     }
+  //   }
+  //   const yMovement = ()=> {
+  //     if(movement<startNumber) {
+  //       return -2
+  //     }
+  //    else if(movement===startNumber) {
+  //       return 1.5
+  //     }
+  //   else if(movement ===startNumber+1) {
+  //       return 1.2
+  //     } else if( movement==startNumber+2) {
+  //       return 1.2
+  //     } else {
+  //       return -2
+  //     }
+  //   }
+  //   const {y} = useSpring({y: yMovement()})
+  //   const { x } = useSpring({ x:xMovement() })
+  //   const {z} = useSpring({z: zMovement()})
+  //   const {yRotate} = useSpring({yRotate: yRot()})
+  //   const {zRotate} = useSpring({zRotate: zRot()})
 
-
-  
-//   const { carouselRotation } = useSpring({
-//     from: {
-//       carouselRotation: 0,
-//     },
-//     to: [
-//       {
-//         carouselRotation: -Math.PI / 2,
-//         delay: STEP_DURATION,
-//       },
-//       {
-//         carouselRotation: -Math.PI,
-//         delay: STEP_DURATION,
-//       },
-//       {
-//         carouselRotation: -1.5 * Math.PI,
-//         delay: STEP_DURATION,
-//       },
-//       {
-//         carouselRotation: -2 * Math.PI,
-//         delay: STEP_DURATION,
-//       },
-//     ],
-//     config: {
-//       mass: 5,
-//       tension: 400,
-//       friction: 50,
-//     },
-//     loop: true,
-//     immediate: true,
-//   });
+  //   const { carouselRotation } = useSpring({
+  //     from: {
+  //       carouselRotation: 0,
+  //     },
+  //     to: [
+  //       {
+  //         carouselRotation: -Math.PI / 2,
+  //         delay: STEP_DURATION,
+  //       },
+  //       {
+  //         carouselRotation: -Math.PI,
+  //         delay: STEP_DURATION,
+  //       },
+  //       {
+  //         carouselRotation: -1.5 * Math.PI,
+  //         delay: STEP_DURATION,
+  //       },
+  //       {
+  //         carouselRotation: -2 * Math.PI,
+  //         delay: STEP_DURATION,
+  //       },
+  //     ],
+  //     config: {
+  //       mass: 5,
+  //       tension: 400,
+  //       friction: 50,
+  //     },
+  //     loop: true,
+  //     immediate: true,
+  //   });
   // const [tvAnimation,setTvAnimation]= useState(1)
 
-//   const TvAnimation = () => {
-//     // let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
-//     let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
-// if(tvAnimation <=startNumber) {
-//   value = { z: -1.5, x: -6.5,  rotateX: -1 };
-// } else if(tvAnimation ===startNumber +1) {
-//       value = { z: -1.5, x: -6.5, rotateY: 2.2 };
-//     } else if (tvAnimation === startNumber + 2) {
-//       value = { x: 0 };
-//     } else if (tvAnimation === startNumber +3) {
-//       // value = { z: 0, y: 0, x: -5, opacity: 0 };
-//       value = { x: 6.9, rotateY: 4, z:-1.5 };
-//     } else if (tvAnimation >= startNumber +4) {
-//       value = { rotateX: -1,z:-1.5 ,x: 6.9 };
-//     }
-//     return value;
-//   };
+  //   const TvAnimation = () => {
+  //     // let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
+  //     let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
+  // if(tvAnimation <=startNumber) {
+  //   value = { z: -1.5, x: -6.5,  rotateX: -1 };
+  // } else if(tvAnimation ===startNumber +1) {
+  //       value = { z: -1.5, x: -6.5, rotateY: 2.2 };
+  //     } else if (tvAnimation === startNumber + 2) {
+  //       value = { x: 0 };
+  //     } else if (tvAnimation === startNumber +3) {
+  //       // value = { z: 0, y: 0, x: -5, opacity: 0 };
+  //       value = { x: 6.9, rotateY: 4, z:-1.5 };
+  //     } else if (tvAnimation >= startNumber +4) {
+  //       value = { rotateX: -1,z:-1.5 ,x: 6.9 };
+  //     }
+  //     return value;
+  //   };
 
   // function Image() {
 
+  //   const loadImage = path => {
+  //     return new Promise((resolve, reject) => {
+  //       const img = new Image()
+  //       img.crossOrigin = 'Anonymous' // to avoid CORS if used with Canvas
+  //       img.src = path
+  //       img.onload = () => {
+  //         resolve(img)
+  //       }
+  //       img.onerror = e => {
+  //         reject(e)
+  //       }
+  //     })
+  //   }
 
-//   const loadImage = path => {
-//     return new Promise((resolve, reject) => {
-//       const img = new Image()
-//       img.crossOrigin = 'Anonymous' // to avoid CORS if used with Canvas
-//       img.src = path
-//       img.onload = () => {
-//         resolve(img)
-//       }
-//       img.onerror = e => {
-//         reject(e)
-//       }
-//     })
-//   }
- 
-//   async function checker(){
+  //   async function checker(){
 
-//     const img = await loadImage(imgLink)
-//     let height = img.naturalHeight;
-//     let width = img.naturalWidth;
-//     console.log(width,height)
-//     let proportions = width/height;
+  //     const img = await loadImage(imgLink)
+  //     let height = img.naturalHeight;
+  //     let width = img.naturalWidth;
+  //     console.log(width,height)
+  //     let proportions = width/height;
 
-//     setImageProportion(proportions)
-//   }
-//   useEffect(()=> {
-//     checker();
-  
-//   },[])
+  //     setImageProportion(proportions)
+  //   }
+  //   useEffect(()=> {
+  //     checker();
 
- 
+  //   },[])
 
-//   console.log(imageProportion,"image propoto")
+  //   console.log(imageProportion,"image propoto")
 
-  
-  
-  
-//     const texture = useTexture(
-//      imgLink
-//     );
-// const handleClick = ()=> {
+  //     const texture = useTexture(
+  //      imgLink
+  //     );
+  // const handleClick = ()=> {
 
-// }
+  // }
 
-
- 
   return (
-    
-    <animated.mesh 
-    scale={scale}
-    onPointerOver={()=> triggerIn()} onPointerOut={()=> triggerOut()}
+    <animated.mesh
+      scale={scale}
+      onPointerOver={() => triggerIn()}
+      onPointerOut={() => triggerOut()}
       receiveShadow
-//  
-position-z={.1}
+      //
+      position-z={0.1}
       position={position}
     >
-   
-    <Text
-             font={font}
-             position-z={.1}
-             position-y={-.1}
-             scale={textscale}
-             color="purple" // default
-             anchorX="center" // default
-             anchorY="middle" // default
-             >
-         {words}
-        </Text>
+      <Text
+        font={font}
+        position-z={0.1}
+        position-y={-0.1}
+        scale={textscale}
+        color="purple" // default
+        anchorX="center" // default
+        anchorY="middle" // default
+      >
+        {words}
+      </Text>
       <planeBufferGeometry attach="geometry" args={[5.9, 1.5]} />
       <meshStandardMaterial
-opacity={1}
+        opacity={1}
         transparent
-color="hotpink"
+        color="hotpink"
         attach="material"
         // map={texture}
       />
