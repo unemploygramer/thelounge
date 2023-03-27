@@ -7,6 +7,7 @@ import Grid from "./components/Grid";
 import Button from "./components/Button";
 import { Room } from "./components/Room";
 import Title from "./components/Title";
+import SpotLazer from "./components/Lighting/SpotLazer";
 import {
   VRButton,
   ARButton,
@@ -234,10 +235,11 @@ function App() {
         //working tv sliders
         {/* <TV1 MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />
         <TV imgLink="https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> */}
-        <Rimlight />
-        <KeyLight />
+        {/* <Rimlight /> */}
+        {/* <KeyLight /> */}
         <FillLight />
-        <BackLight />
+        {/* <BackLight /> */}
+        <SpotLazer />
         {/* <Room/> */}
         {/* <Image /> */}
         {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
