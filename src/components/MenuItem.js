@@ -17,7 +17,7 @@ function MenuItem({
   textscale,
 }) {
   const [active, setActive] = useState(false);
-  const { scale } = useSpring({ scale: active ? 1.2 : 1 });
+  const { scale } = useSpring({ scale: active ? 1.1 : 1 });
   const { positionZ } = useSpring({ positionZ: active ? 2 : 0.1 });
   let closerMovement = positions[2] + 0.3;
   const { position } = useSpring({
@@ -253,7 +253,7 @@ function MenuItem({
         position-z={0.1}
         position-y={-0.1}
         scale={textscale}
-        color="purple" // default
+        color="hotpink" // default
         anchorX="center" // default
         anchorY="middle" // default
       >

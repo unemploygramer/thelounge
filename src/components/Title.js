@@ -13,9 +13,9 @@ function TvLabel({ MoveTvBackward, words, font }) {
 
   //   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const [active, setActive] = useState(false);
-  const { scale } = useSpring({ scale: active ? 1.2 : 1 });
+  const { scale } = useSpring({ scale: active ? 1.1 : 1 });
   const { position } = useSpring({
-    position: active ? [0, 2.9, 1] : [0, 3.1, 0.1],
+    position: active ? [0, 2.9, 0.5] : [0, 3, 0.3],
   });
 
   const triggerIn = () => {

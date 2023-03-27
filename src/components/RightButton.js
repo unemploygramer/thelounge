@@ -38,14 +38,14 @@ function RightButton({ MoveTvForward, movement, setMovement }) {
     console.log('trigger ran')
   }
   return (
-    <Interactive onSelect={handleClick} onHover={triggerIn}  >
+    <Interactive  onSelect={handleClick} onHover={triggerIn}  >
 
     <animated.mesh onPointerOver={()=> triggerIn()} onPointerOut={()=> triggerOut()} scale={scale} onClick={() => handleClick()}
       // onClick={(event) => MoveTvForward()}
       ref={ref}
-      position={[2.9, 2, -2.5]}
+      position={[3.1, 1.1, -4.3]}
       >
-      <boxGeometry  args={[0.5, 2.5, 0.5]} />
+      <boxGeometry  args={[0.5, 4, 0.5]} />
       <meshStandardMaterial color="hotpink" />
     </animated.mesh>
       </Interactive>

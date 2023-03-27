@@ -64,41 +64,61 @@ function getWindowDimensions() {
   };
 }
 
-// const data = [
-//   { id: 1, name: "ffff", link: "https://cdni.pornpics.com/1280/1/356/81420904/81420904_014_ed62.jpg" },
-//   { id: 2, name: "aaaa", link: "https://cdni.pornpics.com/1280/1/91/94355083/94355083_009_5529.jpg" },
-//   { id: 3, name: "zzzz", link: "https://cdni.pornpics.com/1280/7/44/87193693/87193693_162_22bb.jpg" },
-//   { id: 3, name: "gggg", link: "https://cdni.pornpics.com/1280/7/600/15980271/15980271_057_205a.jpg" },
-//   { id: 4, name: "llll", link: "https://cdni.pornpics.com/1280/7/107/79912458/79912458_018_5b3e.jpg" },
-//   // { id: 4, name: "gif", link: "https://cdn.sex.com/images/pinporn/2023/02/17/28909840.gif?width=620" },
-// ];
 const data = [
   {
     id: 1,
     name: "ffff",
-    link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+    link: "https://cdni.pornpics.com/1280/1/356/81420904/81420904_014_ed62.jpg",
   },
   {
     id: 2,
     name: "aaaa",
-    link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+    link: "https://cdni.pornpics.com/1280/1/91/94355083/94355083_009_5529.jpg",
   },
   {
     id: 3,
     name: "zzzz",
-    link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+    link: "https://cdni.pornpics.com/1280/7/44/87193693/87193693_162_22bb.jpg",
   },
   {
     id: 3,
     name: "gggg",
-    link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+    link: "https://cdni.pornpics.com/1280/7/600/15980271/15980271_057_205a.jpg",
   },
   {
     id: 4,
     name: "llll",
-    link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+    link: "https://cdni.pornpics.com/1280/7/107/79912458/79912458_018_5b3e.jpg",
   },
+  // { id: 4, name: "gif", link: "https://cdn.sex.com/images/pinporn/2023/02/17/28909840.gif?width=620" },
 ];
+// const data = [
+//   {
+//     id: 1,
+//     name: "ffff",
+//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+//   },
+//   {
+//     id: 2,
+//     name: "aaaa",
+//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+//   },
+//   {
+//     id: 3,
+//     name: "zzzz",
+//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+//   },
+//   {
+//     id: 3,
+//     name: "gggg",
+//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+//   },
+//   {
+//     id: 4,
+//     name: "llll",
+//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
+//   },
+// ];
 
 function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
@@ -127,17 +147,17 @@ function App() {
   let cameraY;
 
   if (width <= 600) {
-    CameraZ = 2;
+    CameraZ = 6.5;
     cameraY = 1;
   } else if (width > 600 && width <= 900) {
-    CameraZ = 1.5;
-    cameraY = 1.5;
-  } else if (width > 900 && width < 1200) {
     CameraZ = 1;
-    cameraY = 1.5;
+    cameraY = 0.8;
+  } else if (width > 900 && width < 1200) {
+    CameraZ = 0.3;
+    cameraY = 0.7;
   } else {
-    CameraZ = 0.8;
-    cameraY = 2;
+    CameraZ = 0.2;
+    cameraY = 0.9;
   }
 
   let heightMultiple = width * 0.001;
@@ -219,18 +239,6 @@ function App() {
         <FillLight />
         <BackLight />
         {/* <Room/> */}
-        {/* {data.map((e, key)=> {
-
-        let startLocation = key-3 
-console.log(key)
-return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
-       })} */}
-        {/* {data.map((e, key)=> {
-
-        let startLocation = key-3 
-console.log(key)
-return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> 
-       })} */}
         {/* <Image /> */}
         {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
         <NarrowLight />
@@ -239,11 +247,18 @@ return <TV words={e.name} startNumber={startLocation} imgLink={e.link} MoveTvFor
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         {/* <Grid size={10} /> */}
         {/* <OrbitControls /> */}
-        {/* {data.map((e, key)=> {
-
-        let startLocation = key-1
-return <TvSpring  movement={movement} setMovement={setMovement} words={e.name} startNumber={startLocation} imgLink={e.link}  /> 
-       })}  */}
+        {data.map((e, key) => {
+          let startLocation = key - 1;
+          return (
+            <TvSpring
+              movement={movement}
+              setMovement={setMovement}
+              words={e.name}
+              startNumber={startLocation}
+              imgLink={e.link}
+            />
+          );
+        })}
         <XR>
           {/* <TvVideo/> */}
           {/* {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/> */}
@@ -254,6 +269,11 @@ return <TvSpring  movement={movement} setMovement={setMovement} words={e.name} s
             clicker={MoveTvForward}
           />{" "}
           */}
+          <LeftButton
+            movement={movement}
+            setMovement={setMovement}
+            MoveTvBackward={MoveTvBackward}
+          />
           {/* <Title font={urFont} words="The Title" /> */}
           <Controllers />
           {/* <Button position={[3, 1, -3]} />
@@ -262,7 +282,7 @@ return <TvSpring  movement={movement} setMovement={setMovement} words={e.name} s
               <Boxer position={[0, 1, -3]} />
             </Scroll>
           </ScrollControls> */}
-          <MainMenu font={urFont} />
+          {/* <MainMenu font={urFont} /> */}
           {/* <GroundPlane /> */}
         </XR>
       </Canvas>

@@ -5,7 +5,7 @@ import TvLabel from "./TvLabel";
 import { useSpring, animated } from "@react-spring/three";
 import MenuItem from "../components/MenuItem";
 import Title from "../components/Title";
-import urFont from "../fonts/Box.otf";
+import urFont from "../fonts/Box.otf"
 
 function MainMenu({
   tvAnimation,
