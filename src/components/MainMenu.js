@@ -97,10 +97,13 @@ function MainMenu({
   //       return Math.PI *0
   //     }
   //   }
-  //   const zRot = ()=> {
-  //     if(movement<startNumber) {
-  //       return Math.PI *0
-  //     }
+    const xpos = ()=> {
+      if(page == "MainMenu") {
+        return 0
+      } else {
+        return 10
+      }
+    }
   //    else if(movement===startNumber) {
   //       return Math.PI *0
   //     }
@@ -112,18 +115,18 @@ function MainMenu({
   //       return Math.PI * .5
   //     }
   //   }
-  const yMovement = () => {
+  const yrot = () => {
     if (page == "MainMenu") {
-      return 3;
+      return Math.PI *0
     } else {
-      return -7;
+      return Math.PI *-.5
     }
   };
-  const { y } = useSpring({ y: yMovement() });
+  // const { y } = useSpring({ y: yMovement() });
   //   const { x } = useSpring({ x:xMovement() })
-  //   const {z} = useSpring({z: zMovement()})
-  //   const {yRotate} = useSpring({yRotate: yRot()})
-  //   const {zRotate} = useSpring({zRotate: zRot()})
+    // const {z} = useSpring({z: zMovement()})
+    const {yRotate} = useSpring({yRotate: yrot()})
+    const {x} = useSpring({x: xpos()});
 
   //   const { carouselRotation } = useSpring({
   //     from: {
@@ -221,15 +224,16 @@ function MainMenu({
       //   animate={() => TvAnimation()}
       //   transition={{ duration: 0.6 }}
       receiveShadow
-      position-x={0}
+      position-x={x}
       //    position-z={z}
-      //  rotation-y={yRotate}
+       rotation-y={yRotate}
       //  rotation-x={zRotate}
+     
       onClick={() => setPage("ssshh")}
-      position-y={y}
+      position-y={3}
       position-z={-7}
       // position={[0, 3, -7]}
-      rotation-x={Math.PI * 0.03}
+      // rotation-x={Math.PI * 0.03}
 
       //   onClick={()=>handleClick() }
     >
