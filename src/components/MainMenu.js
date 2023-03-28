@@ -5,7 +5,7 @@ import TvLabel from "./TvLabel";
 import { useSpring, animated } from "@react-spring/three";
 import MenuItem from "../components/MenuItem";
 import Title from "../components/Title";
-import urFont from "../fonts/Box.otf"
+import urFont from "../fonts/Box.otf";
 
 function MainMenu({
   tvAnimation,
@@ -16,6 +16,8 @@ function MainMenu({
   movement,
   setMovement,
   font,
+  page,
+  setPage,
 }) {
   //   const [imageProportion, setImageProportion]= useState(null)
   //   const STEP_DURATION = 500;
@@ -110,22 +112,14 @@ function MainMenu({
   //       return Math.PI * .5
   //     }
   //   }
-  //   const yMovement = ()=> {
-  //     if(movement<startNumber) {
-  //       return -2
-  //     }
-  //    else if(movement===startNumber) {
-  //       return 1.5
-  //     }
-  //   else if(movement ===startNumber+1) {
-  //       return 1.2
-  //     } else if( movement==startNumber+2) {
-  //       return 1.2
-  //     } else {
-  //       return -2
-  //     }
-  //   }
-  //   const {y} = useSpring({y: yMovement()})
+  const yMovement = () => {
+    if (page == "MainMenu") {
+      return 3;
+    } else {
+      return -7;
+    }
+  };
+  const { y } = useSpring({ y: yMovement() });
   //   const { x } = useSpring({ x:xMovement() })
   //   const {z} = useSpring({z: zMovement()})
   //   const {yRotate} = useSpring({yRotate: yRot()})
@@ -227,12 +221,14 @@ function MainMenu({
       //   animate={() => TvAnimation()}
       //   transition={{ duration: 0.6 }}
       receiveShadow
-      //    position-x={x}
+      position-x={0}
       //    position-z={z}
       //  rotation-y={yRotate}
       //  rotation-x={zRotate}
-      //  position-y={y}
-      position={[0, 3, -7]}
+      onClick={() => setPage("ssshh")}
+      position-y={y}
+      position-z={-7}
+      // position={[0, 3, -7]}
       rotation-x={Math.PI * 0.03}
 
       //   onClick={()=>handleClick() }

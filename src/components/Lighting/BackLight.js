@@ -9,7 +9,7 @@ function BackLight(){
           width={3}
           height={3}
           color='white'
-          intensity={.4}
+          intensity={.1}
           position={[0, 7, -9]}
           lookAt={[0, -4, -9]}
           penumbra={1}

@@ -142,22 +142,23 @@ function App() {
   const [tvAnimation, setTvAnimation] = useState(-1);
   const { height, width } = useWindowDimensions();
   const [movement, setMovement] = useState(0);
+  const [page, setPage] = useState("MainMenu");
 
   console.log(tvAnimation, "tvAnimation");
   let CameraZ;
   let cameraY;
 
   if (width <= 600) {
-    CameraZ = 6.5;
+    CameraZ = 5.5;
     cameraY = 1;
   } else if (width > 600 && width <= 900) {
-    CameraZ = 1;
+    CameraZ = 3.5;
     cameraY = 0.8;
   } else if (width > 900 && width < 1200) {
-    CameraZ = 0.3;
+    CameraZ = 3.5;
     cameraY = 0.7;
   } else {
-    CameraZ = 0.2;
+    CameraZ = 1.5;
     cameraY = 0.9;
   }
 
@@ -238,9 +239,9 @@ function App() {
         {/* <Rimlight /> */}
         {/* <KeyLight /> */}
         <FillLight />
-        {/* <BackLight /> */}
+        <BackLight />
         <SpotLazer />
-        {/* <Room/> */}
+        {/* <Room /> */}
         {/* <Image /> */}
         {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
         <NarrowLight />
@@ -249,7 +250,7 @@ function App() {
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         {/* <Grid size={10} /> */}
         {/* <OrbitControls /> */}
-        {data.map((e, key) => {
+        {/* {data.map((e, key) => {
           let startLocation = key - 1;
           return (
             <TvSpring
@@ -260,7 +261,7 @@ function App() {
               imgLink={e.link}
             />
           );
-        })}
+        })} */}
         <XR>
           {/* <TvVideo/> */}
           {/* {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/> */}
@@ -284,7 +285,7 @@ function App() {
               <Boxer position={[0, 1, -3]} />
             </Scroll>
           </ScrollControls> */}
-          {/* <MainMenu font={urFont} /> */}
+          <MainMenu page={page} setPage={setPage} font={urFont} />
           {/* <GroundPlane /> */}
         </XR>
       </Canvas>
