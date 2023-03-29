@@ -246,19 +246,19 @@ function MainMenu({
 
       //   onClick={()=>handleClick() }
     >
-      <Title opacity={opacity} font={urFont} words="The Title" />
+      {/* <Title opacity={opacity} font={urFont} words="The Title" /> */}
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
       <TvLabel words={words} />
-      <planeBufferGeometry attach="geometry" args={[6, 8]} />
+      {/* <planeBufferGeometry attach="geometry" args={[6, 8]} />
       <animated.meshStandardMaterial
         opacity={opacity}
         transparent
         color="purple"
         attach="material"
         // map={texture}
-      />
+      /> */}
       <MenuItem
         opacity={opacity}
         words="ImageSlider"

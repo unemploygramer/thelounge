@@ -260,6 +260,7 @@ function App() {
             movement={movement}
             setMovement={setMovement}
             data={data}
+            page={page}
           />{" "}
           */}
           <LeftButton
@@ -273,6 +274,13 @@ function App() {
             page={page}
             setPage={setPage}
             data={data}
+          />
+          <Title
+            position={[0, 5.8, -6]}
+            opacity={1}
+            font={urFont}
+            words="The Title"
+            setPage={setPage}
           />
           {/* <Title font={urFont} words="The Title" /> */}
           <Controllers />

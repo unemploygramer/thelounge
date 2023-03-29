@@ -3,7 +3,7 @@ import { Text } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { Interactive, XR, Controllers, VRButton } from "@react-three/xr";
 import { useSpring, animated } from "@react-spring/three";
-function TvLabel({ MoveTvBackward, words, font, opacity }) {
+function TvLabel({ MoveTvBackward, words, font, opacity, position, setPage }) {
   const ref = useRef();
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
@@ -13,9 +13,9 @@ function TvLabel({ MoveTvBackward, words, font, opacity }) {
   //   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.1 : 1 });
-  const { position } = useSpring({
-    position: active ? [0, 2.9, 0.5] : [0, 3, 0.3],
-  });
+  // const { position } = useSpring({
+  //   position: active ? [0, 2.9, 0.5] : [0, 3, 0.3],
+  // });
 
   const triggerIn = () => {
     setActive(true);
@@ -24,6 +24,9 @@ function TvLabel({ MoveTvBackward, words, font, opacity }) {
     setActive(false);
   };
   const AnimatedText = animated(Text);
+  const Clicked = () => {
+    setPage("MainMenu");
+  };
 
   return (
     <Interactive onHover={() => setIsHovered(true)}>
@@ -35,11 +38,7 @@ function TvLabel({ MoveTvBackward, words, font, opacity }) {
         // rotation-y={Math.PI * .000} rotation-x={Math.PI * .06}  position={[0, 3.7,-2.5]}
         position={position}
       >
-        <mesh
-          // onClick={(event) => MoveTvBackward()}
-          ref={ref}
-          position-y={0.14}
-        >
+        <mesh onClick={(event) => Clicked()} ref={ref} position-y={0.14}>
           <planeBufferGeometry
             onHover={() => setIsHovered(true)}
             attach="geometry"

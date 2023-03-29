@@ -15,7 +15,7 @@ import { useSpring, animated } from "@react-spring/three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import Arrow from "../assets/arrow.png";
 import Zebru from "../assets/zebru.jpg";
-function RightButton({ movement, setMovement, data }) {
+function RightButton({ movement, setMovement, data, page }) {
   const ref = useRef();
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.5 : 1 });
@@ -40,6 +40,15 @@ function RightButton({ movement, setMovement, data }) {
   const triggerOut = () => {
     setActive(false);
   };
+
+  const ypos = () => {
+    if (page === "ImageSlider") {
+      return 1.1;
+    } else {
+      return -20;
+    }
+  };
+  const { y } = useSpring({ y: ypos() });
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>
       <animated.mesh
@@ -49,7 +58,10 @@ function RightButton({ movement, setMovement, data }) {
         onClick={() => handleClick()}
         // onClick={(event) => MoveTvForward()}
         ref={ref}
-        position={[3.1, 1.1, -4.3]}
+        // position={[3.1, 1.1, -4.3]}
+        position-x={3.1}
+        position-z={-4.3}
+        position-y={y}
       >
         <boxGeometry args={[0.5, 4, 0.5]} />
         <meshStandardMaterial color="hotpink" />
