@@ -17,7 +17,7 @@ function MenuItem({
   textscale,
   opacity,
   page,
-  setPage
+  setPage,
 }) {
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.1 : 1 });
@@ -30,11 +30,9 @@ function MenuItem({
   });
   const triggerIn = () => {
     setActive(true);
-
   };
   const triggerOut = () => {
     setActive(false);
-
   };
 
   const AnimatedText = animated(Text);
@@ -239,10 +237,10 @@ function MenuItem({
   //     const texture = useTexture(
   //      imgLink
   //     );
-  const handleClick = ()=> {
- setPage("ImageSlider")
- console.log(words.type, "the words")
-  }
+  const handleClick = () => {
+    setPage(words);
+    console.log(words, "the words");
+  };
 
   return (
     <animated.mesh
@@ -251,7 +249,7 @@ function MenuItem({
       onPointerOut={() => triggerOut()}
       receiveShadow
       //
-      onClick={()=> handleClick()}
+      onClick={() => handleClick()}
       position-z={0.1}
       position={position}
       opacity={opacity}

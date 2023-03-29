@@ -187,7 +187,7 @@ function TvSpring({
     const img = await loadImage(imgLink);
     let height = img.naturalHeight;
     let width = img.naturalWidth;
-    console.log(width, height);
+
     let proportions = width / height;
 
     setImageProportion(proportions);
@@ -195,8 +195,6 @@ function TvSpring({
   useEffect(() => {
     checker();
   }, []);
-
-  console.log(imageProportion, "image propoto");
 
   const texture = useTexture(imgLink);
   const handleClick = () => {};

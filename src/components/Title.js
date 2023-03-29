@@ -9,7 +9,6 @@ function TvLabel({ MoveTvBackward, words, font, opacity }) {
   const [color, setColor] = useState(0x123456);
   const [clicked, click] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  console.log(isHovered, "is hovered");
 
   //   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const [active, setActive] = useState(false);
@@ -20,11 +19,9 @@ function TvLabel({ MoveTvBackward, words, font, opacity }) {
 
   const triggerIn = () => {
     setActive(true);
-
   };
   const triggerOut = () => {
     setActive(false);
-
   };
   const AnimatedText = animated(Text);
 

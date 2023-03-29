@@ -25,6 +25,7 @@ function ImageSlider({ data, movement, setMovement, page, setPage }) {
       return 0;
     }
   };
+  console.log(data.length);
   // const { y } = useSpring({ y: yMovement() });
   //   const { x } = useSpring({ x:xMovement() })
   // const {z} = useSpring({z: zMovement()})
@@ -37,6 +38,7 @@ function ImageSlider({ data, movement, setMovement, page, setPage }) {
         let startLocation = key - 1;
         return (
           <TvSpring
+            key={key}
             movement={movement}
             setMovement={setMovement}
             words={e.name}

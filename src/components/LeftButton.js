@@ -14,7 +14,7 @@ import {
 import { Sky, Text } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 
-function LeftButton({ MoveTvBackward, movement, setMovement }) {
+function LeftButton({ movement, setMovement, data }) {
   const ref = useRef();
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -23,16 +23,19 @@ function LeftButton({ MoveTvBackward, movement, setMovement }) {
   const { scale } = useSpring({ scale: active ? 1.5 : 1 });
   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const handleClick = () => {
-    setMovement(movement - 1);
+    let lastItem = data.length - 1;
+    console.log(lastItem, "last item");
+    console.log(movement);
+    if (movement > 0) {
+      setMovement(movement - 1);
+    } else return;
   };
 
   const triggerIn = () => {
     setActive(true);
-   
   };
   const triggerOut = () => {
     setActive(false);
- 
   };
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>

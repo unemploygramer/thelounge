@@ -237,7 +237,7 @@ function MainMenu({
       rotation-y={yRotate}
       //  rotation-x={zRotate}
 
-      onClick={() => setPage("ImageSlider")}
+      // onClick={() => setPage("ImageSlider")}
       position-y={3}
       position-z={-7}
 
@@ -261,7 +261,7 @@ function MainMenu({
       />
       <MenuItem
         opacity={opacity}
-        words="socials"
+        words="ImageSlider"
         positions={[0, 1.83, 0.1]}
         textscale={[1, 1, 1]}
         font={font}
@@ -283,7 +283,8 @@ function MainMenu({
         positions={[0, -1.1, 0.1]}
         textscale={[0.8, 0.8, 0.8]}
         font={font}
-        
+        page={page}
+        setPage={setPage}
       />
     </animated.mesh>
   );

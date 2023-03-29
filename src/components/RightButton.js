@@ -15,7 +15,7 @@ import { useSpring, animated } from "@react-spring/three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import Arrow from "../assets/arrow.png";
 import Zebru from "../assets/zebru.jpg";
-function RightButton({ MoveTvForward, movement, setMovement }) {
+function RightButton({ movement, setMovement, data }) {
   const ref = useRef();
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.5 : 1 });
@@ -24,16 +24,21 @@ function RightButton({ MoveTvForward, movement, setMovement }) {
   const [clicked, click] = useState(false);
   const texture = useLoader(TextureLoader, Arrow);
   useFrame((state, delta) => (ref.current.rotation.y += delta * 0.5));
+  console.log(movement, "movement");
+  console.log(data.length);
   const handleClick = () => {
-    setMovement(movement + 1);
+    let lastItem = data.length - 1;
+    if (movement < lastItem) {
+      setMovement(movement + 1);
+    } else {
+      return;
+    }
   };
   const triggerIn = () => {
     setActive(true);
-   
   };
   const triggerOut = () => {
     setActive(false);
- 
   };
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>

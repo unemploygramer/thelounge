@@ -140,12 +140,10 @@ function useWindowDimensions() {
 }
 
 function App() {
-  const [tvAnimation, setTvAnimation] = useState(-1);
   const { height, width } = useWindowDimensions();
   const [movement, setMovement] = useState(0);
   const [page, setPage] = useState("MainMenu");
 
-  console.log(tvAnimation, "tvAnimation");
   let CameraZ;
   let cameraY;
 
@@ -196,14 +194,6 @@ function App() {
   // )
   //  }
 
-  const MoveTvForward = () => {
-    console.log(tvAnimation, "move tv forward");
-    setTvAnimation(tvAnimation + 1);
-  };
-  const MoveTvBackward = () => {
-    console.log(tvAnimation, "move tv forward");
-    setTvAnimation(tvAnimation - 1);
-  };
   function GroundPlane() {
     return (
       <mesh receiveShadow rotation-x={Math.PI * 1.5} position={[0, 0, -4]}>
@@ -228,7 +218,7 @@ function App() {
   return (
     <div className="App">
       <VRButton />
-      <Canvas colorManagement shadowMap>
+      <Canvas>
         <Stars />
         {/* <ambientLight/> */}
         {/* <Back /> */}
@@ -269,14 +259,13 @@ function App() {
           <RightButton
             movement={movement}
             setMovement={setMovement}
-            MoveTvForward={MoveTvForward}
-            clicker={MoveTvForward}
+            data={data}
           />{" "}
           */}
           <LeftButton
+            data={data}
             movement={movement}
             setMovement={setMovement}
-            MoveTvBackward={MoveTvBackward}
           />
           <ImageSlider
             movement={movement}
