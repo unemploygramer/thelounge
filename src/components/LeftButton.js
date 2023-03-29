@@ -28,11 +28,11 @@ function LeftButton({ MoveTvBackward, movement, setMovement }) {
 
   const triggerIn = () => {
     setActive(true);
-    console.log("trigger ran");
+   
   };
   const triggerOut = () => {
     setActive(false);
-    console.log("trigger ran");
+ 
   };
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>

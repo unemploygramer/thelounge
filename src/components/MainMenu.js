@@ -265,6 +265,8 @@ function MainMenu({
         positions={[0, 1.83, 0.1]}
         textscale={[1, 1, 1]}
         font={font}
+        page={page}
+        setPage={setPage}
       />
       <MenuItem
         opacity={opacity}
@@ -272,6 +274,8 @@ function MainMenu({
         positions={[0, 0.34, 0.1]}
         textscale={[0.8, 0.8, 0.8]}
         font={font}
+        page={page}
+        setPage={setPage}
       />
       <MenuItem
         opacity={opacity}
@@ -279,6 +283,7 @@ function MainMenu({
         positions={[0, -1.1, 0.1]}
         textscale={[0.8, 0.8, 0.8]}
         font={font}
+        
       />
     </animated.mesh>
   );

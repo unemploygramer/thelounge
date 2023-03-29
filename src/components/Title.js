@@ -20,11 +20,11 @@ function TvLabel({ MoveTvBackward, words, font, opacity }) {
 
   const triggerIn = () => {
     setActive(true);
-    console.log("trigger ran");
+
   };
   const triggerOut = () => {
     setActive(false);
-    console.log("trigger ran");
+
   };
   const AnimatedText = animated(Text);
 
