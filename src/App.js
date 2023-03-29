@@ -8,6 +8,7 @@ import Button from "./components/Button";
 import { Room } from "./components/Room";
 import Title from "./components/Title";
 import SpotLazer from "./components/Lighting/SpotLazer";
+import ImageSlider from "./components/ImageSlider";
 import {
   VRButton,
   ARButton,
@@ -276,6 +277,13 @@ function App() {
             movement={movement}
             setMovement={setMovement}
             MoveTvBackward={MoveTvBackward}
+          />
+          <ImageSlider
+            movement={movement}
+            setMovement={setMovement}
+            page={page}
+            setPage={setPage}
+            data={data}
           />
           {/* <Title font={urFont} words="The Title" /> */}
           <Controllers />

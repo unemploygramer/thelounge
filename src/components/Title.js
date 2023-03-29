@@ -3,7 +3,7 @@ import { Text } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { Interactive, XR, Controllers, VRButton } from "@react-three/xr";
 import { useSpring, animated } from "@react-spring/three";
-function TvLabel({ MoveTvBackward, words, font }) {
+function TvLabel({ MoveTvBackward, words, font, opacity }) {
   const ref = useRef();
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
@@ -26,6 +26,7 @@ function TvLabel({ MoveTvBackward, words, font }) {
     setActive(false);
     console.log("trigger ran");
   };
+  const AnimatedText = animated(Text);
 
   return (
     <Interactive onHover={() => setIsHovered(true)}>
@@ -47,15 +48,16 @@ function TvLabel({ MoveTvBackward, words, font }) {
             attach="geometry"
             args={[5.85, 1.4]}
           />
-          <meshBasicMaterial
+          <animated.meshBasicMaterial
             transparent
-            opacity={1}
+            opacity={opacity}
             color="purple"
             attach="material"
           />
         </mesh>
         <mesh>
-          <Text
+          <AnimatedText
+            fillOpacity={opacity}
             font={font}
             position-z={0.1}
             scale={[1, 1, 1]}
@@ -64,7 +66,7 @@ function TvLabel({ MoveTvBackward, words, font }) {
             anchorY="middle" // default
           >
             {words}
-          </Text>
+          </AnimatedText>
         </mesh>
         {/* <boxGeometry args={[0.5, 2.5, 0.5]} />
         <meshStandardMaterial color="hotpink" /> */}

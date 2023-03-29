@@ -97,13 +97,13 @@ function MainMenu({
   //       return Math.PI *0
   //     }
   //   }
-    const xpos = ()=> {
-      if(page == "MainMenu") {
-        return 0
-      } else {
-        return 10
-      }
+  const xpos = () => {
+    if (page == "MainMenu") {
+      return 0;
+    } else {
+      return 10;
     }
+  };
   //    else if(movement===startNumber) {
   //       return Math.PI *0
   //     }
@@ -117,16 +117,24 @@ function MainMenu({
   //   }
   const yrot = () => {
     if (page == "MainMenu") {
-      return Math.PI *0
+      return Math.PI * 0;
     } else {
-      return Math.PI *-.5
+      return Math.PI * -0.5;
+    }
+  };
+  const opas = () => {
+    if (page == "MainMenu") {
+      return 1;
+    } else {
+      return 0;
     }
   };
   // const { y } = useSpring({ y: yMovement() });
   //   const { x } = useSpring({ x:xMovement() })
-    // const {z} = useSpring({z: zMovement()})
-    const {yRotate} = useSpring({yRotate: yrot()})
-    const {x} = useSpring({x: xpos()});
+  // const {z} = useSpring({z: zMovement()})
+  const { yRotate } = useSpring({ yRotate: yrot() });
+  const { x } = useSpring({ x: xpos() });
+  const { opacity } = useSpring({ opacity: opas() });
 
   //   const { carouselRotation } = useSpring({
   //     from: {
@@ -226,43 +234,47 @@ function MainMenu({
       receiveShadow
       position-x={x}
       //    position-z={z}
-       rotation-y={yRotate}
+      rotation-y={yRotate}
       //  rotation-x={zRotate}
-     
-      onClick={() => setPage("ssshh")}
+
+      onClick={() => setPage("ImageSlider")}
       position-y={3}
       position-z={-7}
+
       // position={[0, 3, -7]}
       // rotation-x={Math.PI * 0.03}
 
       //   onClick={()=>handleClick() }
     >
-      <Title font={urFont} words="The Title" />
+      <Title opacity={opacity} font={urFont} words="The Title" />
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
       <TvLabel words={words} />
       <planeBufferGeometry attach="geometry" args={[6, 8]} />
-      <meshStandardMaterial
-        opacity={1}
+      <animated.meshStandardMaterial
+        opacity={opacity}
         transparent
         color="purple"
         attach="material"
         // map={texture}
       />
       <MenuItem
+        opacity={opacity}
         words="socials"
         positions={[0, 1.83, 0.1]}
         textscale={[1, 1, 1]}
         font={font}
       />
       <MenuItem
+        opacity={opacity}
         words="more words"
         positions={[0, 0.34, 0.1]}
         textscale={[0.8, 0.8, 0.8]}
         font={font}
       />
       <MenuItem
+        opacity={opacity}
         words="text Links"
         positions={[0, -1.1, 0.1]}
         textscale={[0.8, 0.8, 0.8]}

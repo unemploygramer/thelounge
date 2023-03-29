@@ -15,6 +15,7 @@ function MenuItem({
   font,
   positions,
   textscale,
+  opacity,
 }) {
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.1 : 1 });
@@ -33,6 +34,8 @@ function MenuItem({
     setActive(false);
     console.log("trigger ran");
   };
+
+  const AnimatedText = animated(Text);
 
   //   const [imageProportion, setImageProportion]= useState(null)
   //   const STEP_DURATION = 500;
@@ -247,8 +250,10 @@ function MenuItem({
       //
       position-z={0.1}
       position={position}
+      opacity={opacity}
     >
-      <Text
+      <AnimatedText
+        fillOpacity={opacity}
         font={font}
         position-z={0.1}
         position-y={-0.1}
@@ -258,10 +263,10 @@ function MenuItem({
         anchorY="middle" // default
       >
         {words}
-      </Text>
+      </AnimatedText>
       <planeBufferGeometry attach="geometry" args={[5.9, 1.5]} />
-      <meshStandardMaterial
-        opacity={1}
+      <animated.meshStandardMaterial
+        opacity={opacity}
         transparent
         color="hotpink"
         attach="material"
