@@ -12,6 +12,7 @@ function TvSpring({
   words,
   movement,
   setMovement,
+  colorScheme,
 }) {
   const [imageProportion, setImageProportion] = useState(null);
   const STEP_DURATION = 500;
@@ -99,9 +100,14 @@ function TvSpring({
       return Math.PI * 0.5;
     }
   };
- 
-  const { TitleBackgroundColor} = useSpring({ TitleBackgroundColor: active ? "hotpink" : "purple" });
-  const { TextColor} = useSpring({ TextColor: active ? "white" : "hotpink" });
+
+  const { TitleBackgroundColor } = useSpring({
+    TitleBackgroundColor: active ? colorScheme.primary : colorScheme.secondary,
+  });
+  const { TextColor } = useSpring({
+    TextColor: active ? colorScheme.third : colorScheme.primary,
+  });
+  const { opacity } = useSpring({ opacity: active ? 1 : 0.8 });
   const yMovement = () => {
     if (movement < startNumber) {
       return -2;
@@ -120,7 +126,6 @@ function TvSpring({
   const { z } = useSpring({ z: zMovement() });
   const { yRotate } = useSpring({ yRotate: yRot() });
   const { zRotate } = useSpring({ zRotate: zRot() });
-
 
   //   const { carouselRotation } = useSpring({
   //     from: {
@@ -205,15 +210,14 @@ function TvSpring({
   const handleClick = () => {};
 
   function NewTab() {
-    window.open(
-    "https://www.pornhub.com", "_blank");
-}
-const triggerIn = () => {
-  setActive(true);
-};
-const triggerOut = () => {
-  setActive(false);
-};
+    window.open("https://www.pornhub.com", "_blank");
+  }
+  const triggerIn = () => {
+    setActive(true);
+  };
+  const triggerOut = () => {
+    setActive(false);
+  };
 
   return (
     <animated.mesh
@@ -233,11 +237,24 @@ const triggerOut = () => {
         Hello
       </Text> */}
 
-      <TvLabel click={NewTab} color={TextColor} words={words} />
-      <mesh onPointerOver={() => triggerIn()}
-      onPointerOut={() => triggerOut()} onClick={()=> NewTab()} position={[0,-2.14,0.1]}>
-      <planeBufferGeometry  args={[5*imageProportion,.7]}/>
-      <animated.meshStandardMaterial opacity={.5} transparent   color={TitleBackgroundColor} />
+      <TvLabel
+        colorScheme={colorScheme}
+        click={NewTab}
+        color={TextColor}
+        words={words}
+      />
+      <mesh
+        onPointerOver={() => triggerIn()}
+        onPointerOut={() => triggerOut()}
+        onClick={() => NewTab()}
+        position={[0, -2.14, 0.1]}
+      >
+        <planeBufferGeometry args={[5 * imageProportion, 0.7]} />
+        <animated.meshStandardMaterial
+          opacity={opacity}
+          transparent
+          color={TitleBackgroundColor}
+        />
       </mesh>
       <planeBufferGeometry attach="geometry" args={[5 * imageProportion, 5]} />
       <meshStandardMaterial transparent attach="material" map={texture} />

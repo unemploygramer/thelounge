@@ -3,7 +3,15 @@ import { Text } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { Interactive, XR, Controllers, VRButton } from "@react-three/xr";
 import { useSpring, animated } from "@react-spring/three";
-function TvLabel({ MoveTvBackward, words, font, opacity, position, setPage }) {
+function TvLabel({
+  MoveTvBackward,
+  words,
+  font,
+  opacity,
+  position,
+  setPage,
+  colorScheme,
+}) {
   const ref = useRef();
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
@@ -29,7 +37,7 @@ function TvLabel({ MoveTvBackward, words, font, opacity, position, setPage }) {
   };
 
   return (
-    <Interactive onHover={() => setIsHovered(true)}>
+    <Interactive onSelect={Clicked} onHover={() => setIsHovered(true)}>
       <animated.group
         scale={scale}
         onPointerOver={() => triggerIn()}
@@ -47,7 +55,7 @@ function TvLabel({ MoveTvBackward, words, font, opacity, position, setPage }) {
           <animated.meshBasicMaterial
             transparent
             opacity={opacity}
-            color="purple"
+            color={colorScheme.secondary}
             attach="material"
           />
         </mesh>
@@ -57,7 +65,7 @@ function TvLabel({ MoveTvBackward, words, font, opacity, position, setPage }) {
             font={font}
             position-z={0.1}
             scale={[1, 1, 1]}
-            color="Hotpink" // default
+            color={colorScheme.primary} // default
             anchorX="center" // default
             anchorY="middle" // default
           >

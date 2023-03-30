@@ -55,7 +55,8 @@ import TvLabel from "./components/TvLabel";
 import TvSpring from "./components/TvSpring";
 import { TvVideo } from "./components/TvVideo";
 import MainMenu from "./components/MainMenu";
-
+import { GameRoom } from "./components/GamerRoom.jsx";
+import { RedRoom } from "./components/RedRoom";
 // import myFont from '../relative_path'
 
 function getWindowDimensions() {
@@ -65,6 +66,11 @@ function getWindowDimensions() {
     height,
   };
 }
+const colorScheme = {
+  primary: "red",
+  secondary: "black",
+  third: "black",
+};
 
 const data = [
   {
@@ -250,13 +256,15 @@ function App() {
               words={e.name}
               startNumber={startLocation}
               imgLink={e.link}
-            />
+            /> 
           );
         })} */}
+        <RedRoom />
         <XR>
           {/* <TvVideo/> */}
           {/* {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/> */}
           <RightButton
+            colorScheme={colorScheme}
             movement={movement}
             setMovement={setMovement}
             data={data}
@@ -264,24 +272,28 @@ function App() {
           />{" "}
           */}
           <LeftButton
+            colorScheme={colorScheme}
             data={data}
             movement={movement}
             setMovement={setMovement}
             page={page}
           />
           <ImageSlider
+            colorScheme={colorScheme}
             movement={movement}
             setMovement={setMovement}
             page={page}
             setPage={setPage}
             data={data}
           />
+          {/* <GameRoom /> */}
           <Title
-            position={[0, 5.8, -6]}
+            position={[0, 6.12, -6.8]}
             opacity={1}
             font={urFont}
             words="The Title"
             setPage={setPage}
+            colorScheme={colorScheme}
           />
           {/* <Title font={urFont} words="The Title" /> */}
           <Controllers />
@@ -291,7 +303,12 @@ function App() {
               <Boxer position={[0, 1, -3]} />
             </Scroll>
           </ScrollControls> */}
-          <MainMenu page={page} setPage={setPage} font={urFont} />
+          <MainMenu
+            colorScheme={colorScheme}
+            page={page}
+            setPage={setPage}
+            font={urFont}
+          />
           {/* <GroundPlane /> */}
         </XR>
       </Canvas>

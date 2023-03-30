@@ -15,7 +15,7 @@ import { useSpring, animated } from "@react-spring/three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import Arrow from "../assets/arrow.png";
 import Zebru from "../assets/zebru.jpg";
-function RightButton({ movement, setMovement, data, page }) {
+function RightButton({ movement, setMovement, data, page, colorScheme }) {
   const ref = useRef();
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.5 : 1 });
@@ -50,6 +50,9 @@ function RightButton({ movement, setMovement, data, page }) {
   };
   const { y } = useSpring({ y: ypos() });
   const { opacity } = useSpring({ opacity: active ? 1 : 0.7 });
+  const { colorChange } = useSpring({
+    colorChange: active ? colorScheme.third : colorScheme.primary,
+  });
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>
       <animated.mesh
@@ -68,7 +71,7 @@ function RightButton({ movement, setMovement, data, page }) {
         <animated.meshStandardMaterial
           opacity={opacity}
           transparent
-          color="hotpink"
+          color={colorChange}
         />
       </animated.mesh>
     </Interactive>

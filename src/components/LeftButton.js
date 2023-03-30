@@ -14,7 +14,7 @@ import {
 import { Sky, Text } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 
-function LeftButton({ movement, setMovement, data, page }) {
+function LeftButton({ movement, setMovement, data, page, colorScheme }) {
   const ref = useRef();
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -47,6 +47,9 @@ function LeftButton({ movement, setMovement, data, page }) {
     }
   };
   const { y } = useSpring({ y: ypos() });
+  const { colorChange } = useSpring({
+    colorChange: active ? colorScheme.third : colorScheme.primary,
+  });
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>
       <animated.mesh
@@ -64,7 +67,7 @@ function LeftButton({ movement, setMovement, data, page }) {
         <animated.meshStandardMaterial
           opacity={opacity}
           transparent
-          color="hotpink"
+          color={colorChange}
         />
       </animated.mesh>
     </Interactive>

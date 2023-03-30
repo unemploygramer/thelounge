@@ -3,7 +3,7 @@ import React, { useRef, useState } from "react";
 import { Interactive, XR, Controllers, VRButton } from "@react-three/xr";
 import { useSpring, animated } from "@react-spring/three";
 import TvSpring from "./TvSpring";
-function ImageSlider({ data, movement, setMovement, page, setPage }) {
+function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }) {
   const xpos = () => {
     if (page == "ImageSlider") {
       return 0;
@@ -38,6 +38,7 @@ function ImageSlider({ data, movement, setMovement, page, setPage }) {
         let startLocation = key - 1;
         return (
           <TvSpring
+          colorScheme={colorScheme}
             key={key}
             movement={movement}
             setMovement={setMovement}

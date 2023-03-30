@@ -18,6 +18,7 @@ function MainMenu({
   font,
   page,
   setPage,
+  colorScheme,
 }) {
   //   const [imageProportion, setImageProportion]= useState(null)
   //   const STEP_DURATION = 500;
@@ -260,6 +261,7 @@ function MainMenu({
         // map={texture}
       /> */}
       <MenuItem
+       colorScheme={colorScheme}
         opacity={opacity}
         words="ImageSlider"
         positions={[0, 1.83, 0.1]}
@@ -269,6 +271,7 @@ function MainMenu({
         setPage={setPage}
       />
       <MenuItem
+       colorScheme={colorScheme}
         opacity={opacity}
         words="more words"
         positions={[0, 0.34, 0.1]}
@@ -278,6 +281,7 @@ function MainMenu({
         setPage={setPage}
       />
       <MenuItem
+       colorScheme={colorScheme}
         opacity={opacity}
         words="text Links"
         positions={[0, -1.1, 0.1]}

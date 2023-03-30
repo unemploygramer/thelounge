@@ -3,7 +3,7 @@ import { motion } from "framer-motion-3d";
 import React, { useRef, useState, useContext, useEffect } from "react";
 import TvLabel from "./TvLabel";
 import { useSpring, animated } from "@react-spring/three";
-
+import { Interactive } from "@react-three/xr";
 function MenuItem({
   tvAnimation,
   MoveTvForward,
@@ -18,6 +18,7 @@ function MenuItem({
   opacity,
   page,
   setPage,
+  colorScheme,
 }) {
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.1 : 1 });
@@ -243,38 +244,40 @@ function MenuItem({
   };
 
   return (
-    <animated.mesh
-      scale={scale}
-      onPointerOver={() => triggerIn()}
-      onPointerOut={() => triggerOut()}
-      receiveShadow
-      //
-      onClick={() => handleClick()}
-      position-z={0.1}
-      position={position}
-      opacity={opacity}
-    >
-      <AnimatedText
-        fillOpacity={opacity}
-        font={font}
+    <Interactive onSelect={handleClick}>
+      <animated.mesh
+        scale={scale}
+        onPointerOver={() => triggerIn()}
+        onPointerOut={() => triggerOut()}
+        receiveShadow
+        //
+        onClick={() => handleClick()}
         position-z={0.1}
-        position-y={-0.1}
-        scale={textscale}
-        color="hotpink" // default
-        anchorX="center" // default
-        anchorY="middle" // default
-      >
-        {words}
-      </AnimatedText>
-      <planeBufferGeometry attach="geometry" args={[5.9, 1.5]} />
-      <animated.meshStandardMaterial
+        position={position}
         opacity={opacity}
-        transparent
-        color="hotpink"
-        attach="material"
-        // map={texture}
-      />
-    </animated.mesh>
+      >
+        <AnimatedText
+          fillOpacity={opacity}
+          font={font}
+          position-z={0.1}
+          position-y={-0.1}
+          scale={textscale}
+          color={colorScheme.primary} // default
+          anchorX="center" // default
+          anchorY="middle" // default
+        >
+          {words}
+        </AnimatedText>
+        <planeBufferGeometry attach="geometry" args={[5.9, 1.5]} />
+        <animated.meshStandardMaterial
+          opacity={opacity}
+          transparent
+          color={colorScheme.secondary}
+          attach="material"
+          // map={texture}
+        />
+      </animated.mesh>
+    </Interactive>
   );
 }
 
