@@ -15,6 +15,7 @@ function TvSpring({
 }) {
   const [imageProportion, setImageProportion] = useState(null);
   const STEP_DURATION = 500;
+  const [active, setActive] = useState(false);
   const { carouselRotation } = useSpring({
     from: {
       carouselRotation: 0,
@@ -98,6 +99,9 @@ function TvSpring({
       return Math.PI * 0.5;
     }
   };
+ 
+  const { TitleBackgroundColor} = useSpring({ TitleBackgroundColor: active ? "hotpink" : "purple" });
+  const { TextColor} = useSpring({ TextColor: active ? "white" : "hotpink" });
   const yMovement = () => {
     if (movement < startNumber) {
       return -2;
@@ -116,6 +120,7 @@ function TvSpring({
   const { z } = useSpring({ z: zMovement() });
   const { yRotate } = useSpring({ yRotate: yRot() });
   const { zRotate } = useSpring({ zRotate: zRot() });
+
 
   //   const { carouselRotation } = useSpring({
   //     from: {
@@ -203,6 +208,12 @@ function TvSpring({
     window.open(
     "https://www.pornhub.com", "_blank");
 }
+const triggerIn = () => {
+  setActive(true);
+};
+const triggerOut = () => {
+  setActive(false);
+};
 
   return (
     <animated.mesh
@@ -222,10 +233,11 @@ function TvSpring({
         Hello
       </Text> */}
 
-      <TvLabel words={words} />
-      <mesh onClick={()=> NewTab()} position={[0,-2.14,0.1]}>
+      <TvLabel click={NewTab} color={TextColor} words={words} />
+      <mesh onPointerOver={() => triggerIn()}
+      onPointerOut={() => triggerOut()} onClick={()=> NewTab()} position={[0,-2.14,0.1]}>
       <planeBufferGeometry  args={[5*imageProportion,.7]}/>
-      <meshStandardMaterial opacity={.5} transparent   color="hotpink" />
+      <animated.meshStandardMaterial opacity={.5} transparent   color={TitleBackgroundColor} />
       </mesh>
       <planeBufferGeometry attach="geometry" args={[5 * imageProportion, 5]} />
       <meshStandardMaterial transparent attach="material" map={texture} />
