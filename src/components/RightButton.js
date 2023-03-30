@@ -49,6 +49,7 @@ function RightButton({ movement, setMovement, data, page }) {
     }
   };
   const { y } = useSpring({ y: ypos() });
+  const { opacity } = useSpring({ opacity: active ? 1 : 0.7 });
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>
       <animated.mesh
@@ -64,7 +65,11 @@ function RightButton({ movement, setMovement, data, page }) {
         position-y={y}
       >
         <boxGeometry args={[0.5, 4, 0.5]} />
-        <meshStandardMaterial color="hotpink" />
+        <animated.meshStandardMaterial
+          opacity={opacity}
+          transparent
+          color="hotpink"
+        />
       </animated.mesh>
     </Interactive>
   );

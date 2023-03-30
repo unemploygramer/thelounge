@@ -267,6 +267,7 @@ function App() {
             data={data}
             movement={movement}
             setMovement={setMovement}
+            page={page}
           />
           <ImageSlider
             movement={movement}

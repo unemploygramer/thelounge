@@ -14,13 +14,14 @@ import {
 import { Sky, Text } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
 
-function LeftButton({ movement, setMovement, data }) {
+function LeftButton({ movement, setMovement, data, page }) {
   const ref = useRef();
   const [active, setActive] = useState(false);
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
   const [clicked, click] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.5 : 1 });
+  const { opacity } = useSpring({ opacity: active ? 1 : 0.7 });
   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const handleClick = () => {
     let lastItem = data.length - 1;
@@ -37,18 +38,34 @@ function LeftButton({ movement, setMovement, data }) {
   const triggerOut = () => {
     setActive(false);
   };
+
+  const ypos = () => {
+    if (page === "ImageSlider") {
+      return 1.1;
+    } else {
+      return -20;
+    }
+  };
+  const { y } = useSpring({ y: ypos() });
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn}>
       <animated.mesh
         onClick={(event) => handleClick()}
         ref={ref}
         position={[-3.1, 1.1, -4.3]}
+        position-x={-3.1}
+        position-y={y}
+        position-z={-4.3}
         scale={scale}
         onPointerOver={() => triggerIn()}
         onPointerOut={() => triggerOut()}
       >
         <boxGeometry args={[0.5, 4, 0.5]} />
-        <meshStandardMaterial color="hotpink" />
+        <animated.meshStandardMaterial
+          opacity={opacity}
+          transparent
+          color="hotpink"
+        />
       </animated.mesh>
     </Interactive>
   );
