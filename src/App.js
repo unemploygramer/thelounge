@@ -67,9 +67,9 @@ function getWindowDimensions() {
   };
 }
 const colorScheme = {
-  primary: "red",
-  secondary: "black",
-  third: "black",
+  primary: "white",
+  secondary: "hotpink",
+  third: "purple",
 };
 
 const data = [
@@ -157,13 +157,13 @@ function App() {
     CameraZ = 5.5;
     cameraY = 1;
   } else if (width > 600 && width <= 900) {
-    CameraZ = 3.5;
+    CameraZ = 5.5;
     cameraY = 0.8;
   } else if (width > 900 && width < 1200) {
-    CameraZ = 3.5;
+    CameraZ = 5.5;
     cameraY = 0.7;
   } else {
-    CameraZ = 1.5;
+    CameraZ = 5.5;
     cameraY = 0.9;
   }
 
@@ -259,7 +259,7 @@ function App() {
             /> 
           );
         })} */}
-        <RedRoom />
+        {/* <RedRoom /> */}
         <XR>
           {/* <TvVideo/> */}
           {/* {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/> */}
