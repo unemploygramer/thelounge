@@ -199,6 +199,11 @@ function TvSpring({
   const texture = useTexture(imgLink);
   const handleClick = () => {};
 
+  function NewTab() {
+    window.open(
+    "https://www.pornhub.com", "_blank");
+}
+
   return (
     <animated.mesh
       // rotation-z={carouselRotation}
@@ -216,7 +221,12 @@ function TvSpring({
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
+
       <TvLabel words={words} />
+      <mesh onClick={()=> NewTab()} position={[0,-2.14,0.1]}>
+      <planeBufferGeometry  args={[5*imageProportion,.7]}/>
+      <meshStandardMaterial opacity={.5} transparent   color="hotpink" />
+      </mesh>
       <planeBufferGeometry attach="geometry" args={[5 * imageProportion, 5]} />
       <meshStandardMaterial transparent attach="material" map={texture} />
     </animated.mesh>

@@ -12,6 +12,8 @@ import {
   VRCanvas,
   Interactive,
 } from "@react-three/xr";
+import urFont from "../fonts/Box.otf";
+
 function TvLabel({ MoveTvBackward ,words}) {
   const ref = useRef();
   const [hover, setHover] = useState(false);
@@ -30,9 +32,10 @@ function TvLabel({ MoveTvBackward ,words}) {
            <Text
     position={[0,-2.2,0.2]}
         scale={[.5, .5, .5]}
-        color="Hotpink" // default
+        color="white" // default
         anchorX="center" // default
         anchorY="middle" // default
+        font={urFont}
       >
        {words}
       </Text>
