@@ -56,7 +56,8 @@ import TvSpring from "./components/TvSpring";
 import { TvVideo } from "./components/TvVideo";
 import MainMenu from "./components/MainMenu";
 import { GameRoom } from "./components/GamerRoom.jsx";
-import { RedRoom } from "./components/RedRoom";
+import { WhiteRoom } from "./components/WhiteRoom";
+
 // import myFont from '../relative_path'
 
 function getWindowDimensions() {
@@ -67,9 +68,9 @@ function getWindowDimensions() {
   };
 }
 const colorScheme = {
-  primary: "white",
-  secondary: "hotpink",
-  third: "purple",
+  primary: "red",
+  secondary: "black",
+  third: "hotpink",
 };
 
 const data = [
@@ -259,7 +260,7 @@ function App() {
             /> 
           );
         })} */}
-        {/* <RedRoom /> */}
+        <WhiteRoom />
         <XR>
           {/* <TvVideo/> */}
           {/* {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/> */}

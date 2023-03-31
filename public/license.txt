@@ -1,11 +1,11 @@
 Model Information:
-* title:	Red Room
-* source:	https://sketchfab.com/3d-models/red-room-19e54b00169f486590a4f3d2d04f396b
-* author:	LaisLH (https://sketchfab.com/JanusC)
+* title:	Minimalistic Modern Bedroom
+* source:	https://sketchfab.com/3d-models/minimalistic-modern-bedroom-4f3db3cb57bd4bce886f7b9a13273a2f
+* author:	dylanheyes (https://sketchfab.com/dylanheyes)
 
 Model License:
 * license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
 * requirements:	Author must be credited. Commercial use is allowed.
 
 If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
-This work is based on "Red Room" (https://sketchfab.com/3d-models/red-room-19e54b00169f486590a4f3d2d04f396b) by LaisLH (https://sketchfab.com/JanusC) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+This work is based on "Minimalistic Modern Bedroom" (https://sketchfab.com/3d-models/minimalistic-modern-bedroom-4f3db3cb57bd4bce886f7b9a13273a2f) by dylanheyes (https://sketchfab.com/dylanheyes) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
