@@ -51,7 +51,7 @@ function LeftButton({ movement, setMovement, data, page, colorScheme }) {
     colorChange: active ? colorScheme.third : colorScheme.primary,
   });
   return (
-    <Interactive onSelect={handleClick} onHover={triggerIn}>
+    <Interactive onSelect={handleClick} onHover={triggerIn} onBlur={triggerOut}>
       <animated.mesh
         onClick={(event) => handleClick()}
         ref={ref}

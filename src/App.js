@@ -304,6 +304,12 @@ function App() {
               <Boxer position={[0, 1, -3]} />
             </Scroll>
           </ScrollControls> */}
+          <Controllers
+  /** Optional material props to pass to controllers' ray indicators */
+  rayMaterial={{ color: colorScheme.primary}}
+  /** Whether to hide controllers' rays on blur. Default is `false` */
+  hideRaysOnBlur={false}
+/>
           <MainMenu
             colorScheme={colorScheme}
             page={page}

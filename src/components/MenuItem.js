@@ -244,7 +244,7 @@ function MenuItem({
   };
 
   return (
-    <Interactive onSelect={handleClick}>
+    <Interactive onHover={triggerIn} onBlur={triggerOut} onSelect={handleClick}>
       <animated.mesh
         scale={scale}
         onPointerOver={() => triggerIn()}

@@ -37,7 +37,7 @@ function TvLabel({
   };
 
   return (
-    <Interactive onSelect={Clicked} onHover={() => setIsHovered(true)}>
+    <Interactive onSelect={Clicked} onHover={triggerIn} onBlur={triggerOut}>
       <animated.group
         scale={scale}
         onPointerOver={() => triggerIn()}

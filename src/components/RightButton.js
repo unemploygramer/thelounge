@@ -54,7 +54,7 @@ function RightButton({ movement, setMovement, data, page, colorScheme }) {
     colorChange: active ? colorScheme.third : colorScheme.primary,
   });
   return (
-    <Interactive onSelect={handleClick} onHover={triggerIn}>
+    <Interactive onSelect={handleClick} onHover={triggerIn} onBlur={triggerOut}>
       <animated.mesh
         onPointerOver={() => triggerIn()}
         onPointerOut={() => triggerOut()}
