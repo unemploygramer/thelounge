@@ -114,7 +114,7 @@ function TvSpring({
     } else if (movement === startNumber) {
       return 1.5;
     } else if (movement === startNumber + 1) {
-      return 2.2;
+      return 1.5;
     } else if (movement == startNumber + 2) {
       return 1.2;
     } else {

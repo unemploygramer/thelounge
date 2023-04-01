@@ -51,7 +51,7 @@ import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { extend } from "@react-three/fiber";
 import myFont from "./components/fonts/optimer_bold.typeface.json";
 // import urFont from "./fonts/Box.otf";
-import urFont from "./components/fonts/Box.otf"
+import urFont from "./components/fonts/Box.otf";
 import TvLabel from "./components/TvLabel";
 import TvSpring from "./components/TvSpring";
 import { TvVideo } from "./components/TvVideo";
@@ -77,58 +77,25 @@ const colorScheme = {
 const data = [
   {
     id: 1,
-    name: "Thicc Ass",
-    link: "https://cdni.pornpics.com/1280/1/356/81420904/81420904_014_ed62.jpg",
+    name: "ffff",
+    link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
   },
   {
-    id: 2,
-    name: "Big Tits",
-    link: "https://cdni.pornpics.com/1280/1/91/94355083/94355083_009_5529.jpg",
+    id: 1,
+    name: "ffff",
+    link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
   },
   {
-    id: 3,
-    name: "Blondes",
-    link: "https://cdni.pornpics.com/1280/7/44/87193693/87193693_162_22bb.jpg",
+    id: 1,
+    name: "ffff",
+    link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
   },
   {
-    id: 3,
-    name: "Babes",
-    link: "https://cdni.pornpics.com/1280/7/600/15980271/15980271_057_205a.jpg",
+    id: 1,
+    name: "ffff",
+    link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
   },
-  {
-    id: 4,
-    name: "Tattoos",
-    link: "https://cdni.pornpics.com/1280/7/107/79912458/79912458_018_5b3e.jpg",
-  },
-  // { id: 4, name: "gif", link: "https://cdn.sex.com/images/pinporn/2023/02/17/28909840.gif?width=620" },
 ];
-// const data = [
-//   {
-//     id: 1,
-//     name: "ffff",
-//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
-//   },
-//   {
-//     id: 2,
-//     name: "aaaa",
-//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
-//   },
-//   {
-//     id: 3,
-//     name: "zzzz",
-//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
-//   },
-//   {
-//     id: 3,
-//     name: "gggg",
-//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
-//   },
-//   {
-//     id: 4,
-//     name: "llll",
-//     link: "https://www.skatedeluxe.com/blog/wp-content/uploads/2016/09/trick-tip-fs-tailslide-9.jpg",
-//   },
-// ];
 
 function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(
@@ -306,11 +273,11 @@ function App() {
             </Scroll>
           </ScrollControls> */}
           <Controllers
-  /** Optional material props to pass to controllers' ray indicators */
-  rayMaterial={{ color: colorScheme.primary}}
-  /** Whether to hide controllers' rays on blur. Default is `false` */
-  hideRaysOnBlur={false}
-/>
+            /** Optional material props to pass to controllers' ray indicators */
+            rayMaterial={{ color: colorScheme.primary }}
+            /** Whether to hide controllers' rays on blur. Default is `false` */
+            hideRaysOnBlur={false}
+          />
           <MainMenu
             colorScheme={colorScheme}
             page={page}

@@ -236,11 +236,12 @@ function MainMenu({
       position-x={x}
       //    position-z={z}
       rotation-y={yRotate}
+      position={[0, 1, -8]}
       //  rotation-x={zRotate}
 
       // onClick={() => setPage("ImageSlider")}
-      position-y={3}
-      position-z={-7}
+      // position-y={3}
+      // position-z={-7}
 
       // position={[0, 3, -7]}
       // rotation-x={Math.PI * 0.03}
@@ -261,7 +262,7 @@ function MainMenu({
         // map={texture}
       /> */}
       <MenuItem
-       colorScheme={colorScheme}
+        colorScheme={colorScheme}
         opacity={opacity}
         words="ImageSlider"
         positions={[0, 1.83, -2.5]}
@@ -271,7 +272,7 @@ function MainMenu({
         setPage={setPage}
       />
       <MenuItem
-       colorScheme={colorScheme}
+        colorScheme={colorScheme}
         opacity={opacity}
         words="more words"
         positions={[0, 0.34, -2.5]}
@@ -281,7 +282,7 @@ function MainMenu({
         setPage={setPage}
       />
       <MenuItem
-       colorScheme={colorScheme}
+        colorScheme={colorScheme}
         opacity={opacity}
         words="text Links"
         positions={[0, -1.1, -2.5]}
