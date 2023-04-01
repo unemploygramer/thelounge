@@ -5,7 +5,7 @@ import TvLabel from "./TvLabel";
 import { useSpring, animated } from "@react-spring/three";
 import MenuItem from "../components/MenuItem";
 import Title from "../components/Title";
-import urFont from "../fonts/Box.otf";
+import urFont from "../components/fonts/Box.otf";
 
 function MainMenu({
   tvAnimation,
@@ -264,7 +264,7 @@ function MainMenu({
        colorScheme={colorScheme}
         opacity={opacity}
         words="ImageSlider"
-        positions={[0, 1.83, 0.1]}
+        positions={[0, 1.83, -2.5]}
         textscale={[1, 1, 1]}
         font={font}
         page={page}
@@ -274,7 +274,7 @@ function MainMenu({
        colorScheme={colorScheme}
         opacity={opacity}
         words="more words"
-        positions={[0, 0.34, 0.1]}
+        positions={[0, 0.34, -2.5]}
         textscale={[0.8, 0.8, 0.8]}
         font={font}
         page={page}
@@ -284,7 +284,7 @@ function MainMenu({
        colorScheme={colorScheme}
         opacity={opacity}
         words="text Links"
-        positions={[0, -1.1, 0.1]}
+        positions={[0, -1.1, -2.5]}
         textscale={[0.8, 0.8, 0.8]}
         font={font}
         page={page}

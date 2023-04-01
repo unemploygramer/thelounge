@@ -49,8 +49,9 @@ import LeftButton from "./components/LeftButton";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry";
 import { extend } from "@react-three/fiber";
-import myFont from "./fonts/optimer_bold.typeface.json";
-import urFont from "./fonts/Box.otf";
+import myFont from "./components/fonts/optimer_bold.typeface.json";
+// import urFont from "./fonts/Box.otf";
+import urFont from "./components/fonts/Box.otf"
 import TvLabel from "./components/TvLabel";
 import TvSpring from "./components/TvSpring";
 import { TvVideo } from "./components/TvVideo";
@@ -247,7 +248,7 @@ function App() {
         {/* <TheCam /> */}
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         {/* <Grid size={10} /> */}
-        {/* <OrbitControls /> */}
+        <OrbitControls />
         {/* {data.map((e, key) => {
           let startLocation = key - 1;
           return (
@@ -289,7 +290,7 @@ function App() {
           />
           {/* <GameRoom /> */}
           <Title
-            position={[0, 6.12, -6.8]}
+            position={[0, 6.12, -9]}
             opacity={1}
             font={urFont}
             words="The Title"

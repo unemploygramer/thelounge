@@ -11,7 +11,7 @@ import {
   VRCanvas,
   Interactive,
 } from "@react-three/xr";
-import urFont from "../fonts/Box.otf";
+import urFont from "../components/fonts/Box.otf";
 
 function TvLabel({ MoveTvBackward, words, color, click, colorScheme }) {
   const ref = useRef();
