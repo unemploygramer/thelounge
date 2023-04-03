@@ -13,6 +13,9 @@ function TvSpring({
   movement,
   setMovement,
   colorScheme,
+  data,
+  key,
+  bannerDestination
 }) {
   const [imageProportion, setImageProportion] = useState(null);
   const STEP_DURATION = 500;
@@ -205,12 +208,14 @@ function TvSpring({
   useEffect(() => {
     checker();
   }, []);
+ const texture = useTexture(imgLink);
+   
 
-  const texture = useTexture(imgLink);
   const handleClick = () => {};
-
+console.log(data, "da data")
+console.log(bannerDestination, "key")
   function NewTab() {
-    window.open("https://www.pornhub.com", "_blank");
+    window.open(bannerDestination, "_blank");
   }
   const triggerIn = () => {
     setActive(true);

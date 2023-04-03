@@ -32,6 +32,8 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
   const { yRotate } = useSpring({ yRotate: yrot() });
   const { x } = useSpring({ x: xpos() });
   const { opacity } = useSpring({ opacity: opas() });
+
+// try and conditionally render the tvspring and tvvideo component based on the map data
   return (
     <animated.group position-x={x}>
       {data.map((e, key) => {
@@ -45,6 +47,8 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
             words={e.name}
             startNumber={startLocation}
             imgLink={e.link}
+            data={data}
+            bannerDestination={data[key].bannerLink}
           />
         );
       })}

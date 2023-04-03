@@ -17,6 +17,7 @@ import {
   Hands,
   VRCanvas,
   Interactive,
+
 } from "@react-three/xr";
 import React, { useState, useEffect, useRef } from "react";
 import {
@@ -77,23 +78,31 @@ const colorScheme = {
 const data = [
   {
     id: 1,
-    name: "ffff",
-    link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
+    name: "Freedom of The Seas",
+    link: "https://rccl-h.assetsadobe.com/is/image/content/dam/royal/content/fleet-landing/freedom-exterior-side-aerial-day-sailing-ship.jpg?$640x320$",
+    type: "pic",
+    bannerLink: "https://www.royalcaribbean.com/usa/en/cruise-ships/freedom-of-the-seas",
   },
   {
     id: 1,
     name: "ffff",
     link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
+    type:"pic",
+    bannerLink: "https://www.royalcaribbean.com/usa/en/cruise-ships/freedom-of-the-seas",
   },
   {
     id: 1,
     name: "ffff",
     link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
+    type: "pic",
+    bannerLink: "https://www.royalcaribbean.com/usa/en/cruise-ships/freedom-of-the-seas",
   },
   {
     id: 1,
     name: "ffff",
     link: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
+    type: "video",
+    bannerLink: "https://www.royalcaribbean.com/usa/en/cruise-ships/freedom-of-the-seas",
   },
 ];
 
@@ -132,8 +141,8 @@ function App() {
     CameraZ = 5.5;
     cameraY = 0.7;
   } else {
-    CameraZ = 5.5;
-    cameraY = 0.9;
+    CameraZ = 1;
+    cameraY = 1.9;
   }
 
   let heightMultiple = width * 0.001;
@@ -215,7 +224,7 @@ function App() {
         {/* <TheCam /> */}
         {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
         {/* <Grid size={10} /> */}
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         {/* {data.map((e, key) => {
           let startLocation = key - 1;
           return (
@@ -262,6 +271,7 @@ function App() {
             font={urFont}
             words="The Title"
             setPage={setPage}
+            page={page}
             colorScheme={colorScheme}
           />
           {/* <Title font={urFont} words="The Title" /> */}

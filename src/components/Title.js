@@ -10,6 +10,7 @@ function TvLabel({
   opacity,
   position,
   setPage,
+  page,
   colorScheme,
 }) {
   const ref = useRef();
@@ -17,10 +18,17 @@ function TvLabel({
   const [color, setColor] = useState(0x123456);
   const [clicked, click] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-
+  const yMovement = () => {
+    if (page === "MainMenu") {
+      return 3.8;
+    } else {
+      return 6;
+    }
+  };
   //   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.1 : 1 });
+  const {ypos} = useSpring({ypos:yMovement()})
   const { colorChange } = useSpring({
     colorChange: active ? colorScheme.primary : colorScheme.secondary,
   });
@@ -50,7 +58,9 @@ function TvLabel({
         onPointerOut={() => triggerOut()}
         rotation-x={Math.PI * 0.03}
         // rotation-y={Math.PI * .000} rotation-x={Math.PI * .06}  position={[0, 3.7,-2.5]}
-        position={position}
+        // position={[position[0],ypos, position[2] ]}
+        position-y={ypos}
+        position-z={-9}
       >
         <mesh onClick={(event) => Clicked()} ref={ref} position-y={0.14}>
           <planeBufferGeometry
