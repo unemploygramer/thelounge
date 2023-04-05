@@ -21,7 +21,7 @@ function ModelList({
   performerData,
   page,
   setPage,
-  colorScheme
+  colorScheme,
 }) {
   //   const [imageProportion, setImageProportion]= useState(null)
   //   const STEP_DURATION = 500;
@@ -138,34 +138,28 @@ function ModelList({
   const { x } = useSpring({ x: xpos() });
   const { opacity } = useSpring({ opacity: opas() });
   const AnimatedText = animated(Text);
-  
-
 
   return (
-    <animated.mesh
-      position={[0, -.5,2]}
+    <animated.mesh position={[0, -0.5, 2]}>
+      <planeBufferGeometry args={[4.4, 4.3]} />
+      <animated.meshStandardMaterial opacity={0.8} transparent color="red" />
       
-    >
-     <planeBufferGeometry args={[4.4, 4.3]} />
-        <animated.meshStandardMaterial
-       opacity={.8}
-          transparent
-          color="red"
-        />
-        <ModelListItemPic imgLink={imgLink}/>
+      <animated.mesh position={[0, 0.5, 0]}>
+        <ModelListItemPic imgLink={imgLink} />
         <ModelListItem />
         <AnimatedText
-        position={[0, -.08, 0.2]}
-        scale={[0.5, 0.5, 0.5]}
-     // default
-        anchorX="center" // default
-        anchorY="middle" // default
-        font={urFont}
-        color={ModelTextColor}
-        
-      >
-      models
-      </AnimatedText>
+          position={[0, 1.61, 0.24]}
+          scale={[0.5, 0.5, 0.5]}
+          // default
+          anchorX="center" // default
+          anchorY="middle" // default
+          font={urFont}
+          color="black"
+          // color={ModelTextColor}
+        >
+          models
+        </AnimatedText>
+      </animated.mesh>
     </animated.mesh>
   );
 }
