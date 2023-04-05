@@ -19,14 +19,14 @@ function TvSpring({
   performerData,
   data,
   key,
-  bannerDestination
+  bannerDestination,
 }) {
   const [imageProportion, setImageProportion] = useState(null);
   const STEP_DURATION = 500;
   const [active, setActive] = useState(false);
   const [hoverModel, setHoverModel] = useState(false);
-  const[modelPageOpen, setModelPageOpen] = useState(false)
-  
+  const [modelPageOpen, setModelPageOpen] = useState(false);
+
   const { carouselRotation } = useSpring({
     from: {
       carouselRotation: 0,
@@ -114,8 +114,10 @@ function TvSpring({
   const { TitleBackgroundColor } = useSpring({
     TitleBackgroundColor: active ? colorScheme.primary : colorScheme.secondary,
   });
-  const {ModelButtonBackgroundColor} = useSpring({
-    ModelButtonBackgroundColor: hoverModel ? colorScheme.primary : colorScheme.secondary,
+  const { ModelButtonBackgroundColor } = useSpring({
+    ModelButtonBackgroundColor: hoverModel
+      ? colorScheme.primary
+      : colorScheme.secondary,
   });
   const { TextColor } = useSpring({
     TextColor: active ? colorScheme.third : colorScheme.primary,
@@ -123,7 +125,7 @@ function TvSpring({
   const { ModelTextColor } = useSpring({
     ModelTextColor: hoverModel ? colorScheme.third : colorScheme.primary,
   });
- 
+
   const { opacity } = useSpring({ opacity: active ? 1 : 0.8 });
   const yMovement = () => {
     if (movement < startNumber) {
@@ -139,21 +141,20 @@ function TvSpring({
     }
   };
 
-  const FadeInModels = ()=> {
-    if(modelPageOpen===false) {
+  const FadeInModels = () => {
+    if (modelPageOpen === false) {
       return 0;
     } else {
       return 1;
     }
-  }
+  };
 
   const { y } = useSpring({ y: yMovement() });
   const { x } = useSpring({ x: xMovement() });
   const { z } = useSpring({ z: zMovement() });
   const { yRotate } = useSpring({ yRotate: yRot() });
   const { zRotate } = useSpring({ zRotate: zRot() });
-  const {fadeInMods} = useSpring({fadeInMods: FadeInModels()})
-
+  const { fadeInMods } = useSpring({ fadeInMods: FadeInModels() });
 
   const loadImage = (path) => {
     return new Promise((resolve, reject) => {
@@ -181,11 +182,9 @@ function TvSpring({
   useEffect(() => {
     checker();
   }, []);
- const texture = useTexture(imgLink);
-   
+  const texture = useTexture(imgLink);
 
- 
-console.log(data, "da data")
+  console.log(data, "da data");
 
   function NewTab() {
     window.open(bannerDestination, "_blank");
@@ -196,12 +195,12 @@ console.log(data, "da data")
   const triggerOut = () => {
     setActive(false);
   };
-  const hoverModelIn = ()=>{
-    setHoverModel(true)
+  const hoverModelIn = () => {
+    setHoverModel(true);
   };
-  const hoverModelOut = ()=> {
-    setHoverModel(false)
-  }
+  const hoverModelOut = () => {
+    setHoverModel(false);
+  };
   const AnimatedText = animated(Text);
 
   return (
@@ -216,10 +215,15 @@ console.log(data, "da data")
       rotation-x={zRotate}
       position-y={y}
       position={[0, 1, -3.5]}
-
     >
- 
-      <ModelList close={()=> setModelPageOpen(!modelPageOpen)} fadeInMods={fadeInMods} key={key}data={data}  performerData={performerData}/>
+      <ModelList
+        colorScheme={colorScheme}
+        close={() => setModelPageOpen(!modelPageOpen)}
+        fadeInMods={fadeInMods}
+        key={key}
+        data={data}
+        performerData={performerData}
+      />
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
@@ -229,32 +233,29 @@ console.log(data, "da data")
         color={TextColor}
         words={words}
         triggerIn={triggerIn}
-triggerOut={triggerOut}
-        />
-      <animated.mesh  
-      onPointerOver={hoverModelIn}
-      onPointerOut={hoverModelOut}
-      onClick={()=> setModelPageOpen(!modelPageOpen)}
-         position={[-3.2, 2.1, 0.2]}>
-      <planeBufferGeometry  args={[2.2, 0.7]} />
-      <animated.meshStandardMaterial
-      color={ModelButtonBackgroundColor}
-   
-        />
-              <AnimatedText
-        position={[0, -.08, 0.2]}
-        scale={[0.5, 0.5, 0.5]}
-     // default
-        anchorX="center" // default
-        anchorY="middle" // default
-        font={urFont}
-        color={ModelTextColor}
-        
+        triggerOut={triggerOut}
+      />
+      <animated.mesh
+        onPointerOver={hoverModelIn}
+        onPointerOut={hoverModelOut}
+        onClick={() => setModelPageOpen(!modelPageOpen)}
+        position={[-3.2, 2.1, 0.2]}
       >
-      models
-      </AnimatedText>
+        <planeBufferGeometry args={[2.2, 0.7]} />
+        <animated.meshStandardMaterial color={ModelButtonBackgroundColor} />
+        <AnimatedText
+          position={[0, -0.08, 0.2]}
+          scale={[0.5, 0.5, 0.5]}
+          // default
+          anchorX="center" // default
+          anchorY="middle" // default
+          font={urFont}
+          color={ModelTextColor}
+        >
+          models
+        </AnimatedText>
       </animated.mesh>
-    
+
       <mesh
         // onPointerOver={() => triggerIn()}
         // onPointerOut={() => triggerOut()}
@@ -262,9 +263,7 @@ triggerOut={triggerOut}
         position={[0, -2.14, 0.1]}
         onPointerOver={triggerIn}
         onPointerOut={triggerOut}
-      
       >
-        
         <planeBufferGeometry args={[5 * imageProportion, 0.7]} />
         <animated.meshStandardMaterial
           opacity={opacity}

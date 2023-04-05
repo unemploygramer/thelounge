@@ -3,15 +3,14 @@ import { motion } from "framer-motion-3d";
 import React, { useRef, useState, useContext, useEffect } from "react";
 import TvLabel from "./TvLabel";
 import { useSpring, animated } from "@react-spring/three";
-import MenuItem from "../components/MenuItem";
-import Title from "../components/Title";
+import MenuItem from "./MenuItem";
+import Title from "./Title";
 import urFont from "../components/fonts/Box.otf";
 import ModelListItem from "./ModelListItem";
 import ModelListItemPic from "./ModelListItemPic";
 import ModelListClose from "./ModelListClose";
-import ModelProfile from "./ModelProfile";
 
-function ModelList({
+function ModelProfileTitle({
   tvAnimation,
   MoveTvForward,
   imgLink,
@@ -29,38 +28,60 @@ function ModelList({
   setPage,
   colorScheme,
 }) {
-  console.log(performerData, "performer data");
-  const xpos = () => {
-    if (page == "MainMenu") {
-      return 0;
-    } else {
-      return 10;
-    }
-  };
+  //   console.log(performerData, "performer data");
+  //   const xpos = () => {
+  //     if (page == "MainMenu") {
+  //       return 0;
+  //     } else {
+  //       return 10;
+  //     }
+  //   };
 
-  const yrot = () => {
-    if (page == "MainMenu") {
-      return Math.PI * 0;
-    } else {
-      return Math.PI * -0.5;
-    }
-  };
-  const opas = () => {
-    if (page == "MainMenu") {
-      return 1;
-    } else {
-      return 0;
-    }
-  };
+  //   const yrot = () => {
+  //     if (page == "MainMenu") {
+  //       return Math.PI * 0;
+  //     } else {
+  //       return Math.PI * -0.5;
+  //     }
+  //   };
+  //   const opas = () => {
+  //     if (page == "MainMenu") {
+  //       return 1;
+  //     } else {
+  //       return 0;
+  //     }
+  //   };
 
-  const { yRotate } = useSpring({ yRotate: yrot() });
-  const { x } = useSpring({ x: xpos() });
-  //   const { opacity } = useSpring({ opacity: opas() });
+  //   const { yRotate } = useSpring({ yRotate: yrot() });
+  //   const { x } = useSpring({ x: xpos() });
+  //   //   const { opacity } = useSpring({ opacity: opas() });
+  //   const AnimatedText = animated(Text);
+  //   console.log(colorScheme, "color scheme");
+
   const AnimatedText = animated(Text);
-  console.log(colorScheme, "color scheme");
   return (
-    <animated.mesh position={[0, -0.5, 2]}>
-      {performerData.map((item, key) => {
+    <animated.mesh position={[0.6, 2.4, 0.7]}>
+      <animated.mesh position={[0, 0, -1.55]}>
+        <planeBufferGeometry args={[3.78, 1.2]} />
+        <animated.meshStandardMaterial color="green" />
+      </animated.mesh>
+      <AnimatedText
+        fillOpacity={fadeInMods}
+        //   position={[0.34, 1.61, 0.24]}
+        scale={[0.5, 0.5, 0.5]}
+        // default
+        position={[0, 0, -1.5]}
+        anchorX="center" // default
+        anchorY="middle" // default
+        font={urFont}
+        color="black"
+
+        // color={ModelTextColor}
+      >
+        The Name
+      </AnimatedText>
+
+      {/* {performerData.map((item, key) => {
         console.log(item.profilePic, "name");
 
         return (
@@ -98,10 +119,13 @@ function ModelList({
         />
       </animated.mesh>
       );
-      <ModelListClose close={close} fadeInMods={fadeInMods} />
-      <ModelProfile />
+      <ModelListClose close={close} fadeInMods={fadeInMods} /> */}
+      {/* <animated.mesh position={[0, 0.5, -1.6]}>
+        <planeBufferGeometry args={[5, 5]} />
+        <animated.meshStandardMaterial />
+      </animated.mesh> */}
     </animated.mesh>
   );
 }
 
-export default ModelList;
+export default ModelProfileTitle;

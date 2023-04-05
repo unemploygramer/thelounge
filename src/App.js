@@ -17,7 +17,6 @@ import {
   Hands,
   VRCanvas,
   Interactive,
-
 } from "@react-three/xr";
 import React, { useState, useEffect, useRef } from "react";
 import {
@@ -101,16 +100,44 @@ const data = [
     link: "https://mcdn.vrporn.com/files/20230402073558/Cowboy-Bebop-Feye-Valentine-A-XXX-Parody-Violet-Starr-VRCosplayX-vr-porn-video-640x364.jpg",
     type: "pic",
     bannerLink: "https://vrporn.com/cowboy-bebop-feye-valentine-a-xxx-parody/",
-    performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"},{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
-
+    performers: [
+      {
+        name: "violet Star",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg",
+      },
+    ],
   },
   {
     id: 1,
     name: "the last of us",
     link: "https://mcdn.vrporn.com/files/20200624180852/The-Last-Of-Us-A-XXX-Parody-VRCosplayX-Kira-Noir-Hazel-Moore-vr-porn-video-vrporn.com-virtual-reality7-640x364.jpg",
-    type:"pic",
+    type: "pic",
     bannerLink: "https://vrporn.com/the-last-of-us-a-xxx-parody/",
-    performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
+    performers: [
+      {
+        name: "Hazel Moore",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20200628092705/Hazel-Moore-profile.jpg",
+      },
+      {
+        name: "Kira Noir",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20191223072908/Kira-Noir-profile.jpg",
+      },
+    ],
   },
   {
     id: 1,
@@ -118,7 +145,17 @@ const data = [
     link: "https://mcdn.vrporn.com/files/20221226091756/Supergirl-A-XXX-Parody-Sybil-A-VRCosplayX-vr-porn-video-640x364.jpg",
     type: "pic",
     bannerLink: "https://vrporn.com/supergirl-a-xxx-parody/",
-    performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
+    performers: [
+      {
+        name: "Sybil A",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20200625203948/Sybil-A-profile.jpg",
+      },
+    ],
   },
   {
     id: 1,
@@ -126,7 +163,17 @@ const data = [
     link: "https://mcdn.vrporn.com/files/20220108073103/Sweet-Genie-Laney-Grey-VRConk-vr-porn-video-640x364.jpg",
     type: "video",
     bannerLink: "https://vrporn.com/sweet-genie/",
-    performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
+    performers: [
+      {
+        name: "Laney Grey",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20200226191557/Laney-Grey-profile.jpg",
+      },
+    ],
   },
   {
     id: 1,
@@ -134,7 +181,17 @@ const data = [
     link: "https://mcdn.vrporn.com/files/20210116231509/Close-Encumters-Of-The-Third-Kind-Avery-Black-VRConk-vr-porn-video-vrporn.com-virtual-reality.jpg",
     type: "video",
     bannerLink: "https://vrporn.com/close-encumters-of-the-third-kind/",
-    performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
+    performers: [
+      {
+        name: "Avery Black",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20200228085218/Avery-Black-profile.jpg",
+      },
+    ],
   },
   {
     id: 1,
@@ -142,7 +199,26 @@ const data = [
     link: "https://mcdn.vrporn.com/files/20210828221536/Book-Ends-WANKZVR-Kenzie-Madison-Daphne-Dare-vr-porn-video-640x364.jpeg",
     type: "video",
     bannerLink: "https://vrporn.com/book-ends/",
-    performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
+    performers: [
+      {
+        name: "Daphne Dare",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20200425174325/Daphne-Dare-profile.jpg",
+      },
+      {
+        name: "Kenzie Madison",
+        socials: {
+          twitter: "https://twitter.com/MissVioletStarr",
+          WebSite: "https://linktr.ee/missvioletstarr",
+        },
+        profilePic:
+          "https://mcdn.vrporn.com/files/20200216081236/Kenzie-Madison-profile.jpg",
+      },
+    ],
   },
 ];
 

@@ -10,8 +10,9 @@ import urFont from "../components/fonts/Box.otf";
 function ModelListItemPic({
   tvAnimation,
   MoveTvForward,
- opacity,
- fadeInMods,
+  opacity,
+  fadeInMods,
+  pic,
   startNumber,
   words,
   movement,
@@ -20,11 +21,7 @@ function ModelListItemPic({
   page,
   setPage,
   colorScheme,
-})
-
-
-{
-
+}) {
   const xpos = () => {
     if (page == "MainMenu") {
       return 0;
@@ -66,7 +63,7 @@ function ModelListItemPic({
     });
   };
   async function checker() {
-    const img = await loadImage("https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg");
+    const img = await loadImage(pic);
     let height = img.naturalHeight;
     let width = img.naturalWidth;
 
@@ -77,19 +74,18 @@ function ModelListItemPic({
   useEffect(() => {
     checker();
   }, []);
- const texture = useTexture("https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg");
+  console.log(pic, "da pick");
+  const texture = useTexture(
+    pic
+  );
   return (
-    <animated.mesh
-      position={[-1.65, 1.61,0.3]}
-      
-    >
-     <planeBufferGeometry args={[1, 1]} />
-        <animated.meshStandardMaterial
-      opacity={fadeInMods}
-          transparent
-     
-          map={texture}
-        />
+    <animated.mesh position={[-1.65, 1.61, 0.3]}>
+      <planeBufferGeometry args={[1, 1]} />
+      <animated.meshStandardMaterial
+        opacity={fadeInMods}
+        transparent
+        map={texture}
+      />
     </animated.mesh>
   );
 }
