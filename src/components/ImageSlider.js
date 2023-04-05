@@ -1,8 +1,14 @@
 import React, { useRef, useState } from "react";
+import { Center, Html, Text, Text3D, useTexture } from "@react-three/drei";
 
 import { Interactive, XR, Controllers, VRButton } from "@react-three/xr";
 import { useSpring, animated } from "@react-spring/three";
 import TvSpring from "./TvSpring";
+import ModelList from "./ModelList";
+import ModelListItem from "./ModelListItem";
+import ModelListItemPic from "./ModelListItemPic";
+import urFont from "../components/fonts/Box.otf";
+const AnimatedText = animated(Text);
 function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }) {
   const xpos = () => {
     if (page == "ImageSlider") {
@@ -38,19 +44,24 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
     <animated.group position-x={x}>
       {data.map((e, key) => {
         let startLocation = key - 1;
+        console.log(e.performers, "where is this")
         return (
+          <mesh>
+
           <TvSpring
           colorScheme={colorScheme}
-            key={key}
-            movement={movement}
-            setMovement={setMovement}
-            words={e.name}
-            startNumber={startLocation}
-            imgLink={e.link}
-            performerData={e.performers}
-            data={data}
-            bannerDestination={data[key].bannerLink}
+          key={key}
+          movement={movement}
+          setMovement={setMovement}
+          words={e.name}
+          startNumber={startLocation}
+          imgLink={e.link}
+          performerData={e.performers}
+          data={data}
+          bannerDestination={data[key].bannerLink}
           />
+      
+          </mesh>
         );
       })}
     </animated.group>

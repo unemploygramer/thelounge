@@ -15,6 +15,7 @@ function ModelListItem({
   words,
   movement,
   setMovement,
+  fadeInMods,
   font,
   page,
   setPage,
@@ -81,7 +82,8 @@ function ModelListItem({
     >
      <planeBufferGeometry args={[4.32, 1]} />
         <animated.meshStandardMaterial 
-    
+      opacity={fadeInMods}
+      transparent
         />
     </animated.mesh>
   );

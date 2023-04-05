@@ -5,6 +5,7 @@ import TvLabel from "./TvLabel";
 import { useSpring, animated } from "@react-spring/three";
 import ModelButton from "./ModelButton";
 import ModelList from "./ModelList";
+
 import urFont from "../components/fonts/Box.otf";
 function TvSpring({
   tvAnimation,
@@ -24,6 +25,7 @@ function TvSpring({
   const STEP_DURATION = 500;
   const [active, setActive] = useState(false);
   const [hoverModel, setHoverModel] = useState(false);
+  const[modelPageOpen, setModelPageOpen] = useState(false)
   
   const { carouselRotation } = useSpring({
     from: {
@@ -136,63 +138,22 @@ function TvSpring({
       return -2;
     }
   };
+
+  const FadeInModels = ()=> {
+    if(modelPageOpen===false) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
   const { y } = useSpring({ y: yMovement() });
   const { x } = useSpring({ x: xMovement() });
   const { z } = useSpring({ z: zMovement() });
   const { yRotate } = useSpring({ yRotate: yRot() });
   const { zRotate } = useSpring({ zRotate: zRot() });
+  const {fadeInMods} = useSpring({fadeInMods: FadeInModels()})
 
-  //   const { carouselRotation } = useSpring({
-  //     from: {
-  //       carouselRotation: 0,
-  //     },
-  //     to: [
-  //       {
-  //         carouselRotation: -Math.PI / 2,
-  //         delay: STEP_DURATION,
-  //       },
-  //       {
-  //         carouselRotation: -Math.PI,
-  //         delay: STEP_DURATION,
-  //       },
-  //       {
-  //         carouselRotation: -1.5 * Math.PI,
-  //         delay: STEP_DURATION,
-  //       },
-  //       {
-  //         carouselRotation: -2 * Math.PI,
-  //         delay: STEP_DURATION,
-  //       },
-  //     ],
-  //     config: {
-  //       mass: 5,
-  //       tension: 400,
-  //       friction: 50,
-  //     },
-  //     loop: true,
-  //     immediate: true,
-  //   });
-  // const [tvAnimation,setTvAnimation]= useState(1)
-
-  //   const TvAnimation = () => {
-  //     // let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
-  //     let value = { rotateX: -1,z:-1.5 ,x: 6.9 };
-  // if(tvAnimation <=startNumber) {
-  //   value = { z: -1.5, x: -6.5,  rotateX: -1 };
-  // } else if(tvAnimation ===startNumber +1) {
-  //       value = { z: -1.5, x: -6.5, rotateY: 2.2 };
-  //     } else if (tvAnimation === startNumber + 2) {
-  //       value = { x: 0 };
-  //     } else if (tvAnimation === startNumber +3) {
-  //       // value = { z: 0, y: 0, x: -5, opacity: 0 };
-  //       value = { x: 6.9, rotateY: 4, z:-1.5 };
-  //     } else if (tvAnimation >= startNumber +4) {
-  //       value = { rotateX: -1,z:-1.5 ,x: 6.9 };
-  //     }
-  //     return value;
-  //   };
-
-  // function Image() {
 
   const loadImage = (path) => {
     return new Promise((resolve, reject) => {
@@ -225,7 +186,7 @@ function TvSpring({
 
  
 console.log(data, "da data")
-console.log(bannerDestination, "key")
+
   function NewTab() {
     window.open(bannerDestination, "_blank");
   }
@@ -257,7 +218,8 @@ console.log(bannerDestination, "key")
       position={[0, 1, -3.5]}
 
     >
-      <ModelList  performerData={performerData}/>
+ 
+      <ModelList close={()=> setModelPageOpen(!modelPageOpen)} fadeInMods={fadeInMods} key={key}data={data}  performerData={performerData}/>
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
@@ -272,6 +234,7 @@ triggerOut={triggerOut}
       <animated.mesh  
       onPointerOver={hoverModelIn}
       onPointerOut={hoverModelOut}
+      onClick={()=> setModelPageOpen(!modelPageOpen)}
          position={[-3.2, 2.1, 0.2]}>
       <planeBufferGeometry  args={[2.2, 0.7]} />
       <animated.meshStandardMaterial

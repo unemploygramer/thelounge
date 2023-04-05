@@ -10,7 +10,8 @@ import urFont from "../components/fonts/Box.otf";
 function ModelListItemPic({
   tvAnimation,
   MoveTvForward,
- 
+ opacity,
+ fadeInMods,
   startNumber,
   words,
   movement,
@@ -49,7 +50,7 @@ function ModelListItemPic({
 
   const { yRotate } = useSpring({ yRotate: yrot() });
   const { x } = useSpring({ x: xpos() });
-  const { opacity } = useSpring({ opacity: opas() });
+  // const { opacity } = useSpring({ opacity: opas() });
 
   const loadImage = (path) => {
     return new Promise((resolve, reject) => {
@@ -84,7 +85,7 @@ function ModelListItemPic({
     >
      <planeBufferGeometry args={[1, 1]} />
         <animated.meshStandardMaterial
-      
+      opacity={fadeInMods}
           transparent
      
           map={texture}
