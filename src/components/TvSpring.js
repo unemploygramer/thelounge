@@ -3,7 +3,9 @@ import { motion } from "framer-motion-3d";
 import React, { useRef, useState, useContext, useEffect } from "react";
 import TvLabel from "./TvLabel";
 import { useSpring, animated } from "@react-spring/three";
-
+import ModelButton from "./ModelButton";
+import ModelList from "./ModelList";
+import urFont from "../components/fonts/Box.otf";
 function TvSpring({
   tvAnimation,
   MoveTvForward,
@@ -13,6 +15,7 @@ function TvSpring({
   movement,
   setMovement,
   colorScheme,
+  performerData,
   data,
   key,
   bannerDestination
@@ -20,6 +23,8 @@ function TvSpring({
   const [imageProportion, setImageProportion] = useState(null);
   const STEP_DURATION = 500;
   const [active, setActive] = useState(false);
+  const [hoverModel, setHoverModel] = useState(false);
+  
   const { carouselRotation } = useSpring({
     from: {
       carouselRotation: 0,
@@ -107,9 +112,16 @@ function TvSpring({
   const { TitleBackgroundColor } = useSpring({
     TitleBackgroundColor: active ? colorScheme.primary : colorScheme.secondary,
   });
+  const {ModelButtonBackgroundColor} = useSpring({
+    ModelButtonBackgroundColor: hoverModel ? colorScheme.primary : colorScheme.secondary,
+  });
   const { TextColor } = useSpring({
     TextColor: active ? colorScheme.third : colorScheme.primary,
   });
+  const { ModelTextColor } = useSpring({
+    ModelTextColor: hoverModel ? colorScheme.third : colorScheme.primary,
+  });
+ 
   const { opacity } = useSpring({ opacity: active ? 1 : 0.8 });
   const yMovement = () => {
     if (movement < startNumber) {
@@ -211,7 +223,7 @@ function TvSpring({
  const texture = useTexture(imgLink);
    
 
-  const handleClick = () => {};
+ 
 console.log(data, "da data")
 console.log(bannerDestination, "key")
   function NewTab() {
@@ -223,6 +235,13 @@ console.log(bannerDestination, "key")
   const triggerOut = () => {
     setActive(false);
   };
+  const hoverModelIn = ()=>{
+    setHoverModel(true)
+  };
+  const hoverModelOut = ()=> {
+    setHoverModel(false)
+  }
+  const AnimatedText = animated(Text);
 
   return (
     <animated.mesh
@@ -236,24 +255,53 @@ console.log(bannerDestination, "key")
       rotation-x={zRotate}
       position-y={y}
       position={[0, 1, -3.5]}
-      onClick={() => handleClick()}
+
     >
+      <ModelList  performerData={performerData}/>
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello
       </Text> */}
-
       <TvLabel
         colorScheme={colorScheme}
         click={NewTab}
         color={TextColor}
         words={words}
-      />
+        triggerIn={triggerIn}
+triggerOut={triggerOut}
+        />
+      <animated.mesh  
+      onPointerOver={hoverModelIn}
+      onPointerOut={hoverModelOut}
+         position={[-3.2, 2.1, 0.2]}>
+      <planeBufferGeometry  args={[2.2, 0.7]} />
+      <animated.meshStandardMaterial
+      color={ModelButtonBackgroundColor}
+   
+        />
+              <AnimatedText
+        position={[0, -.08, 0.2]}
+        scale={[0.5, 0.5, 0.5]}
+     // default
+        anchorX="center" // default
+        anchorY="middle" // default
+        font={urFont}
+        color={ModelTextColor}
+        
+      >
+      models
+      </AnimatedText>
+      </animated.mesh>
+    
       <mesh
-        onPointerOver={() => triggerIn()}
-        onPointerOut={() => triggerOut()}
+        // onPointerOver={() => triggerIn()}
+        // onPointerOut={() => triggerOut()}
         onClick={() => NewTab()}
         position={[0, -2.14, 0.1]}
+        onPointerOver={triggerIn}
+        onPointerOut={triggerOut}
+      
       >
+        
         <planeBufferGeometry args={[5 * imageProportion, 0.7]} />
         <animated.meshStandardMaterial
           opacity={opacity}

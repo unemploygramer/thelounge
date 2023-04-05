@@ -47,6 +47,7 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
             words={e.name}
             startNumber={startLocation}
             imgLink={e.link}
+            performerData={e.performers}
             data={data}
             bannerDestination={data[key].bannerLink}
           />

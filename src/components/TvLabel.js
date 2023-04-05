@@ -13,7 +13,7 @@ import {
 } from "@react-three/xr";
 import urFont from "../components/fonts/Box.otf";
 
-function TvLabel({ MoveTvBackward, words, color, click, colorScheme }) {
+function TvLabel({ MoveTvBackward, words, color, click,triggerIn,triggerOut,colorScheme }) {
   const ref = useRef();
   const [hover, setHover] = useState(false);
   // const [color, setColor] = useState(0x123456);
@@ -22,7 +22,7 @@ function TvLabel({ MoveTvBackward, words, color, click, colorScheme }) {
   //   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const AnimatedText = animated(Text);
   return (
-    <mesh onClick={(event) => click()} ref={ref}>
+    <mesh    onClick={(event) => click()} ref={ref}>
       <AnimatedText
         position={[0, -2.2, 0.2]}
         scale={[0.5, 0.5, 0.5]}
