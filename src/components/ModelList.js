@@ -29,7 +29,7 @@ function ModelList({
   setPage,
   colorScheme,
 }) {
-  console.log(performerData, "performer data");
+  const [active, setActive] = useState(-1);
   const xpos = () => {
     if (page == "MainMenu") {
       return 0;
@@ -45,32 +45,48 @@ function ModelList({
       return Math.PI * -0.5;
     }
   };
-  const opas = () => {
-    if (page == "MainMenu") {
-      return 1;
-    } else {
-      return 0;
-    }
-  };
+
 
   const { yRotate } = useSpring({ yRotate: yrot() });
   const { x } = useSpring({ x: xpos() });
   //   const { opacity } = useSpring({ opacity: opas() });
   const AnimatedText = animated(Text);
   console.log(colorScheme, "color scheme");
+
+
+
+ 
+  const colorChange = () => {
+    if (active== key) {
+      return  colorScheme.primary;
+    } else {
+      return colorScheme.secondary;
+    }
+  };
+  const {colorHover} = useSpring({colorHover: colorChange()})
   return (
     <animated.mesh position={[0, -0.5, 2]}>
       {performerData.map((item, key) => {
-        console.log(item.profilePic, "name");
+     
+        console.log(key, "da keys");
+        const triggerIn = () => {
+          setActive(key);
+        };
+        const triggerOut = () => {
+          setActive(-1);
+        };
 
         return (
-          <animated.mesh position={[0, 0.55 - key, 0]}>
+          <animated.mesh  position={[0, 0.55 - key, 0]}>
             <ModelListItemPic
               pic={item.profilePic}
               fadeInMods={fadeInMods}
               imgLink={imgLink}
             />
-            <ModelListItem fadeInMods={fadeInMods} />
+            <animated.mesh  onPointerOver={triggerIn} onPointerOut={triggerOut}>
+            <ModelListItem colorScheme={colorChange} fadeInMods={fadeInMods} />
+
+            </animated.mesh>
             <AnimatedText
               fillOpacity={fadeInMods}
               position={[0.34, 1.61, 0.24]}
@@ -79,7 +95,7 @@ function ModelList({
               anchorX="center" // default
               anchorY="middle" // default
               font={urFont}
-              color="black"
+              color={colorChange}
 
               // color={ModelTextColor}
             >
@@ -91,15 +107,15 @@ function ModelList({
       <animated.mesh position={[0, 0.5, 0]}>
         <planeBufferGeometry args={[5, 5]} />
         <animated.meshStandardMaterial
-          color={colorScheme.secondary}
+          color={colorScheme.third}
           transparent
           opacity={fadeInMods}
-          transparent
+         
         />
       </animated.mesh>
       );
       <ModelListClose close={close} fadeInMods={fadeInMods} />
-      <ModelProfile />
+      <ModelProfile  />
     </animated.mesh>
   );
 }

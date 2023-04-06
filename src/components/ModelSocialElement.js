@@ -60,11 +60,12 @@ function ModelSocialElement({
 
   const AnimatedText = animated(Text);
   return (
-    <animated.mesh position={[1.95, -1.2, 1.5]}>
-      <animated.mesh position={[0, 0, -1.55]}>
-        <planeBufferGeometry args={[5.1, 1.2]} />
+    <animated.mesh position={[0, 1.07, .68]}>
+      <animated.mesh position={[0, 0, -1.56]}>
+        <planeBufferGeometry args={[5, 1.2]} />
         <animated.meshStandardMaterial color="pink" />
       </animated.mesh>
+      
       <AnimatedText
         fillOpacity={fadeInMods}
         //   position={[0.34, 1.61, 0.24]}

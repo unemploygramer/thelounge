@@ -16,12 +16,15 @@ function ModelListItem({
   movement,
   setMovement,
   fadeInMods,
+  triggerIn,
+  triggerOut,
   font,
   page,
   setPage,
   colorScheme,
 }) {
 
+  
   const xpos = () => {
     if (page == "MainMenu") {
       return 0;
@@ -44,10 +47,18 @@ function ModelListItem({
       return 0;
     }
   };
+  const colorChange = () => {
+    if (page == "MainMenu") {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
 
   const { yRotate } = useSpring({ yRotate: yrot() });
   const { x } = useSpring({ x: xpos() });
   const { opacity } = useSpring({ opacity: opas() });
+  const {colortransaction} = useSpring({})
 
   const loadImage = (path) => {
     return new Promise((resolve, reject) => {
@@ -84,6 +95,8 @@ function ModelListItem({
         <animated.meshStandardMaterial 
       opacity={fadeInMods}
       transparent
+  
+  
         />
     </animated.mesh>
   );

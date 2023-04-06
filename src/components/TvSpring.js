@@ -202,6 +202,7 @@ function TvSpring({
     setHoverModel(false);
   };
   const AnimatedText = animated(Text);
+console.log(performerData, "performerdata")
 
   return (
     <animated.mesh

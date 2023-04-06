@@ -71,7 +71,7 @@ function getWindowDimensions() {
 const colorScheme = {
   primary: "red",
   secondary: "black",
-  third: "hotpink",
+  third: "gold",
 };
 
 // const data = [

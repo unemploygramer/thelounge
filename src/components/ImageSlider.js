@@ -4,9 +4,8 @@ import { Center, Html, Text, Text3D, useTexture } from "@react-three/drei";
 import { Interactive, XR, Controllers, VRButton } from "@react-three/xr";
 import { useSpring, animated } from "@react-spring/three";
 import TvSpring from "./TvSpring";
-import ModelList from "./ModelList";
-import ModelListItem from "./ModelListItem";
-import ModelListItemPic from "./ModelListItemPic";
+
+
 import urFont from "../components/fonts/Box.otf";
 const AnimatedText = animated(Text);
 function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }) {
@@ -31,7 +30,7 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
       return 0;
     }
   };
-  console.log(data.length);
+  console.log(data, "in the image slider compo");
   // const { y } = useSpring({ y: yMovement() });
   //   const { x } = useSpring({ x:xMovement() })
   // const {z} = useSpring({z: zMovement()})
@@ -44,7 +43,8 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
     <animated.group position-x={x}>
       {data.map((e, key) => {
         let startLocation = key - 1;
-        console.log(e.performers, "where is this")
+     console.log(e.performers, "eeee")
+
         return (
           <mesh>
 

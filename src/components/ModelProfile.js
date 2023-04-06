@@ -29,7 +29,9 @@ function ModelProfile({
   fadeInMods,
   setPage,
   colorScheme,
-}) {
+})
+
+{
   //   console.log(performerData, "performer data");
   //   const xpos = () => {
   //     if (page == "MainMenu") {
@@ -59,11 +61,14 @@ function ModelProfile({
   //   //   const { opacity } = useSpring({ opacity: opas() });
   //   const AnimatedText = animated(Text);
   //   console.log(colorScheme, "color scheme");
+ 
+
+  console.log(data,"@@@@")
   return (
-    <animated.mesh position={[0, -0.5, -0.2]}>
+    <animated.mesh position={[0, 0, -0.2]}>
       <ModelProfileTitle />
       <animated.mesh position={[0, 0.5, -1]}>
-        <planeBufferGeometry args={[5, 5]} />
+        <planeBufferGeometry args={[6, 5.5]} />
         <animated.meshStandardMaterial color="yellow" />
       </animated.mesh>
       {/* {performerData.map((item, key) => {
@@ -106,9 +111,10 @@ function ModelProfile({
       );
       
       <ModelListClose close={close} fadeInMods={fadeInMods} /> */}
-      <animated.mesh position={[-1.9, 2.4, -0.95]}>
+      
         <ModelSocialElement />
-        <planeBufferGeometry args={[1.2, 1.2]} />
+      <animated.mesh position={[-2, 2.4, -0.94]}>
+        <planeBufferGeometry args={[1, 1]} />
         <animated.meshStandardMaterial color="purple" />
       </animated.mesh>
     </animated.mesh>

@@ -62,7 +62,7 @@ function ModelProfileTitle({
   return (
     <animated.mesh position={[0.6, 2.4, 0.7]}>
       <animated.mesh position={[0, 0, -1.55]}>
-        <planeBufferGeometry args={[3.78, 1.2]} />
+        <planeBufferGeometry args={[3.7, 1]} />
         <animated.meshStandardMaterial color="green" />
       </animated.mesh>
       <AnimatedText
