@@ -75,6 +75,7 @@ function TvLabel({
             attach="material"
           />
         </mesh>
+        
         <mesh>
           <AnimatedText
             fillOpacity={opacity}

@@ -58,6 +58,8 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
           imgLink={e.link}
           performerData={e.performers}
           data={data}
+          page={page}
+          setPage={setPage}
           bannerDestination={data[key].bannerLink}
           />
       

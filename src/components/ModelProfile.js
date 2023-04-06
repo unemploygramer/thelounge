@@ -6,9 +6,7 @@ import { useSpring, animated } from "@react-spring/three";
 import MenuItem from "./MenuItem";
 import Title from "./Title";
 import urFont from "../components/fonts/Box.otf";
-import ModelListItem from "./ModelListItem";
-import ModelListItemPic from "./ModelListItemPic";
-import ModelListClose from "./ModelListClose";
+
 import ModelProfileTitle from "./ModelProfileTitle";
 import ModelSocialElement from "./ModelSocialElement";
 
@@ -20,7 +18,9 @@ function ModelProfile({
   words,
   movement,
   data,
+  fadeInProfile,
   setMovement,
+  profilePage,
   font,
   performerData,
   page,
@@ -29,9 +29,7 @@ function ModelProfile({
   fadeInMods,
   setPage,
   colorScheme,
-})
-
-{
+}) {
   //   console.log(performerData, "performer data");
   //   const xpos = () => {
   //     if (page == "MainMenu") {
@@ -61,11 +59,13 @@ function ModelProfile({
   //   //   const { opacity } = useSpring({ opacity: opas() });
   //   const AnimatedText = animated(Text);
   //   console.log(colorScheme, "color scheme");
- 
 
-  console.log(data,"@@@@")
   return (
-    <animated.mesh position={[0, 0, -0.2]}>
+    <animated.mesh
+      onClick={profilePage}
+      opacity={fadeInProfile}
+      position={[0, 0, -0.2]}
+    >
       <ModelProfileTitle />
       <animated.mesh position={[0, 0.5, -1]}>
         <planeBufferGeometry args={[6, 5.5]} />
@@ -111,8 +111,8 @@ function ModelProfile({
       );
       
       <ModelListClose close={close} fadeInMods={fadeInMods} /> */}
-      
-        <ModelSocialElement />
+
+      <ModelSocialElement />
       <animated.mesh position={[-2, 2.4, -0.94]}>
         <planeBufferGeometry args={[1, 1]} />
         <animated.meshStandardMaterial color="purple" />

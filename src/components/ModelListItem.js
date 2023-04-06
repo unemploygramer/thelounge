@@ -6,7 +6,7 @@ import { useSpring, animated } from "@react-spring/three";
 import MenuItem from "../components/MenuItem";
 import Title from "../components/Title";
 import urFont from "../components/fonts/Box.otf";
-
+import ModelListItemPic from "./ModelListItemPic";
 function ModelListItem({
   tvAnimation,
   MoveTvForward,
@@ -16,15 +16,21 @@ function ModelListItem({
   movement,
   setMovement,
   fadeInMods,
-  triggerIn,
-  triggerOut,
+  name,
   font,
   page,
+  profilePage,
+  pic,
   setPage,
   colorScheme,
 }) {
-
-  
+  const [active, setActive] = useState(false);
+  const triggerIn = () => {
+    setActive(true);
+  };
+  const triggerOut = () => {
+    setActive(false);
+  };
   const xpos = () => {
     if (page == "MainMenu") {
       return 0;
@@ -48,17 +54,34 @@ function ModelListItem({
     }
   };
   const colorChange = () => {
-    if (page == "MainMenu") {
-      return 1;
+    if (active === true) {
+      return colorScheme.primary;
     } else {
-      return 0;
+      return colorScheme.secondary;
+    }
+  };
+  const colorChangeText = () => {
+    if (active === true) {
+      return colorScheme.secondary;
+    } else {
+      return colorScheme.primary;
+    }
+  };
+  const ScaleChange = () => {
+    if (active === true) {
+      return 1.1;
+    } else {
+      return 1;
     }
   };
 
+  const { colorHover } = useSpring({ colorHover: colorChange() });
+  const { HoverText } = useSpring({ HoverText: colorChangeText() });
+  const { BackgroundScale } = useSpring({ BackgroundScale: ScaleChange() });
   const { yRotate } = useSpring({ yRotate: yrot() });
   const { x } = useSpring({ x: xpos() });
   const { opacity } = useSpring({ opacity: opas() });
-  const {colortransaction} = useSpring({})
+  const { colortransaction } = useSpring({});
 
   const loadImage = (path) => {
     return new Promise((resolve, reject) => {
@@ -85,19 +108,37 @@ function ModelListItem({
   useEffect(() => {
     checker();
   }, []);
-  
+  const AnimatedText = animated(Text);
+  const Clicked = () => {
+    setPage("MainMenu");
+  };
   return (
     <animated.mesh
-      position={[0, 1.63,0.2]}
-      
+      onPointerOver={triggerIn}
+      onPointerOut={triggerOut}
+      position={[0, 2.7, 0.2]}
+      scale={BackgroundScale}
+      onClick={profilePage}
     >
-     <planeBufferGeometry args={[4.32, 1]} />
-        <animated.meshStandardMaterial 
-      opacity={fadeInMods}
-      transparent
-  
-  
-        />
+      <ModelListItemPic pic={pic} fadeInMods={fadeInMods} imgLink={imgLink} />
+      <planeBufferGeometry args={[4.32, 1]} />
+      <animated.meshStandardMaterial
+        opacity={fadeInMods}
+        transparent
+        color={colorHover}
+      />
+      <AnimatedText
+        fillOpacity={fadeInMods}
+        position={[0.39, -0.06, 0.24]}
+        scale={[0.3, 0.3, 0.3]}
+        // default
+        anchorX="center" // default
+        anchorY="middle" // default
+        font={urFont}
+        color={HoverText}
+      >
+        {name}
+      </AnimatedText>
     </animated.mesh>
   );
 }

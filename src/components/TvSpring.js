@@ -19,6 +19,8 @@ function TvSpring({
   performerData,
   data,
   key,
+  page,
+  setPage,
   bannerDestination,
 }) {
   const [imageProportion, setImageProportion] = useState(null);
@@ -26,6 +28,7 @@ function TvSpring({
   const [active, setActive] = useState(false);
   const [hoverModel, setHoverModel] = useState(false);
   const [modelPageOpen, setModelPageOpen] = useState(false);
+  const [modelProfile, setModelProfile] = useState(false);
 
   const { carouselRotation } = useSpring({
     from: {
@@ -148,6 +151,13 @@ function TvSpring({
       return 1;
     }
   };
+  const FadeInProfile = () => {
+    if (modelProfile === false) {
+      return 0;
+    } else {
+      return 1;
+    }
+  };
 
   const { y } = useSpring({ y: yMovement() });
   const { x } = useSpring({ x: xMovement() });
@@ -155,7 +165,7 @@ function TvSpring({
   const { yRotate } = useSpring({ yRotate: yRot() });
   const { zRotate } = useSpring({ zRotate: zRot() });
   const { fadeInMods } = useSpring({ fadeInMods: FadeInModels() });
-
+  const { fadeInProfile } = useSpring({ FadeInProfile: FadeInProfile() });
   const loadImage = (path) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -202,7 +212,7 @@ function TvSpring({
     setHoverModel(false);
   };
   const AnimatedText = animated(Text);
-console.log(performerData, "performerdata")
+  console.log(performerData, "performerdata");
 
   return (
     <animated.mesh
@@ -220,10 +230,14 @@ console.log(performerData, "performerdata")
       <ModelList
         colorScheme={colorScheme}
         close={() => setModelPageOpen(!modelPageOpen)}
+        profilePage={() => setModelProfile(!modelProfile)}
         fadeInMods={fadeInMods}
+        fadeInProfile={fadeInProfile}
         key={key}
         data={data}
         performerData={performerData}
+        page={page}
+        setPage={setPage}
       />
       {/* <Text color="black" anchorX="center" anchorY="middle">
         Hello

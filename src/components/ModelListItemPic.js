@@ -75,11 +75,9 @@ function ModelListItemPic({
     checker();
   }, []);
   console.log(pic, "da pick");
-  const texture = useTexture(
-    pic
-  );
+  const texture = useTexture(pic);
   return (
-    <animated.mesh position={[-1.65, 1.61, 0.3]}>
+    <animated.mesh position={[-1.66, 0, .01]}>
       <planeBufferGeometry args={[1, 1]} />
       <animated.meshStandardMaterial
         opacity={fadeInMods}

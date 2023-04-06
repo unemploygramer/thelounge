@@ -65,7 +65,7 @@ function ModelListClose({ movement, setMovement, data, page, colorScheme, fadeIn
         // onClick={(event) => MoveTvForward()}
         ref={ref}
        rotation={[Math.PI*.1,Math.PI * -.07,0]}
-        position={[2,3,1]}
+        position={[2.35,3.9,1]}
         // position={[3.1, 1.1, -4.3]}
         // position-x={3.1}
         // position-z={-4.3}

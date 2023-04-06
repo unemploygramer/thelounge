@@ -18,10 +18,8 @@ function ModelList({
   startNumber,
   words,
   movement,
-  fadeInProfile,
   data,
   setMovement,
-  profilePage,
   font,
   performerData,
   page,
@@ -31,6 +29,7 @@ function ModelList({
   setPage,
   colorScheme,
 }) {
+  const [active, setActive] = useState(-1);
   const [info, setInfo] = useState([]);
   const xpos = () => {
     if (page == "MainMenu") {
@@ -56,33 +55,23 @@ function ModelList({
   let performerNameList = performerData.map((item) => {
     return item.name;
   });
+  console.log(performerNameList.indexOf(active), "perfomer");
+  let indexModel = performerNameList.indexOf(active);
+  const colorChange = () => {
+    if (indexModel == 0) {
+      return colorScheme.secondary;
+    } else {
+      return colorScheme.primary;
+    }
+  };
 
+  const { colorHover } = useSpring({ colorHover: colorChange() });
   return (
-    <animated.mesh position={[0, -1.9, 2]}>
-      {performerData.map((item, key) => {
-        console.log(item, "item!!!!");
-        console.log(key, "key!!!!!");
-        let multi = key * 1.1;
-        return (
-          <animated.mesh position={[0, 0.55 - multi, 0]}>
-            {/* <ModelListItemPic
-              pic={item.profilePic}
-              fadeInMods={fadeInMods}
-              imgLink={imgLink}
-            /> */}
-            <animated.mesh>
-              <ModelListItem
-                profilePage={profilePage}
-                page={page}
-                setPage={setPage}
-                colorScheme={colorScheme}
-                fadeInMods={fadeInMods}
-                name={item.name}
-                pic={item.profilePic}
-                imgLink={imgLink}
-              />
-            </animated.mesh>
-            {/* <AnimatedText
+    <animated.mesh position={[0, -0.5, 2]}>
+ 
+   
+          <animated.mesh position={[0, 0.55 - key, 0]}>
+            <AnimatedText
               fillOpacity={fadeInMods}
               position={[0.34, 1.61, 0.24]}
               scale={[0.3, 0.3, 0.3]}
@@ -90,25 +79,16 @@ function ModelList({
               anchorX="center" // default
               anchorY="middle" // default
               font={urFont}
+              color={colorHover}
 
               // color={ModelTextColor}
             >
               {item.name}
-            </AnimatedText> */}
+            </AnimatedText>
           </animated.mesh>
         );
-      })}
-      <animated.mesh position={[0, 1.7, 0]}>
-        <planeBufferGeometry args={[5, 5]} />
-        <animated.meshStandardMaterial
-          color={colorScheme.third}
-          transparent
-          opacity={fadeInMods}
-        />
-      </animated.mesh>
-      );
-      <ModelListClose close={close} fadeInMods={fadeInMods} />
-      <ModelProfile profilePage={profilePage} fadeInProfile={fadeInProfile} />
+  
+
     </animated.mesh>
   );
 }
