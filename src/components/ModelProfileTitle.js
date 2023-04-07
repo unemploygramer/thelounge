@@ -8,7 +8,7 @@ import Title from "./Title";
 import urFont from "../components/fonts/Box.otf";
 import ModelListItem from "./ModelListItem";
 import ModelListItemPic from "./ModelListItemPic";
-import ModelListClose from "./ModelListClose";
+
 
 function ModelProfileTitle({
   tvAnimation,
@@ -16,6 +16,7 @@ function ModelProfileTitle({
   imgLink,
   startNumber,
   words,
+ 
   movement,
   data,
   setMovement,
@@ -23,6 +24,7 @@ function ModelProfileTitle({
   performerData,
   page,
   close,
+  profileFade,
   key,
   fadeInMods,
   setPage,
@@ -57,16 +59,18 @@ function ModelProfileTitle({
   //   //   const { opacity } = useSpring({ opacity: opas() });
   //   const AnimatedText = animated(Text);
   //   console.log(colorScheme, "color scheme");
+console.log(performerData[0].name, "propro")
 
   const AnimatedText = animated(Text);
   return (
     <animated.mesh position={[0.6, 2.4, 0.7]}>
       <animated.mesh position={[0, 0, -1.55]}>
         <planeBufferGeometry args={[3.7, 1]} />
-        <animated.meshStandardMaterial color="green" />
+        <animated.meshStandardMaterial transparent  opacity={profileFade} color="green" />
       </animated.mesh>
       <AnimatedText
-        fillOpacity={fadeInMods}
+        // fillOpacity={fadeInMods}
+        fillOpacity={profileFade}
         //   position={[0.34, 1.61, 0.24]}
         scale={[0.5, 0.5, 0.5]}
         // default
@@ -78,52 +82,10 @@ function ModelProfileTitle({
 
         // color={ModelTextColor}
       >
-        The Name
+     {performerData[0].name}
       </AnimatedText>
 
-      {/* {performerData.map((item, key) => {
-        console.log(item.profilePic, "name");
-
-        return (
-          <animated.mesh position={[0, 0.55 - key, 0]}>
-            <ModelListItemPic
-              pic={item.profilePic}
-              fadeInMods={fadeInMods}
-              imgLink={imgLink}
-            />
-            <ModelListItem fadeInMods={fadeInMods} />
-            <AnimatedText
-              fillOpacity={fadeInMods}
-              position={[0.34, 1.61, 0.24]}
-              scale={[0.3, 0.3, 0.3]}
-              // default
-              anchorX="center" // default
-              anchorY="middle" // default
-              font={urFont}
-              color="black"
-
-              // color={ModelTextColor}
-            >
-              {item.name}
-            </AnimatedText>
-          </animated.mesh>
-        );
-      })}
-      <animated.mesh position={[0, 0.5, 0]}>
-        <planeBufferGeometry args={[5, 5]} />
-        <animated.meshStandardMaterial
-          color={colorScheme.secondary}
-          transparent
-          opacity={fadeInMods}
-          transparent
-        />
-      </animated.mesh>
-      );
-      <ModelListClose close={close} fadeInMods={fadeInMods} /> */}
-      {/* <animated.mesh position={[0, 0.5, -1.6]}>
-        <planeBufferGeometry args={[5, 5]} />
-        <animated.meshStandardMaterial />
-      </animated.mesh> */}
+     
     </animated.mesh>
   );
 }

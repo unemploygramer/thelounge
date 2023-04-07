@@ -28,8 +28,10 @@ function TvSpring({
   const [active, setActive] = useState(false);
   const [hoverModel, setHoverModel] = useState(false);
   const [modelPageOpen, setModelPageOpen] = useState(false);
-  const [modelProfile, setModelProfile] = useState(false);
-
+  const [openProfile, setOpenProfile]= useState(false)
+  const [selectedProfile, setSelectedProfile] = useState('')
+  
+console.log(selectedProfile, "what is this")
   const { carouselRotation } = useSpring({
     from: {
       carouselRotation: 0,
@@ -151,13 +153,13 @@ function TvSpring({
       return 1;
     }
   };
-  const FadeInProfile = () => {
-    if (modelProfile === false) {
-      return 0;
-    } else {
-      return 1;
-    }
-  };
+const FadeProfile = ()=> {
+  if(openProfile === false) {
+    return 0;
+  } else {
+    return 1;
+  }
+}
 
   const { y } = useSpring({ y: yMovement() });
   const { x } = useSpring({ x: xMovement() });
@@ -165,7 +167,7 @@ function TvSpring({
   const { yRotate } = useSpring({ yRotate: yRot() });
   const { zRotate } = useSpring({ zRotate: zRot() });
   const { fadeInMods } = useSpring({ fadeInMods: FadeInModels() });
-  const { fadeInProfile } = useSpring({ FadeInProfile: FadeInProfile() });
+const {profileFade} = useSpring({profileFade:FadeProfile()})
   const loadImage = (path) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -194,11 +196,21 @@ function TvSpring({
   }, []);
   const texture = useTexture(imgLink);
 
-  console.log(data, "da data");
+  
+  const goToSoLink= (o)=> {
+let perfs = data[o].performers
+
+
+let index = perfs.findIndex(x => x.name ==="Avery Black");
+
+  }
+  console.log(goToSoLink(2),"hypers")
 
   function NewTab() {
     window.open(bannerDestination, "_blank");
   }
+
+ 
   const triggerIn = () => {
     setActive(true);
   };
@@ -212,8 +224,19 @@ function TvSpring({
     setHoverModel(false);
   };
   const AnimatedText = animated(Text);
-  console.log(performerData, "performerdata");
-
+  
+const openProfilePage = (e)=> {
+  setOpenProfile(true)
+  setModelPageOpen(false)
+  setSelectedProfile(e)
+  
+  
+  
+}
+const closeProfilePage = ()=> {
+  setOpenProfile(false)
+  setModelPageOpen(false)
+}
   return (
     <animated.mesh
       // rotation-z={carouselRotation}
@@ -230,9 +253,11 @@ function TvSpring({
       <ModelList
         colorScheme={colorScheme}
         close={() => setModelPageOpen(!modelPageOpen)}
-        profilePage={() => setModelProfile(!modelProfile)}
+      profileFade={profileFade}
         fadeInMods={fadeInMods}
-        fadeInProfile={fadeInProfile}
+        
+    openProfile={(e)=> openProfilePage(e)}
+    closeProfile={()=>closeProfilePage()}
         key={key}
         data={data}
         performerData={performerData}

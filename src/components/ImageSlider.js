@@ -43,12 +43,18 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
     <animated.group position-x={x}>
       {data.map((e, key) => {
         let startLocation = key - 1;
-     console.log(e.performers, "eeee")
+        let performerObject = e.performers[key];
+    
+   let performerData =   data[key].performers.map((item)=> {
+    return item
+     })
+   console.log(data, "dddddd")
 
         return (
           <mesh>
 
           <TvSpring
+          performerData={performerData}
           colorScheme={colorScheme}
           key={key}
           movement={movement}
@@ -56,10 +62,11 @@ function ImageSlider({ data, movement, setMovement, page, setPage, colorScheme }
           words={e.name}
           startNumber={startLocation}
           imgLink={e.link}
-          performerData={e.performers}
+         
           data={data}
           page={page}
           setPage={setPage}
+        
           bannerDestination={data[key].bannerLink}
           />
       

@@ -11,6 +11,8 @@ function ModelListItem({
   tvAnimation,
   MoveTvForward,
   imgLink,
+  openProfile,
+profileFade,
   startNumber,
   words,
   movement,
@@ -112,13 +114,17 @@ function ModelListItem({
   const Clicked = () => {
     setPage("MainMenu");
   };
+  console.log(name, "namename")
   return (
     <animated.mesh
       onPointerOver={triggerIn}
       onPointerOut={triggerOut}
       position={[0, 2.7, 0.2]}
       scale={BackgroundScale}
-      onClick={profilePage}
+   
+      onClick={(e)=> openProfile(name)}
+      transparent
+      opacity={profileFade}
     >
       <ModelListItemPic pic={pic} fadeInMods={fadeInMods} imgLink={imgLink} />
       <planeBufferGeometry args={[4.32, 1]} />

@@ -18,14 +18,17 @@ function ModelList({
   startNumber,
   words,
   movement,
+  closeProfile,
   fadeInProfile,
   data,
   setMovement,
-  profilePage,
+
   font,
   performerData,
   page,
   close,
+ profileFade,
+  openProfile,
   key,
   fadeInMods,
   setPage,
@@ -53,15 +56,12 @@ function ModelList({
   //   const { opacity } = useSpring({ opacity: opas() });
   const AnimatedText = animated(Text);
 
-  let performerNameList = performerData.map((item) => {
-    return item.name;
-  });
+  
 
   return (
     <animated.mesh position={[0, -1.9, 2]}>
       {performerData.map((item, key) => {
-        console.log(item, "item!!!!");
-        console.log(key, "key!!!!!");
+      
         let multi = key * 1.1;
         return (
           <animated.mesh position={[0, 0.55 - multi, 0]}>
@@ -72,7 +72,8 @@ function ModelList({
             /> */}
             <animated.mesh>
               <ModelListItem
-                profilePage={profilePage}
+                openProfile={openProfile}
+                profileFade={profileFade}
                 page={page}
                 setPage={setPage}
                 colorScheme={colorScheme}
@@ -108,7 +109,7 @@ function ModelList({
       </animated.mesh>
       );
       <ModelListClose close={close} fadeInMods={fadeInMods} />
-      <ModelProfile profilePage={profilePage} fadeInProfile={fadeInProfile} />
+      <ModelProfile performerData={performerData} closeProfile={closeProfile} openProfile={openProfile} profileFade={profileFade}/>
     </animated.mesh>
   );
 }

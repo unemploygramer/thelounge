@@ -6,7 +6,7 @@ import { useSpring, animated } from "@react-spring/three";
 import MenuItem from "./MenuItem";
 import Title from "./Title";
 import urFont from "../components/fonts/Box.otf";
-
+import ButtonClose from "./ButtonClose";
 import ModelProfileTitle from "./ModelProfileTitle";
 import ModelSocialElement from "./ModelSocialElement";
 
@@ -15,10 +15,13 @@ function ModelProfile({
   MoveTvForward,
   imgLink,
   startNumber,
+  profileFade,
   words,
+  closeProfile,
   movement,
+  openProfile,
   data,
-  fadeInProfile,
+
   setMovement,
   profilePage,
   font,
@@ -29,93 +32,34 @@ function ModelProfile({
   fadeInMods,
   setPage,
   colorScheme,
+
 }) {
-  //   console.log(performerData, "performer data");
-  //   const xpos = () => {
-  //     if (page == "MainMenu") {
-  //       return 0;
-  //     } else {
-  //       return 10;
-  //     }
-  //   };
-
-  //   const yrot = () => {
-  //     if (page == "MainMenu") {
-  //       return Math.PI * 0;
-  //     } else {
-  //       return Math.PI * -0.5;
-  //     }
-  //   };
-  //   const opas = () => {
-  //     if (page == "MainMenu") {
-  //       return 1;
-  //     } else {
-  //       return 0;
-  //     }
-  //   };
-
-  //   const { yRotate } = useSpring({ yRotate: yrot() });
-  //   const { x } = useSpring({ x: xpos() });
-  //   //   const { opacity } = useSpring({ opacity: opas() });
-  //   const AnimatedText = animated(Text);
-  //   console.log(colorScheme, "color scheme");
-
+ console.log(performerData, ";;;");
   return (
     <animated.mesh
-      onClick={profilePage}
-      opacity={fadeInProfile}
+  
+   
       position={[0, 0, -0.2]}
+      
+  
     >
-      <ModelProfileTitle />
+      <ModelProfileTitle performerData={performerData} profileFade={profileFade} />
       <animated.mesh position={[0, 0.5, -1]}>
         <planeBufferGeometry args={[6, 5.5]} />
-        <animated.meshStandardMaterial color="yellow" />
+        <animated.meshStandardMaterial     
+     
+      opacity={profileFade}
+     transparent color="gold" />
       </animated.mesh>
-      {/* {performerData.map((item, key) => {
-        console.log(item.profilePic, "name");
+  <ButtonClose onClick={closeProfile} opacity={profileFade}
+ rotation={[Math.PI*.1,Math.PI * -.15,Math.PI*-.05]}  position={[2.8,3.3,0]}/>
 
-        return (
-          <animated.mesh position={[0, 0.55 - key, 0]}>
-            <ModelListItemPic
-              pic={item.profilePic}
-              fadeInMods={fadeInMods}
-              imgLink={imgLink}
-            />
-            <ModelListItem fadeInMods={fadeInMods} />
-            <AnimatedText
-              fillOpacity={fadeInMods}
-              position={[0.34, 1.61, 0.24]}
-              scale={[0.3, 0.3, 0.3]}
-              // default
-              anchorX="center" // default
-              anchorY="middle" // default
-              font={urFont}
-              color="black"
-
-              // color={ModelTextColor}
-            >
-              {item.name}
-            </AnimatedText>
-          </animated.mesh>
-        );
-      })}
-      <animated.mesh position={[0, 0.5, 0]}>
-        <planeBufferGeometry args={[5, 5]} />
-        <animated.meshStandardMaterial
-          color={colorScheme.secondary}
-          transparent
-          opacity={fadeInMods}
-          transparent
-        />
-      </animated.mesh>
-      );
-      
-      <ModelListClose close={close} fadeInMods={fadeInMods} /> */}
-
-      <ModelSocialElement />
+      <ModelSocialElement  words={"twiitter"}  transparent
+      profileFade={profileFade} />
       <animated.mesh position={[-2, 2.4, -0.94]}>
         <planeBufferGeometry args={[1, 1]} />
-        <animated.meshStandardMaterial color="purple" />
+        <animated.meshStandardMaterial   transparent
+      opacity={profileFade} color="purple" />
       </animated.mesh>
     </animated.mesh>
   );

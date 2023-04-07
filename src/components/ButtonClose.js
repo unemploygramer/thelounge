@@ -16,7 +16,7 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import Arrow from "../assets/arrow.png";
 import urFont from "../components/fonts/Box.otf";
 import Zebru from "../assets/zebru.jpg";
-function ModelListClose({ movement, setMovement, data, page, colorScheme, fadeInMods, close }) {
+function ButtonClose({ movement,opacity, position,onClick,rotation, setMovement, data, page, colorScheme, fadeInMods, close }) {
   const ref = useRef();
   const [active, setActive] = useState(false);
   const { scale } = useSpring({ scale: active ? 1.5 : 1 });
@@ -26,15 +26,9 @@ function ModelListClose({ movement, setMovement, data, page, colorScheme, fadeIn
   const texture = useLoader(TextureLoader, Arrow);
   const AnimatedText = animated(Text);
   useFrame((state, delta) => (ref.current.rotation.z += delta * 0.5));
-//   console.log(movement, "movement");
-//   console.log(data.length);
+
   const handleClick = () => {
-    // let lastItem = data.length - 1;
-    // if (movement < lastItem) {
-    //   setMovement(movement + 1);
-    // } else {
-    //   return;
-    // }
+
   };
   const triggerIn = () => {
     setActive(true);
@@ -43,30 +37,21 @@ function ModelListClose({ movement, setMovement, data, page, colorScheme, fadeIn
     setActive(false);
   };
 
-//   const ypos = () => {
-//     if (page === "ImageSlider") {
-//       return 1.1;
-//     } else {
-//       return -20;
-//     }
-//   };
-//   const { y } = useSpring({ y: ypos() });
-//   const { opacity } = useSpring({ opacity: active ? 1 : 0.7 });
-//   const { colorChange } = useSpring({
-//     colorChange: active ? colorScheme.third : colorScheme.primary,
-//   });
+//   props
+//  position={[2.35,3.9,1]}
+//  rotation={[Math.PI*.1,Math.PI * -.07,0]}
+
   return (
     <Interactive onSelect={handleClick} onHover={triggerIn} onBlur={triggerOut}>
       <animated.mesh
         onPointerOver={() => triggerIn()}
         onPointerOut={() => triggerOut()}
         scale={scale}
-        onClick={close}
-        
+        onClick={onClick}
         // onClick={(event) => MoveTvForward()}
         ref={ref}
-       rotation={[Math.PI*.1,Math.PI * -.15,0]}
-        position={[2.35,3.9,1]}
+       rotation={rotation}
+        position={position}
         // position={[3.1, 1.1, -4.3]}
         // position-x={3.1}
         // position-z={-4.3}
@@ -74,12 +59,12 @@ function ModelListClose({ movement, setMovement, data, page, colorScheme, fadeIn
       >
         <boxGeometry args={[0.5, .5, 0.5]} />
         <animated.meshStandardMaterial
-          opacity={fadeInMods}
+          opacity={opacity}
           transparent
         //   color={colorChange}
         />
           <AnimatedText
-   fillOpacity={fadeInMods}
+  fillOpacity={opacity}
       position={[0,0,.3]}
       scale={[0.3, 0.3, 0.3]}
       // default
@@ -96,4 +81,4 @@ function ModelListClose({ movement, setMovement, data, page, colorScheme, fadeIn
     </Interactive>
   );
 }
-export default ModelListClose;
+export default ButtonClose;
