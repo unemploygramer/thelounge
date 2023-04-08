@@ -16,7 +16,7 @@ function ModelProfileTitle({
   imgLink,
   startNumber,
   words,
- 
+ performerName,
   movement,
   data,
   setMovement,
@@ -82,7 +82,7 @@ console.log(performerData[0].name, "propro")
 
         // color={ModelTextColor}
       >
-     {performerData[0].name}
+     {performerName}
       </AnimatedText>
 
      

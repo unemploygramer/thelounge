@@ -15,6 +15,7 @@ function ModelSocialElement({
   MoveTvForward,
   imgLink,
   startNumber,
+  twitterLink,
   transparent,
   profileFade,
   words,
@@ -60,10 +61,15 @@ function ModelSocialElement({
   //   //   const { opacity } = useSpring({ opacity: opas() });
   //   const AnimatedText = animated(Text);
   //   console.log(colorScheme, "color scheme");
+const visitTwitter = ()=> {
+  window.open(twitterLink, "_blank");
+}
+
+
 
   const AnimatedText = animated(Text);
   return (
-    <animated.mesh position={[0, 1.07, .68]} onClick={onClick}>
+    <animated.mesh position={[0, 1.07, .68]} onClick={()=> visitTwitter()}>
       <animated.mesh position={[0, 0, -1.56]}>
         <planeBufferGeometry args={[5, 1.2]} />
         <animated.meshStandardMaterial   transparent

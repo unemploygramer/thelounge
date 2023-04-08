@@ -233,6 +233,10 @@ const openProfilePage = (e)=> {
   
   
 }
+const openModelPage = (e)=> {
+  setModelPageOpen(true);
+  setOpenProfile(false)
+}
 const closeProfilePage = ()=> {
   setOpenProfile(false)
   setModelPageOpen(false)
@@ -251,6 +255,7 @@ const closeProfilePage = ()=> {
       position={[0, 1, -3.5]}
     >
       <ModelList
+      selectedProfile={selectedProfile}
         colorScheme={colorScheme}
         close={() => setModelPageOpen(!modelPageOpen)}
       profileFade={profileFade}
@@ -278,7 +283,7 @@ const closeProfilePage = ()=> {
       <animated.mesh
         onPointerOver={hoverModelIn}
         onPointerOut={hoverModelOut}
-        onClick={() => setModelPageOpen(!modelPageOpen)}
+        onClick={() => openModelPage()}
         position={[-3.2, 2.1, 0.2]}
       >
         <planeBufferGeometry args={[2.2, 0.7]} />

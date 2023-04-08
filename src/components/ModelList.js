@@ -12,6 +12,7 @@ import ModelListClose from "./ModelListClose";
 import ModelProfile from "./ModelProfile";
 
 function ModelList({
+  selectedProfile,
   tvAnimation,
   MoveTvForward,
   imgLink,
@@ -109,7 +110,7 @@ function ModelList({
       </animated.mesh>
       );
       <ModelListClose close={close} fadeInMods={fadeInMods} />
-      <ModelProfile performerData={performerData} closeProfile={closeProfile} openProfile={openProfile} profileFade={profileFade}/>
+      <ModelProfile   selectedProfile={selectedProfile} performerData={performerData} closeProfile={closeProfile} openProfile={openProfile} profileFade={profileFade}/>
     </animated.mesh>
   );
 }

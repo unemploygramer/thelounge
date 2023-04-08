@@ -27,6 +27,7 @@ function ModelProfile({
   font,
   performerData,
   page,
+  selectedProfile,
   close,
   key,
   fadeInMods,
@@ -35,6 +36,18 @@ function ModelProfile({
 
 }) {
  console.log(performerData, ";;;");
+let performerArray =  performerData.filter(function(el){
+  return el.name === selectedProfile
+  // return el.name === selectedProfile
+ })
+let performerName;
+let twitterLink;
+if (performerArray.length > 0 ) {
+
+performerName =performerArray[0].name
+twitterLink = performerArray[0].socials.twitter
+
+}
   return (
     <animated.mesh
   
@@ -43,7 +56,7 @@ function ModelProfile({
       
   
     >
-      <ModelProfileTitle performerData={performerData} profileFade={profileFade} />
+      <ModelProfileTitle performerName={performerName} performerData={performerData} profileFade={profileFade} />
       <animated.mesh position={[0, 0.5, -1]}>
         <planeBufferGeometry args={[6, 5.5]} />
         <animated.meshStandardMaterial     
@@ -54,7 +67,7 @@ function ModelProfile({
   <ButtonClose onClick={closeProfile} opacity={profileFade}
  rotation={[Math.PI*.1,Math.PI * -.15,Math.PI*-.05]}  position={[2.8,3.3,0]}/>
 
-      <ModelSocialElement  words={"twiitter"}  transparent
+      <ModelSocialElement twitterLink={twitterLink}   words={"twitter"}  transparent
       profileFade={profileFade} />
       <animated.mesh position={[-2, 2.4, -0.94]}>
         <planeBufferGeometry args={[1, 1]} />
