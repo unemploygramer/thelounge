@@ -15,7 +15,8 @@ function ModelSocialElement({
   MoveTvForward,
   imgLink,
   startNumber,
-  twitterLink,
+  position,
+  Link,
   transparent,
   profileFade,
   words,
@@ -61,31 +62,59 @@ function ModelSocialElement({
   //   //   const { opacity } = useSpring({ opacity: opas() });
   //   const AnimatedText = animated(Text);
   //   console.log(colorScheme, "color scheme");
+
+  const [active, setActive] = useState(false);
+  const triggerIn = () => {
+    setActive(true);
+  };
+  const triggerOut = () => {
+    setActive(false);
+  };
+  const colorChange = () => {
+    if (active === true) {
+      return colorScheme.primary;
+    } else {
+      return colorScheme.secondary;
+    }
+  };
+  const colorChangeText = () => {
+    if (active === true) {
+      return colorScheme.secondary;
+    } else {
+      return colorScheme.primary;
+    }
+  };
+
+  console.log(colorScheme, "uuu")
+  const { colorHover } = useSpring({ colorHover: colorChange() });
+  const { HoverText } = useSpring({ HoverText: colorChangeText() });
+ 
 const visitTwitter = ()=> {
-  window.open(twitterLink, "_blank");
+  window.open(Link, "_blank");
 }
 
 
 
   const AnimatedText = animated(Text);
   return (
-    <animated.mesh position={[0, 1.07, .68]} onClick={()=> visitTwitter()}>
+    <animated.mesh  onPointerOver={triggerIn}
+    onPointerOut={triggerOut}  position={position} onClick={()=> visitTwitter()}>
       <animated.mesh position={[0, 0, -1.56]}>
-        <planeBufferGeometry args={[5, 1.2]} />
+        <planeBufferGeometry args={[5, .94]} />
         <animated.meshStandardMaterial   transparent
-      opacity={profileFade} color="pink" />
+      opacity={profileFade} color={colorHover} />
       </animated.mesh>
       
       <AnimatedText
        fillOpacity={profileFade}
         //   position={[0.34, 1.61, 0.24]}
-        scale={[0.5, 0.5, 0.5]}
+        scale={[0.4, 0.4, 0.4]}
         // default
         position={[0, 0, -1.5]}
         anchorX="center" // default
         anchorY="middle" // default
         font={urFont}
-        color="black"
+        color={HoverText}
 
         // color={ModelTextColor}
       >

@@ -110,7 +110,7 @@ function ModelList({
       </animated.mesh>
       );
       <ModelListClose close={close} fadeInMods={fadeInMods} />
-      <ModelProfile   selectedProfile={selectedProfile} performerData={performerData} closeProfile={closeProfile} openProfile={openProfile} profileFade={profileFade}/>
+      <ModelProfile colorScheme={colorScheme}  selectedProfile={selectedProfile} performerData={performerData} closeProfile={closeProfile} openProfile={openProfile} profileFade={profileFade}/>
     </animated.mesh>
   );
 }

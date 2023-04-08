@@ -106,6 +106,7 @@ const data = [
         socials: {
           twitter: "https://twitter.com/MissVioletStarr",
           WebSite: "https://linktr.ee/missvioletstarr",
+          onlyFans: "https://onlyfans.com/missvioletstarr",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg",
@@ -122,8 +123,9 @@ const data = [
       {
         name: "Hazel Moore",
         socials: {
-          twitter: "https://twitter.com/MissVioletStarr",
-          WebSite: "https://linktr.ee/missvioletstarr",
+          twitter: "https://twitter.com/hazelnuttmoore?",
+          WebSite: "https://onlyfans.com/hazelmoore3x",
+          onlyFans: "https://onlyfans.com/hazelmoore3x",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20200628092705/Hazel-Moore-profile.jpg",
@@ -131,8 +133,9 @@ const data = [
       {
         name: "Kira Noir",
         socials: {
-          twitter: "https://twitter.com/MissVioletStarr",
-          WebSite: "https://linktr.ee/missvioletstarr",
+          twitter: "https://twitter.com/thekiranoir",
+          WebSite: "https://linktr.ee/TheKiraNoir",
+          onlyFans: "https://onlyfans.com/thekiranoir",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20191223072908/Kira-Noir-profile.jpg",
@@ -151,6 +154,7 @@ const data = [
         socials: {
           twitter: "https://twitter.com/MissVioletStarr",
           WebSite: "https://linktr.ee/missvioletstarr",
+          onlyFans: "https://onlyfans.com/missvioletstarr",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20200625203948/Sybil-A-profile.jpg",
@@ -169,6 +173,7 @@ const data = [
         socials: {
           twitter: "https://twitter.com/MissVioletStarr",
           WebSite: "https://linktr.ee/missvioletstarr",
+          onlyFans: "https://onlyfans.com/missvioletstarr",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20200226191557/Laney-Grey-profile.jpg",
@@ -187,6 +192,7 @@ const data = [
         socials: {
           twitter: "https://twitter.com/MissVioletStarr",
           WebSite: "https://linktr.ee/missvioletstarr",
+          onlyFans: "https://onlyfans.com/missvioletstarr",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20200228085218/Avery-Black-profile.jpg",
@@ -205,6 +211,7 @@ const data = [
         socials: {
           twitter: "https://twitter.com/MissVioletStarr",
           WebSite: "https://linktr.ee/missvioletstarr",
+          onlyFans: "https://onlyfans.com/missvioletstarr",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20200425174325/Daphne-Dare-profile.jpg",
@@ -214,6 +221,7 @@ const data = [
         socials: {
           twitter: "https://twitter.com/MissVioletStarr",
           WebSite: "https://linktr.ee/missvioletstarr",
+          onlyFans: "https://onlyfans.com/missvioletstarr",
         },
         profilePic:
           "https://mcdn.vrporn.com/files/20200216081236/Kenzie-Madison-profile.jpg",

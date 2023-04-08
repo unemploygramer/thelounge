@@ -59,14 +59,47 @@ function ModelProfileTitle({
   //   //   const { opacity } = useSpring({ opacity: opas() });
   //   const AnimatedText = animated(Text);
   //   console.log(colorScheme, "color scheme");
-console.log(performerData[0].name, "propro")
+  const [active, setActive] = useState(false);
+  const triggerIn = () => {
+    setActive(true);
+  };
+  const triggerOut = () => {
+    setActive(false);
+  };
+  const colorChange = () => {
+    if (active === true) {
+      return colorScheme.primary;
+    } else {
+      return colorScheme.secondary;
+    }
+  };
+  const colorChangeText = () => {
+    if (active === true) {
+      return colorScheme.secondary;
+    } else {
+      return colorScheme.primary;
+    }
+  };
+  const ScaleChange = () => {
+    if (active === true) {
+      return 1.1;
+    } else {
+      return 1;
+    }
+  };
+
+  console.log(colorScheme, "uuu")
+  const { BackgroundScale } = useSpring({ BackgroundScale: ScaleChange() });
+  const { colorHover } = useSpring({ colorHover: colorChange() });
+  const { HoverText } = useSpring({ HoverText: colorChangeText() });
 
   const AnimatedText = animated(Text);
   return (
-    <animated.mesh position={[0.6, 2.4, 0.7]}>
-      <animated.mesh position={[0, 0, -1.55]}>
+    <animated.mesh   onPointerOver={triggerIn}
+    onPointerOut={triggerOut} position={[0.6, 2.4, 0.7]}>
+      <animated.mesh  position={[0, 0, -1.55]}>
         <planeBufferGeometry args={[3.7, 1]} />
-        <animated.meshStandardMaterial transparent  opacity={profileFade} color="green" />
+        <animated.meshStandardMaterial transparent  opacity={profileFade} color={colorHover} />
       </animated.mesh>
       <AnimatedText
         // fillOpacity={fadeInMods}
@@ -78,7 +111,7 @@ console.log(performerData[0].name, "propro")
         anchorX="center" // default
         anchorY="middle" // default
         font={urFont}
-        color="black"
+        color={HoverText}
 
         // color={ModelTextColor}
       >

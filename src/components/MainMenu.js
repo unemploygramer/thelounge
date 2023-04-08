@@ -257,7 +257,7 @@ function MainMenu({
       <animated.meshStandardMaterial
         opacity={opacity}
         transparent
-        color="purple"
+     
         attach="material"
         // map={texture}
       /> */}

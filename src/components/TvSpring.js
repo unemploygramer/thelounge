@@ -309,7 +309,7 @@ const closeProfilePage = ()=> {
         onPointerOver={triggerIn}
         onPointerOut={triggerOut}
       >
-        <planeBufferGeometry args={[5 * imageProportion, 0.7]} />
+        <planeBufferGeometry args={[3 * imageProportion, 0.8]} />
         <animated.meshStandardMaterial
           opacity={opacity}
           transparent
