@@ -21,7 +21,7 @@ function ModelProfile({
   movement,
   openProfile,
   data,
-
+  profileState,
   setMovement,
   profilePage,
   font,
@@ -102,11 +102,11 @@ if (performerArray.length > 0 ) {
 
       {/* <ModelSocialElement colorScheme={colorScheme} twitterLink={twitterLink}   words={"twitter"}  transparent
       profileFade={profileFade} /> */}
-      <ModelSocialElement position={[0, 1.2, .68]} colorScheme={colorScheme} Link={twitterLink}   words={"twitter"}  transparent
+      <ModelSocialElement  profileState={profileState} position={[0, 1.2, .68]} colorScheme={colorScheme} Link={twitterLink}   words={"twitter"}  transparent
       profileFade={profileFade} />
-      <ModelSocialElement position={[0, .08, .68]} colorScheme={colorScheme} Link={oFLink}   words={"only fans"}  transparent
+      <ModelSocialElement  profileState={profileState} position={[0, .08, .68]} colorScheme={colorScheme} Link={oFLink}   words={"only fans"}  transparent
       profileFade={profileFade} />
-      <ModelSocialElement position={[0, -1.04, .68]} colorScheme={colorScheme} Link={personalWebsite}   words={"Website"}  transparent
+      <ModelSocialElement  profileState={profileState} position={[0, -1.04, .68]} colorScheme={colorScheme} Link={personalWebsite}   words={"Website"}  transparent
       profileFade={profileFade} />
       <animated.mesh position={[-2, 2.4, -0.94]}>
         <planeBufferGeometry args={[1, 1]} />

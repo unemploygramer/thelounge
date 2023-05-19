@@ -30,6 +30,7 @@ function ModelList({
   close,
  profileFade,
   openProfile,
+  profileState,
   key,
   fadeInMods,
   setPage,
@@ -82,6 +83,7 @@ function ModelList({
                 name={item.name}
                 pic={item.profilePic}
                 imgLink={imgLink}
+                profileState={profileState}
               />
             </animated.mesh>
             {/* <AnimatedText
@@ -110,7 +112,7 @@ function ModelList({
       </animated.mesh>
       );
       <ModelListClose close={close} fadeInMods={fadeInMods} />
-      <ModelProfile colorScheme={colorScheme}  selectedProfile={selectedProfile} performerData={performerData} closeProfile={closeProfile} openProfile={openProfile} profileFade={profileFade}/>
+      <ModelProfile  profileState={profileState} colorScheme={colorScheme}  selectedProfile={selectedProfile} performerData={performerData} closeProfile={closeProfile} openProfile={openProfile} profileFade={profileFade}/>
     </animated.mesh>
   );
 }

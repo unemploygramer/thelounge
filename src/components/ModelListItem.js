@@ -12,6 +12,7 @@ function ModelListItem({
   MoveTvForward,
   imgLink,
   openProfile,
+  profileState,
 profileFade,
   startNumber,
   words,
@@ -126,7 +127,7 @@ profileFade,
       transparent
       opacity={profileFade}
     >
-      <ModelListItemPic pic={pic} fadeInMods={fadeInMods} imgLink={imgLink} />
+      <ModelListItemPic  pic={pic} fadeInMods={fadeInMods} imgLink={imgLink} />
       <planeBufferGeometry args={[4.32, 1]} />
       <animated.meshStandardMaterial
         opacity={fadeInMods}

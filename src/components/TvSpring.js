@@ -240,6 +240,12 @@ let index = perfs.findIndex(x => x.name ==="Avery Black");
       console.log("hey no")
     }
   }
+  const GoToTitle = ()=> {
+if(modelPageOpen === false && openProfile === false) {
+  return NewTab();
+}
+
+  }
 
  
   const triggerIn = () => {
@@ -291,6 +297,7 @@ const closeProfilePage = ()=> {
         close={() => setModelPageOpen(!modelPageOpen)}
       profileFade={profileFade}
         fadeInMods={fadeInMods}
+        profileState={openProfile}
         
     openProfile={(e)=> openProfilePage(e)}
     closeProfile={()=>closeProfilePage()}
@@ -335,7 +342,7 @@ const closeProfilePage = ()=> {
       <animated.mesh
         // onPointerOver={() => triggerIn()}
         // onPointerOut={() => triggerOut()}
-        onClick={() => NewTab()}
+        onClick={() => GoToTitle()}
         position={[0, -2.14, 0.1]}
         onPointerOver={triggerIn}
         onPointerOut={triggerOut}

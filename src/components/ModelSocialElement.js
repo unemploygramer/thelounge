@@ -12,6 +12,7 @@ import ModelListItemPic from "./ModelListItemPic";
 
 function ModelSocialElement({
   tvAnimation,
+  profileState,
   MoveTvForward,
   imgLink,
   startNumber,
@@ -99,13 +100,18 @@ function ModelSocialElement({
   }
 
 const visitTwitter = ()=> {
-  window.open(Link, "_blank");
+  if(movement=== startNumber &&  profileState) {
+
     if(isValidUrl(Link)) {
-      console.log("hey ho")
+   
            return window.open(Link, "_blank");
     } else {
-      console.log("hey no")
+    
     }
+  } else {
+    console.log("no 2 both")
+  }
+  // window.open(Link, "_blank");
 }
  
 
@@ -116,9 +122,9 @@ const visitTwitter = ()=> {
   return (
     <animated.mesh  onPointerOver={triggerIn}
     onPointerOut={triggerOut}  position={position}
-     onClick={()=> visitTwitter()}
+
      >
-      <animated.mesh position={[0, 0, -1.56]}>
+      <animated.mesh      onClick={()=> visitTwitter()} position={[0, 0, -1.56]}>
         <planeBufferGeometry args={[5, .94]} />
         <animated.meshStandardMaterial   transparent
       opacity={profileFade} color={colorHover} />

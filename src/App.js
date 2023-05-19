@@ -74,25 +74,6 @@ const colorScheme = {
   third: "gold",
 };
 
-// const data = [
-//   {
-//     id: 1,
-//     name: "Bee Bop",
-//     link: "https://mcdn.vrporn.com/files/20230402073558/Cowboy-Bebop-Feye-Valentine-A-XXX-Parody-Violet-Starr-VRCosplayX-vr-porn-video-640x364.jpg",
-//     type: "pic",
-//     bannerLink: "https://vrporn.com/cowboy-bebop-feye-valentine-a-xxx-parody/",
-//     performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
-//   },
-//   {
-//     id: 1,
-//     name: "the last of us",
-//     link: "https://mcdn.vrporn.com/files/20200624180852/The-Last-Of-Us-A-XXX-Parody-VRCosplayX-Kira-Noir-Hazel-Moore-vr-porn-video-vrporn.com-virtual-reality7-640x364.jpg",
-//     type:"pic",
-//     bannerLink: "https://vrporn.com/the-last-of-us-a-xxx-parody/",
-//     performers:[{name:"violet Star", socials:{twitter: "https://twitter.com/MissVioletStarr" ,WebSite:"https://linktr.ee/missvioletstarr"}, profilePic: "https://mcdn.vrporn.com/files/20200709075842/Violet-Starr-profile.jpg"}]
-//   },
-
-// ];
 const data = [
   {
     id: 1,
