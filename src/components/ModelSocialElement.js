@@ -89,16 +89,35 @@ function ModelSocialElement({
   const { colorHover } = useSpring({ colorHover: colorChange() });
   const { HoverText } = useSpring({ HoverText: colorChangeText() });
  
+  function isValidUrl(string) {
+    try {
+      new URL(string);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
 const visitTwitter = ()=> {
   window.open(Link, "_blank");
+    if(isValidUrl(Link)) {
+      console.log("hey ho")
+           return window.open(Link, "_blank");
+    } else {
+      console.log("hey no")
+    }
 }
+ 
+
 
 
 
   const AnimatedText = animated(Text);
   return (
     <animated.mesh  onPointerOver={triggerIn}
-    onPointerOut={triggerOut}  position={position} onClick={()=> visitTwitter()}>
+    onPointerOut={triggerOut}  position={position}
+     onClick={()=> visitTwitter()}
+     >
       <animated.mesh position={[0, 0, -1.56]}>
         <planeBufferGeometry args={[5, .94]} />
         <animated.meshStandardMaterial   transparent

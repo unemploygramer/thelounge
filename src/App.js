@@ -166,7 +166,7 @@ const data = [
     name: "sweet genie",
     link: "https://mcdn.vrporn.com/files/20220108073103/Sweet-Genie-Laney-Grey-VRConk-vr-porn-video-640x364.jpg",
     type: "video",
-    bannerLink: "https://vrporn.com/sweet-genie/",
+    bannerLink: "https://vrporn.com/sweet-genie",
     performers: [
       {
         name: "Laney Grey",
@@ -329,50 +329,28 @@ function App() {
       <Canvas>
         <Stars />
         {/* <ambientLight/> */}
-        {/* <Back /> */}
-        {/* <Right />
-        <Left /> */}
-        //working tv sliders
-        {/* <TV1 MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />
-        <TV imgLink="https://cdni.pornpics.com/1280/1/306/80647930/80647930_004_e3b4.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} /> */}
+
+
+
         {/* <Rimlight /> */}
         {/* <KeyLight /> */}
         <FillLight />
         <BackLight />
         <SpotLazer />
-        {/* <Room /> */}
-        {/* <Image /> */}
-        {/* <TV imgLink="https://cdni.pornpics.com/1280/1/74/27338545/27338545_002_9883.jpg" MoveTvForward={MoveTvForward} tvAnimation={tvAnimation} />  */}
+   
         <NarrowLight />
         <Controls dynamic={heightMultiple} />
-        {/* <TheCam /> */}
-        {/* <Canvas camera={{ position: [0, 5, 0], rotation: [30, 0, 0] }}>  */}
-        {/* <Grid size={10} /> */}
-        {/* <OrbitControls /> */}
-        {/* {data.map((e, key) => {
-          let startLocation = key - 1;
-          return (
-            <TvSpring
-              movement={movement}
-              setMovement={setMovement}
-              words={e.name}
-              startNumber={startLocation}
-              imgLink={e.link}
-            /> 
-          );
-        })} */}
+ 
         <WhiteRoom />
         <XR>
-          {/* <TvVideo/> */}
-          {/* {/* <LeftButton movement={movement} setMovement={setMovement} MoveTvBackward={MoveTvBackward}/> */}
+       
           <RightButton
             colorScheme={colorScheme}
             movement={movement}
             setMovement={setMovement}
             data={data}
             page={page}
-          />{" "}
-          */}
+          />
           <LeftButton
             colorScheme={colorScheme}
             data={data}
@@ -388,7 +366,7 @@ function App() {
             setPage={setPage}
             data={data}
           />
-          {/* <GameRoom /> */}
+        
           <Title
             position={[0, 6.12, -9]}
             opacity={1}
@@ -398,14 +376,9 @@ function App() {
             page={page}
             colorScheme={colorScheme}
           />
-          {/* <Title font={urFont} words="The Title" /> */}
+
           <Controllers />
-          {/* <Button position={[3, 1, -3]} />
-          <ScrollControls horizontal={true} pages={3} damping={0.1}>
-            <Scroll>
-              <Boxer position={[0, 1, -3]} />
-            </Scroll>
-          </ScrollControls> */}
+        
           <Controllers
             /** Optional material props to pass to controllers' ray indicators */
             rayMaterial={{ color: colorScheme.primary }}
@@ -418,7 +391,7 @@ function App() {
             setPage={setPage}
             font={urFont}
           />
-          {/* <GroundPlane /> */}
+      
         </XR>
       </Canvas>
     </div>

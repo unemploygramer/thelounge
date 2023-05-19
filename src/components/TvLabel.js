@@ -22,7 +22,9 @@ function TvLabel({ MoveTvBackward, words, color, click,triggerIn,triggerOut,colo
   //   useFrame((state, delta) => (ref.current.rotation.y -= delta * 0.5));
   const AnimatedText = animated(Text);
   return (
-    <mesh    onClick={(event) => click()} ref={ref}>
+    <mesh   
+   
+      ref={ref}>
       <AnimatedText
         position={[0, -2.2, 0.2]}
         scale={[0.5, 0.5, 0.5]}

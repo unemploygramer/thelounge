@@ -30,6 +30,7 @@ function TvSpring({
   const [modelPageOpen, setModelPageOpen] = useState(false);
   const [openProfile, setOpenProfile]= useState(false)
   const [selectedProfile, setSelectedProfile] = useState('')
+  const [checkedImage, setCheckedImage] = useState('https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg')
   
 console.log(selectedProfile, "what is this")
   const { carouselRotation } = useSpring({
@@ -190,11 +191,26 @@ const {profileFade} = useSpring({profileFade:FadeProfile()})
     let proportions = width / height;
 
     setImageProportion(proportions);
+
+    function checkImage(imageSrc, good, bad) {
+      var img = new Image();
+      img.onload = good; 
+      img.onerror = bad;
+      img.src = imageSrc;
+  }
+  
+  checkImage(imgLink, function(){ setCheckedImage(imgLink) }, function(){ setCheckedImage("https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"); } );
   }
   useEffect(() => {
     checker();
-  }, []);
-  const texture = useTexture(imgLink);
+  }, [checkedImage]);
+
+  
+
+
+  // const texture = useTexture(imgLink);
+  const texture = useTexture(checkedImage);
+
 
   
   const goToSoLink= (o)=> {
@@ -205,9 +221,24 @@ let index = perfs.findIndex(x => x.name ==="Avery Black");
 
   }
   console.log(goToSoLink(2),"hypers")
-
+  function isValidUrl(string) {
+    try {
+      new URL(string);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+  
   function NewTab() {
-    window.open(bannerDestination, "_blank");
+    // console.log("new tab ran")
+    //  return window.open(bannerDestination, "_blank");
+    if(isValidUrl(bannerDestination)) {
+      console.log("hey ho")
+           return window.open(bannerDestination, "_blank");
+    } else {
+      console.log("hey no")
+    }
   }
 
  
@@ -274,7 +305,7 @@ const closeProfilePage = ()=> {
       </Text> */}
       <TvLabel
         colorScheme={colorScheme}
-        click={NewTab}
+   
         color={TextColor}
         words={words}
         triggerIn={triggerIn}
@@ -301,7 +332,7 @@ const closeProfilePage = ()=> {
         </AnimatedText>
       </animated.mesh>
 
-      <mesh
+      <animated.mesh
         // onPointerOver={() => triggerIn()}
         // onPointerOut={() => triggerOut()}
         onClick={() => NewTab()}
@@ -315,7 +346,7 @@ const closeProfilePage = ()=> {
           transparent
           color={TitleBackgroundColor}
         />
-      </mesh>
+      </animated.mesh>
       <planeBufferGeometry attach="geometry" args={[5 * imageProportion, 5]} />
       <meshStandardMaterial transparent attach="material" map={texture} />
     </animated.mesh>
