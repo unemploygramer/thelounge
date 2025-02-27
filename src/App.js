@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import * as THREE from "three";
 import "./App.css";
 import Boxer from "./components/Boxer";
+import AgeVerification from "./components/AgeVerification";
+
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import Grid from "./components/Grid";
 import Button from "./components/Button";
@@ -9,6 +11,8 @@ import { Room } from "./components/Room";
 import Title from "./components/Title";
 import SpotLazer from "./components/Lighting/SpotLazer";
 import ImageSlider from "./components/ImageSlider";
+
+
 import {
   VRButton,
   ARButton,
@@ -232,6 +236,7 @@ function App() {
   const { height, width } = useWindowDimensions();
   const [movement, setMovement] = useState(0);
   const [page, setPage] = useState("MainMenu");
+    const [isVerified, setIsVerified] = useState(false);
 
   let CameraZ;
   let cameraY;
@@ -304,77 +309,68 @@ function App() {
     );
   }
 
-  return (
+
+ return (
     <div className="App">
-      <VRButton />
-      <Canvas>
-        <Stars />
-        {/* <ambientLight/> */}
-
-
-
-        {/* <Rimlight /> */}
-        {/* <KeyLight /> */}
-        <FillLight />
-        <BackLight />
-        <SpotLazer />
-   
-        <NarrowLight />
-        <Controls dynamic={heightMultiple} />
- 
-        <WhiteRoom />
-        <XR>
-       
-          <RightButton
-            colorScheme={colorScheme}
-            movement={movement}
-            setMovement={setMovement}
-            data={data}
-            page={page}
-          />
-          <LeftButton
-            colorScheme={colorScheme}
-            data={data}
-            movement={movement}
-            setMovement={setMovement}
-            page={page}
-          />
-          <ImageSlider
-            colorScheme={colorScheme}
-            movement={movement}
-            setMovement={setMovement}
-            page={page}
-            setPage={setPage}
-            data={data}
-          />
-        
-          <Title
-            position={[0, 6.12, -9]}
-            opacity={1}
-            font={urFont}
-            words="The Title"
-            setPage={setPage}
-            page={page}
-            colorScheme={colorScheme}
-          />
-
-          <Controllers />
-        
-          <Controllers
-            /** Optional material props to pass to controllers' ray indicators */
-            rayMaterial={{ color: colorScheme.primary }}
-            /** Whether to hide controllers' rays on blur. Default is `false` */
-            hideRaysOnBlur={false}
-          />
-          <MainMenu
-            colorScheme={colorScheme}
-            page={page}
-            setPage={setPage}
-            font={urFont}
-          />
-      
-        </XR>
-      </Canvas>
+      {!isVerified ? (
+        <AgeVerification onVerify={setIsVerified} />
+      ) : (
+        <>
+          <VRButton />
+          <Canvas>
+            <FillLight />
+            <BackLight />
+            <SpotLazer />
+            <NarrowLight />
+            <Controls dynamic={heightMultiple} />
+            <WhiteRoom />
+            <XR>
+              <RightButton
+                colorScheme={colorScheme}
+                movement={movement}
+                setMovement={setMovement}
+                data={data}
+                page={page}
+              />
+              <LeftButton
+                colorScheme={colorScheme}
+                data={data}
+                movement={movement}
+                setMovement={setMovement}
+                page={page}
+              />
+              <ImageSlider
+                colorScheme={colorScheme}
+                movement={movement}
+                setMovement={setMovement}
+                page={page}
+                setPage={setPage}
+                data={data}
+              />
+              <Title
+                position={[0, 6.12, -9]}
+                opacity={1}
+                font={urFont}
+                words="The Title"
+                setPage={setPage}
+                page={page}
+                colorScheme={colorScheme}
+              />
+              <Controllers />
+              <Controllers
+                rayMaterial={{ color: colorScheme.primary }}
+                hideRaysOnBlur={false}
+              />
+              <MainMenu
+                colorScheme={colorScheme}
+                page={page}
+                setPage={setPage}
+                font={urFont}
+              />
+            </XR>
+          </Canvas>
+        </>
+      )}
     </div>
   );
 }
